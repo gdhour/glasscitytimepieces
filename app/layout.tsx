@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Cinzel, Geist, Geist_Mono } from "next/font/google";
-import SteampunkNav from "./components/SteampunkNav";
+import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
+import Footer from "./components/Footer";
+import SiteNav from "./components/SiteNav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,15 +14,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const cinzel = Cinzel({
-  variable: "--font-cinzel",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["300", "400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Brass & Tick — Steam Chronometers",
-  description: "A steampunk watch boutique of brass, gears, and fine timekeeping.",
+  title: "Glass City Timepieces — Curated Watch Collection",
+  description:
+    "A personally curated collection of uncommon timepieces in Toledo, Ohio — video consultations via Google Meet or Zoom, plus concierge guidance for collectors.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -32,11 +38,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-[#120d09] text-[#f0e6d2]">
-        <SteampunkNav />
+      <body className="flex min-h-full flex-col bg-[var(--background)] text-[var(--foreground)]">
+        <SiteNav />
         <div className="flex flex-1 flex-col">{children}</div>
+        <Footer />
       </body>
     </html>
   );
