@@ -6,6 +6,7 @@ import {
   legacyInventoryWatches,
 } from "./collectionWatches";
 import BrandLogo from "./components/BrandLogo";
+import ClockQuadrantNav from "./components/ClockQuadrantNav";
 
 const rotatingWatches = [
   ...currentInventoryWatches.map((watch) => ({
@@ -32,64 +33,6 @@ const rotatingWatches = [
 ] as const;
 
 const rotatingGallery = [...rotatingWatches, ...rotatingWatches] as const;
-
-const clockLinks = [
-  {
-    href: "/#concierge",
-    label: "Concierge services",
-    className: "left-1/2 top-[8%] -translate-x-1/2",
-  },
-  {
-    href: "/current-inventory",
-    label: "Current inventory",
-    className: "right-[2%] top-1/2 -translate-y-1/2 sm:right-[5%]",
-  },
-  {
-    href: "/personal-collection",
-    label: "Personal collection",
-    className: "bottom-[8%] left-1/2 -translate-x-1/2",
-  },
-  {
-    href: "/legacy-inventory",
-    label: "Legacy inventory",
-    className: "left-[2%] top-1/2 -translate-y-1/2 sm:left-[5%]",
-  },
-] as const;
-
-function ClockQuadrantNav() {
-  return (
-    <nav
-      aria-label="Collection sections"
-      className="relative z-20 mb-8 h-56 w-56 sm:h-64 sm:w-64 lg:h-72 lg:w-72"
-    >
-      <div
-        className="absolute inset-0 rounded-full border border-[var(--border-strong)] bg-[rgba(9,7,12,0.42)] shadow-[0_22px_60px_rgba(0,0,0,0.34)] backdrop-blur-sm"
-        aria-hidden
-      />
-      <div
-        className="absolute left-1/2 top-0 h-full w-px bg-[linear-gradient(180deg,transparent,var(--border-strong),transparent)]"
-        aria-hidden
-      />
-      <div
-        className="absolute left-0 top-1/2 h-px w-full bg-[linear-gradient(90deg,transparent,var(--border-strong),transparent)]"
-        aria-hidden
-      />
-      <div
-        className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--bronze)] bg-[var(--surface-elevated)] shadow-[0_0_24px_var(--glow-bronze)]"
-        aria-hidden
-      />
-      {clockLinks.map(({ href, label, className }) => (
-        <Link
-          href={href}
-          key={href}
-          className={`absolute flex min-h-12 w-24 items-center justify-center rounded-full border border-[var(--border)] bg-[rgba(18,13,26,0.88)] px-2 text-center text-[10px] font-medium uppercase leading-tight tracking-[0.12em] text-[var(--steel-bright)] shadow-lg shadow-black/25 backdrop-blur transition-colors hover:border-[var(--bronze)] hover:text-[var(--bronze-soft)] sm:min-h-14 sm:w-28 sm:text-[11px] ${className}`}
-        >
-          {label}
-        </Link>
-      ))}
-    </nav>
-  );
-}
 
 export default function Home() {
   return (
