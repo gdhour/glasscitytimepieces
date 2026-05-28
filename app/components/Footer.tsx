@@ -9,8 +9,8 @@ export default function Footer() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
             <BrandLogo size="sm" linked={false} />
             <p className="max-w-sm text-sm leading-relaxed text-[var(--muted)]">
-              Uncommon timepieces, curated in Toledo — consultations via Meet or
-              Zoom.
+              Uncommon timepieces, curated in Toledo — consultations via Google
+              Meet.
             </p>
           </div>
           <nav
@@ -18,28 +18,28 @@ export default function Footer() {
             aria-label="Footer"
           >
             <Link
-              href="/#collection"
+              href="/personal-collection"
               className="transition-colors hover:text-[var(--bronze-soft)]"
             >
-              Collection
+              Personal Collection
+            </Link>
+            <Link
+              href="/current-inventory"
+              className="transition-colors hover:text-[var(--bronze-soft)]"
+            >
+              Current Inventory
+            </Link>
+            <Link
+              href="/legacy-inventory"
+              className="transition-colors hover:text-[var(--bronze-soft)]"
+            >
+              Legacy Inventory
             </Link>
             <Link
               href="/#concierge"
               className="transition-colors hover:text-[var(--bronze-soft)]"
             >
-              Concierge
-            </Link>
-            <Link
-              href="/#heritage"
-              className="transition-colors hover:text-[var(--bronze-soft)]"
-            >
-              Heritage
-            </Link>
-            <Link
-              href="/#visit"
-              className="transition-colors hover:text-[var(--bronze-soft)]"
-            >
-              Consult
+              Concierge Services
             </Link>
           </nav>
         </div>

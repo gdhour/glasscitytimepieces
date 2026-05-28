@@ -101,3 +101,23 @@ body {
     var(--surface) 100%
   );
 }
+
+@keyframes watch-gallery-drift {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.watch-gallery-track {
+  animation: watch-gallery-drift 55s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .watch-gallery-track {
+    animation: none;
+  }
+}

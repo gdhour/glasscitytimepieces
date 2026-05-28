@@ -23,7 +23,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Glass City Timepieces — Curated Watch Collection",
   description:
-    "A personally curated collection of uncommon timepieces in Toledo, Ohio — video consultations via Google Meet or Zoom, plus concierge guidance for collectors.",
+    "A personally curated collection of uncommon timepieces in Toledo, Ohio — video consultations via Google Meet, plus concierge guidance for collectors.",
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",

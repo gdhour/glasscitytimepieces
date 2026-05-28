@@ -1,14 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import BrandLogo from "./BrandLogo";
 
 const links = [
-  { href: "/#collection", label: "Collection" },
-  { href: "/#concierge", label: "Concierge" },
-  { href: "/#heritage", label: "Heritage" },
-  { href: "/#visit", label: "Consult" },
+  { href: "/personal-collection", label: "Personal Collection" },
+  { href: "/current-inventory", label: "Current Inventory" },
+  { href: "/legacy-inventory", label: "Legacy Inventory" },
+  { href: "/#concierge", label: "Concierge Services" },
 ] as const;
 
 export default function SiteNav() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[rgba(3,3,4,0.9)] backdrop-blur-xl">
       <nav
@@ -17,12 +24,12 @@ export default function SiteNav() {
       >
         <BrandLogo size="sm" />
 
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center gap-1 lg:flex">
           {links.map(({ href, label }) => (
             <li key={href}>
               <Link
                 href={href}
-                className="rounded-sm px-4 py-2 text-[13px] font-medium tracking-wide text-[var(--steel)] transition-colors hover:text-[var(--bronze-soft)]"
+                className="rounded-sm px-3 py-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--steel)] transition-colors hover:text-[var(--bronze-soft)]"
               >
                 {label}
               </Link>
@@ -33,27 +40,40 @@ export default function SiteNav() {
         <div className="flex items-center gap-3">
           <Link
             href="/#visit"
-            className="btn-bronze hidden rounded-sm px-4 py-2 text-[13px] font-medium transition-opacity sm:inline-block"
+            onClick={closeMenu}
+            className="hidden rounded-sm border border-[var(--border-strong)] px-4 py-2 text-[12px] font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--purple)]/25 sm:inline-block"
           >
-            Book a video call
+            Private consultation
           </Link>
-          <details className="relative md:hidden">
-            <summary className="list-none cursor-pointer rounded-sm border border-[var(--border)] bg-[var(--surface-elevated)] px-3 py-2 text-[13px] font-medium text-[var(--steel)] [&::-webkit-details-marker]:hidden">
-              Menu
-            </summary>
-            <ul className="absolute right-0 mt-2 min-w-[10rem] rounded-sm border border-[var(--border)] bg-[var(--surface-elevated)] py-2 shadow-2xl shadow-black/50">
-              {links.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="block px-4 py-2.5 text-sm text-[var(--steel)] hover:bg-[var(--purple)]/30 hover:text-[var(--foreground)]"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </details>
+          <div className="relative lg:hidden">
+            <button
+              type="button"
+              aria-controls="mobile-menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((open) => !open)}
+              className="rounded-sm border border-[var(--border)] bg-[var(--surface-elevated)] px-3 py-2 text-[13px] font-medium text-[var(--steel)] transition-colors hover:text-[var(--foreground)]"
+            >
+              {menuOpen ? "Close" : "Menu"}
+            </button>
+            {menuOpen ? (
+              <ul
+                id="mobile-menu"
+                className="absolute right-0 mt-2 min-w-[15rem] rounded-sm border border-[var(--border)] bg-[var(--surface-elevated)] py-2 shadow-2xl shadow-black/50"
+              >
+                {links.map(({ href, label }) => (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      onClick={closeMenu}
+                      className="block px-4 py-2.5 text-sm text-[var(--steel)] hover:bg-[var(--purple)]/30 hover:text-[var(--foreground)]"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
         </div>
       </nav>
     </header>
