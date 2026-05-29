@@ -157,6 +157,58 @@ export const legacyInventoryWatches = [
 
 export const collectionWatches = [
   {
+    brand: "Rolex",
+    model: "Datejust 36",
+    reference: "126231",
+    description:
+      "A two-tone Datejust 36 with Everose Rolesor warmth, a fluted bezel, Jubilee bracelet, white Roman dial, and classic 36mm proportions. It sits in the sweet spot between dress-watch polish and daily-wear Rolex familiarity.",
+    heroPhoto: 0,
+    photos: [
+      {
+        src: "/images/datejust-126231/datejust-126231-hero-web.jpg",
+        alt: "Rolex Datejust 36 reference 126231 straight-on dial and Jubilee bracelet view",
+        width: 1600,
+        height: 1600,
+        className: "aspect-square",
+      },
+      {
+        src: "/images/datejust-126231/datejust-126231-wrist-01-web.jpg",
+        alt: "Rolex Datejust 36 reference 126231 on wrist three-quarter view",
+        width: 1600,
+        height: 1600,
+        className: "aspect-square",
+      },
+      {
+        src: "/images/datejust-126231/datejust-126231-wrist-02-web.jpg",
+        alt: "Rolex Datejust 36 reference 126231 close wrist view",
+        width: 1600,
+        height: 1600,
+        className: "aspect-square",
+      },
+      {
+        src: "/images/datejust-126231/datejust-126231-detail-01-web.jpg",
+        alt: "Rolex Datejust 36 reference 126231 bracelet, case, and Everose fluted bezel detail",
+        width: 1600,
+        height: 1600,
+        className: "aspect-square",
+      },
+      {
+        src: "/images/datejust-126231/datejust-126231-detail-02-web.jpg",
+        alt: "Rolex Datejust 36 reference 126231 dial and bracelet detail on watch winder",
+        width: 1600,
+        height: 1600,
+        className: "aspect-square",
+      },
+      {
+        src: "/images/datejust-126231/datejust-126231-box-set-web.jpg",
+        alt: "Rolex Datejust 36 reference 126231 box and card presentation",
+        width: 1600,
+        height: 1600,
+        className: "aspect-square",
+      },
+    ],
+  },
+  {
     brand: "Breitling",
     model: "Superocean Heritage '57",
     reference: "A10370161C1X1",

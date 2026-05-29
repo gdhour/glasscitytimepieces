@@ -89,6 +89,22 @@
       "reference": "M.A.D. 1",
       "status": "personal_collection",
       "isSaleInventory": false
+    },
+    {
+      "brand": "Rolex",
+      "model": "Datejust 36",
+      "reference": "126231",
+      "status": "personal_collection",
+      "isSaleInventory": false,
+      "description_angle": "Classic 36mm Datejust proportions with warm Everose accents, white Roman dial, fluted bezel, and Jubilee bracelet.",
+      "images": [
+        "/images/datejust-126231/datejust-126231-hero-web.jpg",
+        "/images/datejust-126231/datejust-126231-wrist-01-web.jpg",
+        "/images/datejust-126231/datejust-126231-wrist-02-web.jpg",
+        "/images/datejust-126231/datejust-126231-detail-01-web.jpg",
+        "/images/datejust-126231/datejust-126231-detail-02-web.jpg",
+        "/images/datejust-126231/datejust-126231-box-set-web.jpg"
+      ]
     }
   ],
   "legacy_inventory": [

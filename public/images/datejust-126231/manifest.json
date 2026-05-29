@@ -6,11 +6,27 @@
   "gallery": [
     {
       "type": "hero",
-      "label": "Straight-on dial and bracelet view",
+      "label": "Straight-on dial and Jubilee bracelet view",
       "full": "datejust-126231-hero.jpg",
       "web": "datejust-126231-hero-web.jpg",
       "thumbnail": "datejust-126231-hero-thumb.jpg",
-      "source": "Datejust_TopDown_Crop.jpg"
+      "source": "ChatGPT Image May 29, 2026 at 11_34_05 AM.png"
+    },
+    {
+      "type": "wrist",
+      "label": "Wrist shot, three-quarter view",
+      "full": "datejust-126231-wrist-01.jpg",
+      "web": "datejust-126231-wrist-01-web.jpg",
+      "thumbnail": "datejust-126231-wrist-01-thumb.jpg",
+      "source": "ChatGPT Image May 29, 2026 at 11_34_05 AM.png"
+    },
+    {
+      "type": "wrist",
+      "label": "Wrist shot, close dial view",
+      "full": "datejust-126231-wrist-02.jpg",
+      "web": "datejust-126231-wrist-02-web.jpg",
+      "thumbnail": "datejust-126231-wrist-02-thumb.jpg",
+      "source": "ChatGPT Image May 29, 2026 at 11_34_05 AM.png"
     },
     {
       "type": "detail",
@@ -18,7 +34,7 @@
       "full": "datejust-126231-detail-01.jpg",
       "web": "datejust-126231-detail-01-web.jpg",
       "thumbnail": "datejust-126231-detail-01-thumb.jpg",
-      "source": "Datejust_Bracelet_Tent_Crop.jpg"
+      "source": "ChatGPT Image May 29, 2026 at 11_34_05 AM.png"
     },
     {
       "type": "detail",
@@ -26,11 +42,19 @@
       "full": "datejust-126231-detail-02.jpg",
       "web": "datejust-126231-detail-02-web.jpg",
       "thumbnail": "datejust-126231-detail-02-thumb.jpg",
-      "source": "Datejust_Winder_Closeup_Crop.jpg"
+      "source": "ChatGPT Image May 29, 2026 at 11_34_05 AM.png"
+    },
+    {
+      "type": "box-set",
+      "label": "Box and card presentation",
+      "full": "datejust-126231-box-set.jpg",
+      "web": "datejust-126231-box-set-web.jpg",
+      "thumbnail": "datejust-126231-box-set-thumb.jpg",
+      "source": "ChatGPT Image May 29, 2026 at 11_34_05 AM.png"
     }
   ],
   "notes": [
-    "Only the three supplied source photos were exported.",
-    "Wrist and box-set filenames were not generated because matching source photos were not provided."
+    "The six gallery images were cropped from the supplied 1536x1024 composite.",
+    "Source panel resolution is approximately 506x506 after removing gutters; web and thumbnail exports were generated to the requested 1600px and 800px dimensions."
   ]
 }

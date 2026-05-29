@@ -43,7 +43,7 @@ export default function InventoryGrid({ watches }: InventoryGridProps) {
     [activeStatus, watches],
   );
   const activeContent = inventoryStatusContent[activeStatus];
-  const primaryWatch = filteredWatches[0] ?? watches[0];
+  const primaryWatch = filteredWatches[0];
 
   return (
     <>
