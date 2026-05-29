@@ -1,0 +1,36 @@
+{
+  "reference": "126231",
+  "brand": "Rolex",
+  "model": "Datejust 36",
+  "heroImage": "datejust-126231-hero.jpg",
+  "gallery": [
+    {
+      "type": "hero",
+      "label": "Straight-on dial and bracelet view",
+      "full": "datejust-126231-hero.jpg",
+      "web": "datejust-126231-hero-web.jpg",
+      "thumbnail": "datejust-126231-hero-thumb.jpg",
+      "source": "Datejust_TopDown_Crop.jpg"
+    },
+    {
+      "type": "detail",
+      "label": "Bracelet, case, and Everose fluted bezel detail",
+      "full": "datejust-126231-detail-01.jpg",
+      "web": "datejust-126231-detail-01-web.jpg",
+      "thumbnail": "datejust-126231-detail-01-thumb.jpg",
+      "source": "Datejust_Bracelet_Tent_Crop.jpg"
+    },
+    {
+      "type": "detail",
+      "label": "Dial and bracelet detail on watch winder",
+      "full": "datejust-126231-detail-02.jpg",
+      "web": "datejust-126231-detail-02-web.jpg",
+      "thumbnail": "datejust-126231-detail-02-thumb.jpg",
+      "source": "Datejust_Winder_Closeup_Crop.jpg"
+    }
+  ],
+  "notes": [
+    "Only the three supplied source photos were exported.",
+    "Wrist and box-set filenames were not generated because matching source photos were not provided."
+  ]
+}

@@ -11,6 +11,19 @@ type ChatMessage = {
 type ChatRequest = {
   messages?: ChatMessage[];
   watchContext?: string;
+  visitorPreferences?: VisitorPreferences;
+};
+
+type VisitorPreferences = {
+  visitorPurpose?: string;
+  currentWrist?: string;
+  experienceLevel?: string;
+  stylePreferences?: string;
+  budgetRange?: string;
+  preferredCaseSize?: string;
+  strapPreference?: string;
+  watchesLiked?: string[];
+  watchesDisliked?: string[];
 };
 
 type OpenAIResponse = {
@@ -108,7 +121,11 @@ function logLead(messages: ChatMessage[], watchContext?: string) {
   });
 }
 
-function buildInstructions() {
+function buildInstructions(visitorPreferences?: VisitorPreferences) {
+  const preferenceContext = visitorPreferences
+    ? JSON.stringify(visitorPreferences, null, 2)
+    : "No remembered preferences provided.";
+
   return `
 You are Cogsworth, the customer-facing AI concierge for Glass City Timepieces.
 
@@ -125,7 +142,18 @@ ${JSON.stringify(inventory, null, 2)}
 Approved policies:
 ${JSON.stringify(policies, null, 2)}
 
+Lightweight visitor preference memory:
+${preferenceContext}
+
 Rules:
+- Use lightweight visitor preference memory naturally and casually. Phrase it as “last time you mentioned…” or “since you said…” rather than as a permanent customer profile.
+- If the visitor says what they are wearing, reference it later only when relevant.
+- If they are new to mechanical watches, explain terms simply.
+- If they mention budget, use it to narrow recommendations.
+- If they mention wrist size or case-size comfort, use it in sizing guidance.
+- If they dislike a brand or style, do not recommend similar pieces unless clearly explaining a contrast.
+- Do not claim remembered preferences are formal customer records.
+- Never store, request storage for, or repeat sensitive personal details as preference memory. Lead/contact details are only for the lead capture flow.
 - When discussing specific watches, answer only from the approved inventory and policy data above.
 - Inventory categories are strict: Current Inventory is owned by GCT and can ship now; Collector Network is not owned by GCT and availability/timeline must be confirmed before purchase; Mir’s Picks are curated market opportunities and are not in stock or guaranteed available.
 - Never represent Collector Network or Mir’s Picks as owned by GCT, in hand, photographed by GCT, personally inspected by GCT, or ready for immediate shipment.
@@ -194,7 +222,7 @@ export async function POST(request: Request) {
     },
     body: JSON.stringify({
       model: process.env.OPENAI_MODEL ?? DEFAULT_MODEL,
-      instructions: buildInstructions(),
+      instructions: buildInstructions(body.visitorPreferences),
       input,
     }),
   });
