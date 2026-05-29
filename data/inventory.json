@@ -1,0 +1,82 @@
+{
+  "current_inventory": [
+    {
+      "id": "rado-captain-cook-high-tech-ceramic-skeleton-r32192152",
+      "brand": "Rado",
+      "model": "Captain Cook High-Tech Ceramic Skeleton",
+      "reference": "R32192152",
+      "status": "current_inventory",
+      "case_size": "43mm",
+      "case_material": "Matte black high-tech ceramic",
+      "bracelet": "Matte black high-tech ceramic bracelet",
+      "bezel_crown_accents": "Rose gold-tone bezel, crown, and dial accents",
+      "movement": "Skeletonized automatic movement",
+      "crystal": "Sapphire crystal",
+      "caseback": "Exhibition caseback",
+      "water_resistance": "300m",
+      "set_contents": "Full set with box and papers",
+      "condition": "Excellent pre-owned",
+      "description_angle": "Stealthy ceramic, architectural skeleton dial, modern material-focused watch with strong visual presence.",
+      "talking_points": [
+        "The matte black ceramic construction gives the watch a lightweight, modern, stealthy feel.",
+        "Rose gold-tone accents add warmth and contrast without making the watch feel overly flashy.",
+        "The skeleton dial and exhibition caseback make the movement a major visual part of the experience.",
+        "At 43mm with strong contrast, it has real wrist presence and may feel large for buyers who prefer compact watches."
+      ],
+      "images": [
+        "/collection/rado-captain-cook-high-tech-ceramic-skeleton-1.jpg",
+        "/collection/rado-captain-cook-high-tech-ceramic-skeleton-2.jpg",
+        "/collection/rado-captain-cook-high-tech-ceramic-skeleton-3.jpg",
+        "/collection/rado-captain-cook-high-tech-ceramic-skeleton-4.jpg",
+        "/collection/rado-captain-cook-high-tech-ceramic-skeleton-5.jpg",
+        "/collection/rado-captain-cook-high-tech-ceramic-skeleton-6.jpg"
+      ]
+    }
+  ],
+  "personal_collection": [
+    {
+      "brand": "Breitling",
+      "model": "Superocean Heritage '57",
+      "reference": "A10370161C1X1",
+      "status": "personal_collection"
+    },
+    {
+      "brand": "Chopard",
+      "model": "Mille Miglia GT XL",
+      "reference": "168459-3005",
+      "status": "personal_collection"
+    },
+    {
+      "brand": "TAG Heuer",
+      "model": "Formula 1",
+      "reference": "CAZ101AM.FT8054",
+      "status": "personal_collection"
+    },
+    {
+      "brand": "M.A.D.Editions",
+      "model": "M.A.D. 1",
+      "reference": "M.A.D. 1",
+      "status": "personal_collection"
+    }
+  ],
+  "legacy_inventory": [
+    {
+      "brand": "Christopher Ward",
+      "model": "C65 Dune Aeolian GMT Blue Dial",
+      "reference": "Legacy piece",
+      "status": "legacy_inventory"
+    },
+    {
+      "brand": "Maurice Lacroix",
+      "model": "AIKON Mercury",
+      "reference": "AI6088-SS002-030-1 | Full Set",
+      "status": "legacy_inventory"
+    },
+    {
+      "brand": "Omega",
+      "model": "Speedmaster Reduced",
+      "reference": "3510.80.00 | Watch, box, card",
+      "status": "legacy_inventory"
+    }
+  ]
+}

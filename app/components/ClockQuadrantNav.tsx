@@ -30,14 +30,6 @@ const clockSlices = [
   },
 ] as const;
 
-const toledoTimeFormatter = new Intl.DateTimeFormat("en-US", {
-  timeZone: "America/New_York",
-  hour: "numeric",
-  minute: "2-digit",
-  second: "2-digit",
-  hour12: true,
-});
-
 const toledoPartsFormatter = new Intl.DateTimeFormat("en-US", {
   timeZone: "America/New_York",
   hour: "numeric",
@@ -58,7 +50,6 @@ function getToledoTime(date: Date) {
   return {
     hourAngle: (hour % 12) * 30 + minute * 0.5 + second / 120,
     minuteAngle: minute * 6 + second * 0.1,
-    label: toledoTimeFormatter.format(date),
   };
 }
 
@@ -83,11 +74,7 @@ export default function ClockQuadrantNav() {
 
   return (
     <nav
-      aria-label={
-        toledoTime
-          ? `Collection sections, clock set to Toledo time ${toledoTime.label}`
-          : "Collection sections, clock set to Toledo time"
-      }
+      aria-label="Collection sections, clock hands set to Toledo Eastern Time"
       className="relative z-20 mb-8 h-56 w-56 sm:h-64 sm:w-64 lg:h-72 lg:w-72"
     >
       <div
@@ -138,11 +125,9 @@ export default function ClockQuadrantNav() {
         className="pointer-events-none absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--bronze)] bg-[var(--surface-elevated)] shadow-[0_0_24px_var(--glow-bronze)]"
         aria-hidden
       />
-      {toledoTime ? (
-        <p className="pointer-events-none absolute left-1/2 top-[58%] -translate-x-1/2 text-[9px] font-medium uppercase tracking-[0.18em] text-[var(--muted)]">
-          Toledo {toledoTime.label}
-        </p>
-      ) : null}
+      <p className="pointer-events-none absolute left-1/2 top-[58%] -translate-x-1/2 text-[9px] font-medium uppercase tracking-[0.18em] text-[var(--muted)]">
+        Toledo · ET
+      </p>
     </nav>
   );
 }

@@ -56,7 +56,6 @@ export default function Home() {
               className="pointer-events-none absolute left-1/2 top-[55%] h-[50%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--glow-bronze)_0%,transparent_70%)] opacity-50 blur-xl"
               aria-hidden
             />
-            <ClockQuadrantNav />
             <BrandLogo
               size="hero"
               linked={false}
@@ -89,6 +88,9 @@ export default function Home() {
               >
                 Concierge services
               </Link>
+            </div>
+            <div className="mt-12 flex justify-center sm:justify-start">
+              <ClockQuadrantNav />
             </div>
           </div>
         </div>
