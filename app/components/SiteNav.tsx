@@ -19,7 +19,7 @@ export default function SiteNav() {
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[rgba(3,3,4,0.9)] backdrop-blur-xl">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-3 sm:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-2 sm:px-8"
         aria-label="Main"
       >
         <BrandLogo size="sm" />

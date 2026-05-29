@@ -6,7 +6,6 @@ import {
   inventoryStatusContent,
   legacyInventoryWatches,
 } from "./collectionWatches";
-import BrandLogo from "./components/BrandLogo";
 import ClockQuadrantNav from "./components/ClockQuadrantNav";
 import InventoryStatusBadge from "./components/InventoryStatusBadge";
 
@@ -48,24 +47,8 @@ export default function Home() {
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_-5%,var(--glow-purple)_0%,transparent_55%),radial-gradient(ellipse_40%_35%_at_85%_15%,var(--glow-bronze)_0%,transparent_50%),linear-gradient(180deg,var(--surface)_0%,var(--background)_100%)]"
           aria-hidden
         />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-10 sm:px-8 sm:pb-20 sm:pt-14 lg:grid-cols-[1fr_minmax(280px,42%)] lg:gap-16 lg:pb-24 lg:pt-16 xl:grid-cols-[1fr_460px]">
-          <div className="relative order-2 flex w-full flex-col items-center justify-center px-2 sm:px-0 lg:w-auto lg:justify-end lg:px-0">
-            <div
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[85%] w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--glow-purple)_0%,transparent_68%)] opacity-80 blur-2xl"
-              aria-hidden
-            />
-            <div
-              className="pointer-events-none absolute left-1/2 top-[55%] h-[50%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--glow-bronze)_0%,transparent_70%)] opacity-50 blur-xl"
-              aria-hidden
-            />
-            <BrandLogo
-              size="hero"
-              linked={false}
-              className="relative z-10 -translate-x-3 -translate-y-4 drop-shadow-[0_24px_48px_rgba(0,0,0,0.55)] sm:-translate-x-5 sm:-translate-y-6 lg:-translate-x-8 lg:-translate-y-8"
-            />
-          </div>
-
-          <div className="order-1">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-10 sm:px-8 sm:pb-20 sm:pt-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(260px,0.56fr)] lg:gap-16 lg:pb-24 lg:pt-16 xl:grid-cols-[minmax(0,0.9fr)_360px]">
+          <div>
             <p className="text-[11px] font-medium uppercase tracking-[0.35em] text-[var(--bronze)]">
               Personally curated · Toledo, Ohio
             </p>
@@ -77,23 +60,14 @@ export default function Home() {
               collection notes, legacy archive pieces, and concierge guidance
               into one focused point of view.
             </p>
-            <div className="mt-9 flex flex-wrap gap-4">
-              <Link
-                href="/current-inventory"
-                className="btn-bronze inline-flex items-center rounded-sm px-6 py-3 text-sm font-medium"
-              >
-                Current inventory
-              </Link>
-              <Link
-                href="/#concierge"
-                className="inline-flex items-center rounded-sm border border-[var(--border)] bg-[var(--purple)]/20 px-6 py-3 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--border-strong)] hover:bg-[var(--purple)]/35"
-              >
-                Concierge services
-              </Link>
-            </div>
-            <div className="mt-12 flex justify-center sm:justify-start">
-              <ClockQuadrantNav />
-            </div>
+          </div>
+
+          <div className="relative flex justify-center lg:justify-end">
+            <div
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--glow-purple)_0%,transparent_68%)] opacity-70 blur-2xl"
+              aria-hidden
+            />
+            <ClockQuadrantNav />
           </div>
         </div>
       </section>
