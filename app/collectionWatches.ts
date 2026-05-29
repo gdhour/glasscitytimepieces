@@ -1,8 +1,48 @@
-export const currentInventoryWatches = [
+export type InventoryStatus = "current" | "network" | "pick";
+
+export const inventoryStatusContent: Record<
+  InventoryStatus,
+  {
+    label: string;
+    badge: string;
+    disclosure: string;
+  }
+> = {
+  current: {
+    label: "Current Inventory",
+    badge: "Available Now",
+    disclosure: "In hand, inspected, and ready to ship.",
+  },
+  network: {
+    label: "Collector Network",
+    badge: "Available Through Our Network",
+    disclosure:
+      "Available through our trusted collector network. Final availability and timeline confirmed before purchase.",
+  },
+  pick: {
+    label: "Mir’s Picks",
+    badge: "Curator’s Pick",
+    disclosure:
+      "Curated by GCT as an interesting market opportunity or collector-worthy piece. Not currently in stock.",
+  },
+};
+
+export const inventoryStatusOptions = [
+  { value: "current", label: inventoryStatusContent.current.label },
+  { value: "network", label: inventoryStatusContent.network.label },
+  { value: "pick", label: inventoryStatusContent.pick.label },
+] as const;
+
+export const inventoryWatches = [
   {
     brand: "Rado",
     model: "Captain Cook High-Tech Ceramic Skeleton",
     reference: "R32192152",
+    inventoryStatus: "current",
+    availabilityNote: inventoryStatusContent.current.disclosure,
+    sourceType: "GCT owned inventory",
+    isOwnedByGCT: true,
+    canShipImmediately: true,
     description:
       "The Rado Captain Cook High-Tech Ceramic Skeleton blends modern materials with aggressive industrial design. Matte black ceramic keeps the watch lightweight and stealthy, while warm rose gold-tone accents add contrast and depth. The open-worked dial and exhibition caseback show the automatic movement from both sides, giving the piece a technical character that feels equal parts motorsport instrumentation and contemporary architecture.",
     details: [
@@ -62,6 +102,10 @@ export const currentInventoryWatches = [
     ],
   },
 ] as const;
+
+export const currentInventoryWatches = inventoryWatches.filter(
+  (watch) => watch.inventoryStatus === "current",
+);
 
 export const legacyInventoryWatches = [
   {

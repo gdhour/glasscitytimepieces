@@ -3,16 +3,18 @@ import Link from "next/link";
 import {
   collectionWatches,
   currentInventoryWatches,
+  inventoryStatusContent,
   legacyInventoryWatches,
 } from "./collectionWatches";
 import BrandLogo from "./components/BrandLogo";
 import ClockQuadrantNav from "./components/ClockQuadrantNav";
+import InventoryStatusBadge from "./components/InventoryStatusBadge";
 
 const rotatingWatches = [
   ...currentInventoryWatches.map((watch) => ({
     brand: watch.brand,
     model: watch.model,
-    category: "Current inventory",
+    category: inventoryStatusContent[watch.inventoryStatus].badge,
     href: "/current-inventory",
     photo: watch.photos[watch.heroPhoto],
   })),
@@ -166,6 +168,9 @@ export default function Home() {
               <h2 className="mt-3 font-[family-name:var(--font-cormorant)] text-3xl font-light tracking-tight text-[var(--foreground)] sm:text-4xl">
                 Available now
               </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[var(--muted)]">
+                {inventoryStatusContent.current.disclosure}
+              </p>
             </div>
             <Link
               href="/current-inventory"
@@ -213,7 +218,8 @@ export default function Home() {
                   </div>
 
                   <div className="flex flex-col p-6 sm:p-8 lg:p-10">
-                    <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--bronze)]">
+                    <InventoryStatusBadge status={watch.inventoryStatus} />
+                    <p className="mt-5 text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--bronze)]">
                       {watch.brand}
                     </p>
                     <h3 className="mt-2 font-[family-name:var(--font-cormorant)] text-3xl font-light leading-tight text-[var(--foreground)]">
@@ -224,6 +230,10 @@ export default function Home() {
                     </p>
                     <p className="mt-5 text-sm leading-relaxed text-[var(--muted)]">
                       {watch.description}
+                    </p>
+                    <p className="mt-5 rounded-sm border border-[var(--border-strong)] bg-[var(--surface-elevated)] p-4 text-sm leading-relaxed text-[var(--steel-bright)]">
+                      {watch.availabilityNote ??
+                        inventoryStatusContent[watch.inventoryStatus].disclosure}
                     </p>
                     <ul className="mt-6 grid gap-3 border-t border-[var(--border)] pt-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                       {watch.details.map((detail) => (

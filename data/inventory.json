@@ -1,11 +1,37 @@
 {
+  "inventory_categories": {
+    "current": {
+      "label": "Current Inventory",
+      "displayStatus": "Available Now",
+      "meaning": "Owned by GCT, in hand, personally inspected, photographed by GCT, and available to ship now.",
+      "disclosure": "In hand, inspected, and ready to ship."
+    },
+    "network": {
+      "label": "Collector Network",
+      "displayStatus": "Available Through Our Network",
+      "meaning": "Pieces not currently owned by GCT but available through trusted sourcing partners. Availability must be confirmed before purchase.",
+      "typicalProcurementTimeline": "3–10 business days",
+      "disclosure": "Available through our trusted collector network. Final availability and timeline confirmed before purchase."
+    },
+    "pick": {
+      "label": "Mir’s Picks",
+      "displayStatus": "Curator’s Pick",
+      "meaning": "Curated watches GCT is tracking or recommending based on value, design, rarity, or collector interest. These are not in stock and are not guaranteed available.",
+      "disclosure": "Curated by GCT as an interesting market opportunity or collector-worthy piece. Not currently in stock."
+    }
+  },
   "current_inventory": [
     {
       "id": "rado-captain-cook-high-tech-ceramic-skeleton-r32192152",
       "brand": "Rado",
       "model": "Captain Cook High-Tech Ceramic Skeleton",
       "reference": "R32192152",
-      "status": "current_inventory",
+      "inventoryStatus": "current",
+      "displayStatus": "Available Now",
+      "availabilityNote": "In hand, inspected, and ready to ship.",
+      "sourceType": "GCT owned inventory",
+      "isOwnedByGCT": true,
+      "canShipImmediately": true,
       "case_size": "43mm",
       "case_material": "Matte black high-tech ceramic",
       "bracelet": "Matte black high-tech ceramic bracelet",
@@ -33,30 +59,36 @@
       ]
     }
   ],
+  "collector_network": [],
+  "mirs_picks": [],
   "personal_collection": [
     {
       "brand": "Breitling",
       "model": "Superocean Heritage '57",
       "reference": "A10370161C1X1",
-      "status": "personal_collection"
+      "status": "personal_collection",
+      "isSaleInventory": false
     },
     {
       "brand": "Chopard",
       "model": "Mille Miglia GT XL",
       "reference": "168459-3005",
-      "status": "personal_collection"
+      "status": "personal_collection",
+      "isSaleInventory": false
     },
     {
       "brand": "TAG Heuer",
       "model": "Formula 1",
       "reference": "CAZ101AM.FT8054",
-      "status": "personal_collection"
+      "status": "personal_collection",
+      "isSaleInventory": false
     },
     {
       "brand": "M.A.D.Editions",
       "model": "M.A.D. 1",
       "reference": "M.A.D. 1",
-      "status": "personal_collection"
+      "status": "personal_collection",
+      "isSaleInventory": false
     }
   ],
   "legacy_inventory": [
@@ -64,19 +96,22 @@
       "brand": "Christopher Ward",
       "model": "C65 Dune Aeolian GMT Blue Dial",
       "reference": "Legacy piece",
-      "status": "legacy_inventory"
+      "status": "legacy_inventory",
+      "isSaleInventory": false
     },
     {
       "brand": "Maurice Lacroix",
       "model": "AIKON Mercury",
       "reference": "AI6088-SS002-030-1 | Full Set",
-      "status": "legacy_inventory"
+      "status": "legacy_inventory",
+      "isSaleInventory": false
     },
     {
       "brand": "Omega",
       "model": "Speedmaster Reduced",
       "reference": "3510.80.00 | Watch, box, card",
-      "status": "legacy_inventory"
+      "status": "legacy_inventory",
+      "isSaleInventory": false
     }
   ]
 }

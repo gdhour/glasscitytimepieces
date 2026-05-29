@@ -2,6 +2,19 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Create a local environment file for the concierge API:
+
+```bash
+cp .env.example .env.local
+```
+
+Then set:
+
+```bash
+OPENAI_API_KEY=your_openai_api_key
+GCT_LEAD_EMAIL=info@glasscitytimepieces.com
+```
+
 First, run the development server:
 
 ```bash

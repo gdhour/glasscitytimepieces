@@ -1,6 +1,7 @@
 {
   "business": {
     "name": "Glass City Timepieces",
+    "agentName": "Cogsworth",
     "owner_follow_up_name": "Mir",
     "email": "info@glasscitytimepieces.com",
     "phone": "419-975-9754",
@@ -13,6 +14,11 @@
   },
   "watch_discussion_rules": [
     "When discussing a specific watch, answer only from approved inventory and policy data.",
+    "Current Inventory means owned by GCT, in hand, personally inspected, photographed by GCT, and available to ship now.",
+    "Collector Network means not currently owned by GCT and available only through trusted sourcing partners. Final availability must be confirmed before purchase. Typical procurement timeline is 3–10 business days.",
+    "Mir’s Picks means curated market opportunities or collector-worthy pieces GCT is tracking or recommending. They are not in stock and not guaranteed available.",
+    "Never represent Collector Network or Mir’s Picks as owned inventory, in hand, photographed by GCT, or ready for immediate shipment.",
+    "Only Current Inventory may imply immediate shipment.",
     "Do not invent specs, service history, production numbers, pricing, warranty terms, authentication status, or availability.",
     "Explain tradeoffs honestly, including size, wrist presence, materials, wearability, and style fit.",
     "If uncertain, say Mir will confirm directly."
