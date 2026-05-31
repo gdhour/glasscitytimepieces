@@ -54,19 +54,19 @@ export default function CollectionPage() {
                     </h2>
                   </div>
                   <p className="max-w-xl text-sm leading-relaxed text-[var(--muted)]">
-                    Reference number {watch.reference}. {watch.description}
+                    Reference: {watch.reference}. {watch.description}
                   </p>
                 </div>
 
                 <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
-                  <figure className="surface-card overflow-hidden rounded-sm">
+                  <figure className="surface-card self-start overflow-hidden rounded-sm">
                     <Image
                       src={heroPhoto.src}
                       alt={heroPhoto.alt}
                       width={heroPhoto.width}
                       height={heroPhoto.height}
                       sizes="(min-width: 1024px) 54vw, 100vw"
-                      className={`${heroPhoto.className} h-full w-full object-cover`}
+                      className={`${heroPhoto.className} w-full object-cover`}
                       priority={watchIndex === 0}
                     />
                   </figure>
@@ -83,7 +83,7 @@ export default function CollectionPage() {
                           width={photo.width}
                           height={photo.height}
                           sizes="(min-width: 1024px) 36vw, (min-width: 640px) 50vw, 100vw"
-                          className={`${photo.className} h-full w-full object-cover`}
+                          className={`${photo.className} w-full object-cover`}
                         />
                       </figure>
                     ))}

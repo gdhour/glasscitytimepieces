@@ -1,0 +1,19 @@
+{
+  "brand": "Omega",
+  "model": "Constellation Megaquartz",
+  "reference": "To be confirmed",
+  "selectedPhotos": [
+    {
+      "label": "hero",
+      "file": "omega-constellation-quartz-hero.jpg"
+    },
+    {
+      "label": "angle",
+      "file": "omega-constellation-quartz-angle.jpg"
+    },
+    {
+      "label": "detail",
+      "file": "omega-constellation-quartz-dial-detail.jpg"
+    }
+  ]
+}

@@ -2,59 +2,35 @@
   "reference": "126231",
   "brand": "Rolex",
   "model": "Datejust 36",
-  "heroImage": "datejust-126231-hero.jpg",
+  "heroImage": "datejust-126231-desktop-hero.jpg",
   "gallery": [
     {
       "type": "hero",
-      "label": "Straight-on dial and Jubilee bracelet view",
-      "full": "datejust-126231-hero.jpg",
-      "web": "datejust-126231-hero-web.jpg",
-      "thumbnail": "datejust-126231-hero-thumb.jpg",
-      "source": "ChatGPT Image May 29, 2026 at 11_34_05 AM.png"
+      "label": "Angled tabletop view with open Jubilee bracelet",
+      "full": "datejust-126231-desktop-hero.jpg",
+      "web": "datejust-126231-desktop-hero.jpg",
+      "thumbnail": "datejust-126231-desktop-hero.jpg",
+      "source": "Datejust_Bracelet_Tent_Crop.jpg"
     },
     {
       "type": "wrist",
-      "label": "Wrist shot, three-quarter view",
-      "full": "datejust-126231-wrist-01.jpg",
-      "web": "datejust-126231-wrist-01-web.jpg",
-      "thumbnail": "datejust-126231-wrist-01-thumb.jpg",
-      "source": "ChatGPT Image May 29, 2026 at 11_34_05 AM.png"
-    },
-    {
-      "type": "wrist",
-      "label": "Wrist shot, close dial view",
-      "full": "datejust-126231-wrist-02.jpg",
-      "web": "datejust-126231-wrist-02-web.jpg",
-      "thumbnail": "datejust-126231-wrist-02-thumb.jpg",
-      "source": "ChatGPT Image May 29, 2026 at 11_34_05 AM.png"
-    },
-    {
-      "type": "detail",
-      "label": "Bracelet, case, and Everose fluted bezel detail",
-      "full": "datejust-126231-detail-01.jpg",
-      "web": "datejust-126231-detail-01-web.jpg",
-      "thumbnail": "datejust-126231-detail-01-thumb.jpg",
+      "label": "Single wrist shot, three-quarter view",
+      "full": "datejust-126231-wrist-01-v2.jpg",
+      "web": "datejust-126231-wrist-01-v2-web.jpg",
+      "thumbnail": "datejust-126231-wrist-01-v2-thumb.jpg",
       "source": "ChatGPT Image May 29, 2026 at 11_34_05 AM.png"
     },
     {
       "type": "detail",
       "label": "Dial and bracelet detail on watch winder",
-      "full": "datejust-126231-detail-02.jpg",
-      "web": "datejust-126231-detail-02-web.jpg",
-      "thumbnail": "datejust-126231-detail-02-thumb.jpg",
-      "source": "ChatGPT Image May 29, 2026 at 11_34_05 AM.png"
-    },
-    {
-      "type": "box-set",
-      "label": "Box and card presentation",
-      "full": "datejust-126231-box-set.jpg",
-      "web": "datejust-126231-box-set-web.jpg",
-      "thumbnail": "datejust-126231-box-set-thumb.jpg",
-      "source": "ChatGPT Image May 29, 2026 at 11_34_05 AM.png"
+      "full": "datejust-126231-desktop-winder.jpg",
+      "web": "datejust-126231-desktop-winder.jpg",
+      "thumbnail": "datejust-126231-desktop-winder.jpg",
+      "source": "Datejust_Winder_Closeup_Crop.jpg"
     }
   ],
   "notes": [
-    "The six gallery images were cropped from the supplied 1536x1024 composite.",
-    "Source panel resolution is approximately 506x506 after removing gutters; web and thumbnail exports were generated to the requested 1600px and 800px dimensions."
+    "The desktop gallery uses wider source crops plus one selected wrist shot to avoid the overly tight collage-panel set on large screens.",
+    "Images were resized and lightly balanced for web display while preserving natural Everose tones."
   ]
 }

@@ -294,18 +294,36 @@ export default function Home() {
             </div>
             <ul className="space-y-6">
               {[
-                "Sourcing and acquisition",
-                "First serious watch guidance",
-                "Authentication and due diligence",
-                "Trade and placement",
-              ].map((title) => (
-                <li key={title} className="border-l border-[var(--border-strong)] pl-6">
+                {
+                  title: "Sourcing and acquisition",
+                  description:
+                    "Reference-focused help finding the right piece, weighing alternatives, and knowing when patience is smarter than forcing a buy.",
+                },
+                {
+                  title: "First serious watch guidance",
+                  description:
+                    "A low-pressure way to learn sizing, movements, service realities, and what actually makes sense as a first meaningful mechanical watch.",
+                },
+                {
+                  title: "Authentication and due diligence",
+                  description:
+                    "A second set of eyes on photos, paperwork, seller quality, and the questions worth asking before committing real money.",
+                },
+                {
+                  title: "Trade and placement",
+                  description:
+                    "Thoughtful advice on what to move, what to keep, and how to exit a watch cleanly when it no longer belongs in the rotation.",
+                },
+              ].map(({ title, description }) => (
+                <li
+                  key={title}
+                  className="border-l border-[var(--border-strong)] pl-6"
+                >
                   <h3 className="text-sm font-medium text-[var(--foreground)]">
                     {title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
-                    Focused, collector-to-collector counsel with transparent
-                    terms and no pressure to decide on the call.
+                    {description}
                   </p>
                 </li>
               ))}

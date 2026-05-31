@@ -22,6 +22,39 @@
   },
   "current_inventory": [
     {
+      "id": "mad-editions-grow-your-dreams-mad-1s-yinka-ilori-nature",
+      "brand": "M.A.D.Editions",
+      "model": "Grow Your Dreams M.A.D.1S",
+      "reference": "Yinka Ilori | Nature",
+      "inventoryStatus": "current",
+      "displayStatus": "Available Now",
+      "availabilityNote": "In hand, inspected, and ready to ship.",
+      "sourceType": "GCT owned inventory",
+      "isOwnedByGCT": true,
+      "canShipImmediately": true,
+      "case_size": "42mm",
+      "case_material": "Stainless steel 316L with HyCeram coloured bezel accents",
+      "bracelet": "Rubber strap set with stainless steel folding buckle",
+      "movement": "Swiss-made La Joux-Perret G101 automatic movement",
+      "crystal": "Mineral glass and sapphire crystal with anti-reflective coating on both faces",
+      "water_resistance": "30m",
+      "set_contents": "Presentation kit shown with mismatched purple and red straps, plus white straps",
+      "description_angle": "Playful Yinka Ilori color, unusual M.A.D.1S architecture, and a strong design-object presence with real mechanical interest.",
+      "talking_points": [
+        "The Nature edition pairs a green rotor with purple and red straps, so it feels intentionally artistic rather than merely colorful.",
+        "The slimmer M.A.D.1S case keeps the eccentric display more wearable than earlier M.A.D.1 executions.",
+        "The rotating hours cylinder and central rotor make it conversational on the wrist even before anyone asks what it is.",
+        "This is a bold piece with very little visual anonymity, which is part of the appeal but also the main tradeoff."
+      ],
+      "images": [
+        "/collection/mad-editions-yinka-ilori-mad-1s-1.jpg",
+        "/collection/mad-editions-yinka-ilori-mad-1s-2.jpg",
+        "/collection/mad-editions-yinka-ilori-mad-1s-3.jpg",
+        "/collection/mad-editions-yinka-ilori-mad-1s-4.jpg",
+        "/collection/mad-editions-yinka-ilori-mad-1s-5.jpg"
+      ]
+    },
+    {
       "id": "rado-captain-cook-high-tech-ceramic-skeleton-r32192152",
       "brand": "Rado",
       "model": "Captain Cook High-Tech Ceramic Skeleton",
@@ -63,6 +96,19 @@
   "mirs_picks": [],
   "personal_collection": [
     {
+      "brand": "Omega",
+      "model": "Constellation Megaquartz Day-Date",
+      "reference": "To be confirmed",
+      "status": "personal_collection",
+      "isSaleInventory": false,
+      "description_angle": "1976 Megaquartz day-date with a brushed silver dial, faceted cushion case, black leather strap, and a quiet quartz-era Omega presence.",
+      "images": [
+        "/images/omega-constellation-quartz/omega-constellation-quartz-hero.jpg",
+        "/images/omega-constellation-quartz/omega-constellation-quartz-angle.jpg",
+        "/images/omega-constellation-quartz/omega-constellation-quartz-dial-detail.jpg"
+      ]
+    },
+    {
       "brand": "Breitling",
       "model": "Superocean Heritage '57",
       "reference": "A10370161C1X1",
@@ -98,12 +144,9 @@
       "isSaleInventory": false,
       "description_angle": "Classic 36mm Datejust proportions with warm Everose accents, white Roman dial, fluted bezel, and Jubilee bracelet.",
       "images": [
-        "/images/datejust-126231/datejust-126231-hero-web.jpg",
-        "/images/datejust-126231/datejust-126231-wrist-01-web.jpg",
-        "/images/datejust-126231/datejust-126231-wrist-02-web.jpg",
-        "/images/datejust-126231/datejust-126231-detail-01-web.jpg",
-        "/images/datejust-126231/datejust-126231-detail-02-web.jpg",
-        "/images/datejust-126231/datejust-126231-box-set-web.jpg"
+        "/images/datejust-126231/datejust-126231-desktop-hero.jpg",
+        "/images/datejust-126231/datejust-126231-wrist-01-v2-web.jpg",
+        "/images/datejust-126231/datejust-126231-desktop-winder.jpg"
       ]
     }
   ],
