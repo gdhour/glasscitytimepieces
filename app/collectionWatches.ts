@@ -39,10 +39,11 @@ export const inventoryWatches = [
     model: "Grow Your Dreams M.A.D.1S",
     reference: "Yinka Ilori | Nature",
     inventoryStatus: "current",
-    availabilityNote: inventoryStatusContent.current.disclosure,
+    price: "$5,995",
+    availabilityNote: "In transit — arriving shortly. Contact to reserve.",
     sourceType: "GCT owned inventory",
     isOwnedByGCT: true,
-    canShipImmediately: true,
+    canShipImmediately: false,
     description:
       "Yinka Ilori's Grow Your Dreams take on the M.A.D.1S turns the platform into something playful without losing the mechanical strangeness that makes the model compelling. This Nature configuration pairs a green rotor with purple and red rubber straps, so the watch reads more like a wearable design object than a conventional sports piece while still carrying real horological substance.",
     details: [
@@ -99,6 +100,7 @@ export const inventoryWatches = [
     model: "Captain Cook High-Tech Ceramic Skeleton",
     reference: "R32192152",
     inventoryStatus: "current",
+    price: "$3,995",
     availabilityNote: inventoryStatusContent.current.disclosure,
     sourceType: "GCT owned inventory",
     isOwnedByGCT: true,

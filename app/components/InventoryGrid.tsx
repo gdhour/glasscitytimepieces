@@ -15,6 +15,7 @@ type InventoryWatch = {
   model: string;
   reference: string;
   inventoryStatus: InventoryStatus;
+  price?: string;
   availabilityNote?: string;
   estimatedProcurementTime?: string;
   sourceType?: string;
@@ -115,6 +116,11 @@ export default function InventoryGrid({ watches }: InventoryGridProps) {
                     <p className="mt-3 text-sm font-medium tracking-wide text-[var(--steel-bright)]">
                       {watch.reference}
                     </p>
+                    {watch.price ? (
+                      <p className="mt-4 font-[family-name:var(--font-cormorant)] text-3xl font-light text-[var(--foreground)]">
+                        {watch.price}
+                      </p>
+                    ) : null}
                     <p className="mt-5 text-sm leading-relaxed text-[var(--muted)]">
                       {watch.description}
                     </p>
