@@ -5,6 +5,7 @@ import {
   currentInventoryWatches,
   inventoryStatusContent,
   legacyInventoryWatches,
+  type InventoryStatus,
 } from "./collectionWatches";
 import ClockQuadrantNav from "./components/ClockQuadrantNav";
 import InventoryStatusBadge from "./components/InventoryStatusBadge";
@@ -207,7 +208,7 @@ export default function Home() {
                     </p>
                     <p className="mt-5 rounded-sm border border-[var(--border-strong)] bg-[var(--surface-elevated)] p-4 text-sm leading-relaxed text-[var(--steel-bright)]">
                       {watch.availabilityNote ??
-                        inventoryStatusContent[watch.inventoryStatus].disclosure}
+                        inventoryStatusContent[watch.inventoryStatus as InventoryStatus].disclosure}
                     </p>
                     <ul className="mt-6 grid gap-3 border-t border-[var(--border)] pt-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                       {watch.details.map((detail) => (
