@@ -14,7 +14,7 @@ const rotatingWatches = [
   ...currentInventoryWatches.map((watch) => ({
     brand: watch.brand,
     model: watch.model,
-    category: inventoryStatusContent[watch.inventoryStatus].badge,
+    category: inventoryStatusContent[watch.inventoryStatus as InventoryStatus].badge,
     href: "/current-inventory",
     photo: watch.photos[watch.heroPhoto],
   })),
