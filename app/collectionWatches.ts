@@ -100,13 +100,13 @@ export const inventoryWatches = [
     model: "Captain Cook High-Tech Ceramic Skeleton",
     reference: "R32192152",
     inventoryStatus: "current",
-    price: "$3,995",
+    price: "$4,490",
     availabilityNote: inventoryStatusContent.current.disclosure,
     sourceType: "GCT owned inventory",
     isOwnedByGCT: true,
     canShipImmediately: true,
     description:
-      "The Rado Captain Cook High-Tech Ceramic Skeleton blends modern materials with aggressive industrial design. Matte black ceramic keeps the watch lightweight and stealthy, while warm rose gold-tone accents add contrast and depth. The open-worked dial and exhibition caseback show the automatic movement from both sides, giving the piece a technical character that feels equal parts motorsport instrumentation and contemporary architecture.",
+      "The Rado Captain Cook High-Tech Ceramic Skeleton blends modern materials with aggressive industrial design. Matte black ceramic keeps the watch lightweight and stealthy, while warm rose gold-tone accents add contrast and depth. The open-worked dial and exhibition caseback show the automatic movement from both sides, giving the piece a technical character that feels equal parts motorsport instrumentation and contemporary architecture. This example is brand new and unworn — never on a wrist — with a card dated April 2026.",
     details: [
       "43mm high-tech matte black ceramic case and bracelet",
       "Rose gold-tone bezel, crown, and dial accents",
@@ -115,7 +115,7 @@ export const inventoryWatches = [
       "Exhibition caseback",
       "300m water resistance",
       "Full set with box and papers",
-      "Condition: Excellent pre-owned",
+      "Brand new, unworn — card dated April 2026",
     ],
     heroPhoto: 0,
     photos: [
