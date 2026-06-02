@@ -430,9 +430,9 @@ export const collectionWatches = [
   {
     brand: "Omega",
     model: "Constellation Megaquartz Day-Date",
-    reference: "To be confirmed",
+    reference: "Cal. 1310 · 1976",
     description:
-      "A 1976 Omega Constellation Megaquartz day-date with a brushed silver dial, faceted cushion case, and black leather strap. The appeal is in the proportions and finishing more than spectacle, with a quietly architectural case profile that feels completely rooted in Omega's quartz-era experimentation.",
+      "The Constellation Megaquartz holds a specific place in Omega's history that most people walk past without knowing it. The Calibre 1310 was Omega's first in-house quartz movement — a 32 kHz Megaquartz oscillator built at a time when Omega was taking the quartz transition seriously rather than defensively. The 38mm brushed case and bezel read as restrained for 1976, the silver dial with black markers stays clean, and the caseback carries the classic constellation engraving. Two pushers flank the crown on the right side: one hacks the seconds for precise setting, the other advances the date independently. Near-mint condition, sweep seconds running correctly, date function operating as it should. A collector's piece that rewards knowing what you're looking at.",
     heroPhoto: 0,
     photos: [
       {
