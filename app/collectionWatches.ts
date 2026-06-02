@@ -33,12 +33,35 @@ export const inventoryStatusOptions = [
   { value: "pick", label: inventoryStatusContent.pick.label },
 ] as const;
 
-export const inventoryWatches = [
+export type InventoryWatch = {
+  brand: string;
+  model: string;
+  reference: string;
+  inventoryStatus: InventoryStatus;
+  price?: string;
+  availabilityNote?: string;
+  estimatedProcurementTime?: string;
+  sourceType?: string;
+  isOwnedByGCT?: boolean;
+  canShipImmediately?: boolean;
+  description: string;
+  details: readonly string[];
+  heroPhoto: number;
+  photos: readonly {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    className: string;
+  }[];
+};
+
+export const inventoryWatches: InventoryWatch[] = [
   {
     brand: "M.A.D.Editions",
     model: "Grow Your Dreams M.A.D.1S",
     reference: "Yinka Ilori | Nature",
-    inventoryStatus: "current" as InventoryStatus,
+    inventoryStatus: "current",
     price: "$5,995",
     availabilityNote: "In transit — arriving shortly. Contact to reserve.",
     sourceType: "GCT owned inventory",
@@ -99,7 +122,7 @@ export const inventoryWatches = [
     brand: "Rado",
     model: "Captain Cook High-Tech Ceramic Skeleton",
     reference: "R32192152",
-    inventoryStatus: "current" as InventoryStatus,
+    inventoryStatus: "current",
     price: "$4,490",
     availabilityNote: inventoryStatusContent.current.disclosure,
     sourceType: "GCT owned inventory",
@@ -163,7 +186,7 @@ export const inventoryWatches = [
       },
     ],
   },
-] as const;
+];
 
 export const currentInventoryWatches = inventoryWatches.filter(
   (watch) => watch.inventoryStatus === "current",

@@ -6,32 +6,10 @@ import {
   inventoryStatusContent,
   inventoryStatusOptions,
   type InventoryStatus,
+  type InventoryWatch,
 } from "../collectionWatches";
 import AskAboutWatchButton from "./AskAboutWatchButton";
 import InventoryStatusBadge from "./InventoryStatusBadge";
-
-type InventoryWatch = {
-  brand: string;
-  model: string;
-  reference: string;
-  inventoryStatus: InventoryStatus;
-  price?: string;
-  availabilityNote?: string;
-  estimatedProcurementTime?: string;
-  sourceType?: string;
-  isOwnedByGCT?: boolean;
-  canShipImmediately?: boolean;
-  description: string;
-  details: readonly string[];
-  heroPhoto: number;
-  photos: readonly {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-    className: string;
-  }[];
-};
 
 type InventoryGridProps = {
   watches: readonly InventoryWatch[];

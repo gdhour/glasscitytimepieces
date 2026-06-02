@@ -14,7 +14,7 @@ const rotatingWatches = [
   ...currentInventoryWatches.map((watch) => ({
     brand: watch.brand,
     model: watch.model,
-    category: inventoryStatusContent[watch.inventoryStatus as InventoryStatus].badge,
+    category: inventoryStatusContent[watch.inventoryStatus].badge,
     href: "/current-inventory",
     photo: watch.photos[watch.heroPhoto],
   })),
@@ -208,7 +208,7 @@ export default function Home() {
                     </p>
                     <p className="mt-5 rounded-sm border border-[var(--border-strong)] bg-[var(--surface-elevated)] p-4 text-sm leading-relaxed text-[var(--steel-bright)]">
                       {watch.availabilityNote ??
-                        inventoryStatusContent[watch.inventoryStatus as InventoryStatus].disclosure}
+                        inventoryStatusContent[watch.inventoryStatus].disclosure}
                     </p>
                     <ul className="mt-6 grid gap-3 border-t border-[var(--border)] pt-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                       {watch.details.map((detail) => (
