@@ -242,6 +242,58 @@ export const legacyInventoryWatches = [
 
 export const collectionWatches = [
   {
+    brand: "Ulysse Nardin",
+    model: "Maxi Marine Chronometer",
+    reference: "263-66",
+    description:
+      "The Maxi Marine Chronometer earns the nautical heritage through substance rather than costume. The COSC-certified movement, dual-register layout — power reserve at nine, running seconds with date at six — and the deep blue dial with white Roman numerals make the case for a working sea watch without borrowing from anyone else's aesthetic. The two-tone execution, polished steel with a gold bezel, adds warmth to a piece that already carries real presence. The red '1846' at six is a detail that rewards looking.",
+    heroPhoto: 0,
+    photos: [
+      {
+        src: "/collection/ulysse-nardin-maxi-marine-chronometer-263-66-1.jpg",
+        alt: "Ulysse Nardin Maxi Marine Chronometer 263-66 angled view showing blue dial and gold bezel",
+        width: 2048,
+        height: 1536,
+        className: "aspect-[4/3]",
+      },
+      {
+        src: "/collection/ulysse-nardin-maxi-marine-chronometer-263-66-2.jpg",
+        alt: "Ulysse Nardin Maxi Marine Chronometer 263-66 three-quarter view on blue alligator strap",
+        width: 2048,
+        height: 1536,
+        className: "aspect-[4/3]",
+      },
+      {
+        src: "/collection/ulysse-nardin-maxi-marine-chronometer-263-66-3.jpg",
+        alt: "Ulysse Nardin Maxi Marine Chronometer 263-66 dial detail showing dual registers and 1846 in red",
+        width: 2048,
+        height: 1536,
+        className: "aspect-[4/3]",
+      },
+      {
+        src: "/collection/ulysse-nardin-maxi-marine-chronometer-263-66-4.jpg",
+        alt: "Ulysse Nardin Maxi Marine Chronometer 263-66 overhead flat lay on grey surface",
+        width: 1536,
+        height: 2048,
+        className: "aspect-[3/4]",
+      },
+      {
+        src: "/collection/ulysse-nardin-maxi-marine-chronometer-263-66-5.jpg",
+        alt: "Ulysse Nardin Maxi Marine Chronometer 263-66 exhibition caseback showing UN anchor rotor",
+        width: 1536,
+        height: 2048,
+        className: "aspect-[3/4]",
+      },
+      {
+        src: "/collection/ulysse-nardin-maxi-marine-chronometer-263-66-6.jpg",
+        alt: "Ulysse Nardin Maxi Marine Chronometer 263-66 flat lay detail showing two-tone case",
+        width: 1536,
+        height: 2048,
+        className: "aspect-[3/4]",
+      },
+    ],
+  },
+  {
     brand: "Omega",
     model: "Constellation Megaquartz Day-Date",
     reference: "To be confirmed",
