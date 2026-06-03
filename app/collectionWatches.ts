@@ -157,9 +157,9 @@ export const inventoryWatches: InventoryWatch[] = [
       {
         src: "/collection/glashutte-original-panomaticinverse-1-91-02-02-02-30-1.jpg",
         alt: "Glashütte Original PanoMaticInverse reference 1-91-02-02-02-30 showing inverse display and asymmetric dial",
-        width: 1200,
-        height: 1200,
-        className: "aspect-square",
+        width: 945,
+        height: 2048,
+        className: "aspect-[9/20]",
       },
     ],
   },
