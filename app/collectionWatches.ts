@@ -63,7 +63,7 @@ export const inventoryWatches: InventoryWatch[] = [
     reference: "4853.61",
     inventoryStatus: "pick",
     price: "$7,200–$8,350",
-    availabilityNote: "Curated by GCT as an interesting market opportunity. Not currently in stock — contact for sourcing guidance.",
+    availabilityNote: "Not in GCT's inventory. Contact Mir to discuss sourcing options and current market availability.",
     isOwnedByGCT: false,
     canShipImmediately: false,
     description:
@@ -78,7 +78,7 @@ export const inventoryWatches: InventoryWatch[] = [
       "Approximately one year production run, 1998",
       "Current market range: $7,500–$9,000",
     ],
-    heroPhoto: 0,
+    heroPhoto: 1,
     photos: [
       {
         src: "/collection/omega-de-ville-jumping-hour-4853-61-1.jpg",
