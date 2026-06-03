@@ -8,7 +8,6 @@ import {
   type InventoryStatus,
   type InventoryWatch,
 } from "../collectionWatches";
-import AskAboutWatchButton from "./AskAboutWatchButton";
 import InventoryStatusBadge from "./InventoryStatusBadge";
 
 type InventoryGridProps = {
@@ -22,17 +21,9 @@ export default function InventoryGrid({ watches }: InventoryGridProps) {
     [activeStatus, watches],
   );
   const activeContent = inventoryStatusContent[activeStatus];
-  const primaryWatch = filteredWatches[0];
 
   return (
     <>
-      {primaryWatch ? (
-        <AskAboutWatchButton
-          watchName={`${primaryWatch.brand} ${primaryWatch.model}`}
-          reference={primaryWatch.reference}
-        />
-      ) : null}
-
       <div className="mb-10">
         <div className="flex flex-wrap gap-3">
           {inventoryStatusOptions.map((option) => {
