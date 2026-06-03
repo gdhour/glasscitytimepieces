@@ -62,12 +62,12 @@ export const inventoryWatches: InventoryWatch[] = [
     model: "De Ville Prestige Jumping Hour",
     reference: "4853.61",
     inventoryStatus: "pick",
-    price: "$7,500–$9,000",
+    price: "$7,200–$8,350",
     availabilityNote: "Curated by GCT as an interesting market opportunity. Not currently in stock — contact for sourcing guidance.",
     isOwnedByGCT: false,
     canShipImmediately: false,
     description:
-      "The De Ville Jumping Hour was produced for roughly a year starting in 1998, distributed primarily through the Asian market, and discontinued before most collectors in the West knew it existed. That limited window — combined with the genuine mechanical interest of a jumping hour at an Omega price point — makes this one of the more quietly compelling references on the secondary market. The complication is elegant: hours advance in a single discrete jump at the top of each hour while a conventional minutes hand continues uninterrupted. The salmon dial adds warmth to what is otherwise a reserved package. Comparable jumping hour complications from Patek Philippe or A. Lange & Söhne run $50,000 and above. At $7,500–$9,000 in the current market, the value case is unusually clear.",
+      "The De Ville Jumping Hour was produced for roughly a year starting in 1998, distributed primarily through the Asian market, and discontinued before most collectors in the West knew it existed. At the time of writing, two examples exist on Chrono24 globally — that is not a typo. The complication is elegant: hours advance in a single discrete jump at the top of each hour while a conventional minutes hand continues uninterrupted. The salmon dial adds warmth to what is otherwise a reserved package. Comparable jumping hour complications from Patek Philippe or A. Lange & Söhne run $50,000 and above. At $7,200–$8,350 in the current market, the value case is unusually clear. This is the kind of reference that gets harder to find every year.",
     details: [
       "32.5mm stainless steel case",
       "Omega automatic movement",
