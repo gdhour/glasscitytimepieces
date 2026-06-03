@@ -132,6 +132,38 @@ export const inventoryWatches: InventoryWatch[] = [
     ],
   },
   {
+    brand: "Glashütte Original",
+    model: "PanoMaticInverse",
+    reference: "1-91-02-02-02-30",
+    inventoryStatus: "pick",
+    price: "$7,800–$11,000",
+    availabilityNote: "Not in GCT's inventory. Contact Mir to discuss sourcing options and current market availability.",
+    isOwnedByGCT: false,
+    canShipImmediately: false,
+    description:
+      "The PanoMaticInverse does something almost no other watch does: it puts the movement's most visually compelling components — the mainspring barrel and balance wheel — at twelve o'clock, visible through an aperture in the upper dial, while the hours and minutes read from an off-center sub-dial below. The result is a watch that shows you its mechanical argument rather than hiding it. Glashütte Original builds this on their in-house Calibre 91-02, with the movement decoration — three-quarter plate, Glashütte ribbing, blued screws — visible through the exhibition caseback. The asymmetric case design is distinctive without being theatrical. New and unworn examples start around $11,000; full-set pre-owned in very good condition begins around $7,800. For a manufacture complication at this level of finishing, that range is worth serious attention.",
+    details: [
+      "42mm stainless steel case",
+      "Glashütte Original Calibre 91-02 automatic",
+      "Inverse display — barrel and balance at 12 o'clock",
+      "Off-center hours and minutes sub-dial",
+      "Small seconds, date",
+      "Exhibition caseback — three-quarter plate movement",
+      "Glashütte ribbing and blued screw finishing",
+      "New unworn: ~$11,000 · Pre-owned full set: from $7,800",
+    ],
+    heroPhoto: 0,
+    photos: [
+      {
+        src: "/collection/glashutte-original-panomaticinverse-1-91-02-02-02-30-1.jpg",
+        alt: "Glashütte Original PanoMaticInverse reference 1-91-02-02-02-30 showing inverse display and asymmetric dial",
+        width: 1200,
+        height: 1200,
+        className: "aspect-square",
+      },
+    ],
+  },
+  {
     brand: "M.A.D.Editions",
     model: "Grow Your Dreams M.A.D.1S",
     reference: "Yinka Ilori | Nature",

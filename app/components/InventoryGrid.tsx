@@ -128,23 +128,25 @@ export default function InventoryGrid({ watches }: InventoryGridProps) {
                   </div>
                 </div>
 
-                <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-                  {supportingPhotos.map((photo) => (
-                    <figure
-                      key={photo.src}
-                      className="surface-card overflow-hidden rounded-sm"
-                    >
-                      <Image
-                        src={photo.src}
-                        alt={photo.alt}
-                        width={photo.width}
-                        height={photo.height}
-                        sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw"
-                        className={`${photo.className} h-full w-full object-cover`}
-                      />
-                    </figure>
-                  ))}
-                </div>
+                {watch.inventoryStatus !== "pick" && supportingPhotos.length > 0 && (
+                  <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+                    {supportingPhotos.map((photo) => (
+                      <figure
+                        key={photo.src}
+                        className="surface-card overflow-hidden rounded-sm"
+                      >
+                        <Image
+                          src={photo.src}
+                          alt={photo.alt}
+                          width={photo.width}
+                          height={photo.height}
+                          sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw"
+                          className={`${photo.className} h-full w-full object-cover`}
+                        />
+                      </figure>
+                    ))}
+                  </div>
+                )}
               </article>
             );
           })}
