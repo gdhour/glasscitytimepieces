@@ -7,6 +7,7 @@ import {
   legacyInventoryWatches,
   type InventoryStatus,
 } from "./collectionWatches";
+import AskAboutWatchButton from "./components/AskAboutWatchButton";
 import ClockQuadrantNav from "./components/ClockQuadrantNav";
 import InventoryStatusBadge from "./components/InventoryStatusBadge";
 
@@ -15,7 +16,7 @@ const rotatingWatches = [
     brand: watch.brand,
     model: watch.model,
     category: inventoryStatusContent[watch.inventoryStatus].badge,
-    href: "/current-inventory",
+    href: `/watch/${watch.slug}`,
     photo: watch.photos[watch.heroPhoto],
   })),
   ...collectionWatches.map((watch) => ({
@@ -168,15 +169,17 @@ export default function Home() {
                   className="surface-card grid overflow-hidden rounded-sm lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]"
                 >
                   <div>
-                    <Image
-                      src={heroPhoto.src}
-                      alt={heroPhoto.alt}
-                      width={heroPhoto.width}
-                      height={heroPhoto.height}
-                      sizes="(min-width: 1024px) 58vw, 100vw"
-                      className="aspect-[4/5] w-full object-cover sm:aspect-[16/11] lg:aspect-[4/5]"
-                      priority={watchIndex === 0}
-                    />
+                    <Link href={`/watch/${watch.slug}`} className="group block">
+                      <Image
+                        src={heroPhoto.src}
+                        alt={heroPhoto.alt}
+                        width={heroPhoto.width}
+                        height={heroPhoto.height}
+                        sizes="(min-width: 1024px) 58vw, 100vw"
+                        className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] sm:aspect-[16/11] lg:aspect-[4/5]"
+                        priority={watchIndex === 0}
+                      />
+                    </Link>
                     <div className="grid grid-cols-2 gap-px border-t border-[var(--border)] bg-[var(--border)] sm:grid-cols-4">
                       {supportingPhotos.map((photo) => (
                         <Image
@@ -220,6 +223,20 @@ export default function Home() {
                         </li>
                       ))}
                     </ul>
+
+                    <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                      <AskAboutWatchButton
+                        watchName={`${watch.brand} ${watch.model}`}
+                        reference={watch.reference}
+                        className="btn-bronze flex-1 rounded-sm px-5 py-3 text-sm font-medium"
+                      />
+                      <Link
+                        href={`/watch/${watch.slug}`}
+                        className="flex-1 rounded-sm border border-[var(--border-strong)] px-5 py-3 text-center text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--purple)]/25"
+                      >
+                        View details
+                      </Link>
+                    </div>
                   </div>
                 </article>
               );

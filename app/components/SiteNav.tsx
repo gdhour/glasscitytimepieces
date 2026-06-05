@@ -5,6 +5,7 @@ import Link from "next/link";
 import BrandLogo from "./BrandLogo";
 
 const links = [
+  { href: "/about", label: "About" },
   { href: "/personal-collection", label: "Personal Collection" },
   { href: "/current-inventory", label: "Current Inventory" },
   { href: "/legacy-inventory", label: "Legacy Inventory" },
@@ -19,10 +20,10 @@ export default function SiteNav() {
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[rgba(3,3,4,0.9)] backdrop-blur-xl">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-2 sm:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-3 sm:px-8"
         aria-label="Main"
       >
-        <BrandLogo size="sm" />
+        <BrandLogo size="md" />
 
         <ul className="hidden items-center gap-1 lg:flex">
           {links.map(({ href, label }) => (

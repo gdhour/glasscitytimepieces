@@ -9,7 +9,7 @@ type BrandLogoProps = {
 
 const sizes = {
   sm: { width: 180, height: 180, className: "h-14 w-auto max-h-14 sm:h-16 sm:max-h-16" },
-  md: { width: 200, height: 200, className: "h-16 w-auto" },
+  md: { width: 220, height: 220, className: "h-16 w-auto sm:h-20 sm:max-h-20" },
   lg: { width: 320, height: 320, className: "h-48 w-auto sm:h-56" },
   hero: {
     width: 560,

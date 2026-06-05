@@ -1,13 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
+import { ClickablePhoto } from "./PhotoLightbox";
 import {
   inventoryStatusContent,
   inventoryStatusOptions,
   type InventoryStatus,
   type InventoryWatch,
 } from "../collectionWatches";
+import AskAboutWatchButton from "./AskAboutWatchButton";
 import InventoryStatusBadge from "./InventoryStatusBadge";
 
 type InventoryGridProps = {
@@ -62,17 +65,17 @@ export default function InventoryGrid({ watches }: InventoryGridProps) {
             return (
               <article key={`${watch.brand}-${watch.reference}`}>
                 <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
-                  <figure className="surface-card overflow-hidden rounded-sm">
+                  <Link href={`/watch/${watch.slug}`} className="surface-card group block overflow-hidden rounded-sm">
                     <Image
                       src={heroPhoto.src}
                       alt={heroPhoto.alt}
                       width={heroPhoto.width}
                       height={heroPhoto.height}
                       sizes="(min-width: 1024px) 54vw, 100vw"
-                      className="aspect-[4/5] h-full w-full object-cover sm:aspect-[5/4] lg:aspect-[4/5]"
+                      className="aspect-[4/5] h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] sm:aspect-[5/4] lg:aspect-[4/5]"
                       priority={watchIndex === 0}
                     />
-                  </figure>
+                  </Link>
 
                   <div className="flex flex-col justify-center">
                     <InventoryStatusBadge status={watch.inventoryStatus} />
@@ -116,26 +119,39 @@ export default function InventoryGrid({ watches }: InventoryGridProps) {
                         </li>
                       ))}
                     </ul>
+
+                    <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                      <AskAboutWatchButton
+                        watchName={`${watch.brand} ${watch.model}`}
+                        reference={watch.reference}
+                        className="btn-bronze flex-1 rounded-sm px-5 py-3 text-sm font-medium"
+                      />
+                      <Link
+                        href={`/watch/${watch.slug}`}
+                        className="flex-1 rounded-sm border border-[var(--border-strong)] px-5 py-3 text-center text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--purple)]/25"
+                      >
+                        View details
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
                 {watch.inventoryStatus !== "pick" && supportingPhotos.length > 0 && (
                   <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-                    {supportingPhotos.map((photo) => (
-                      <figure
-                        key={photo.src}
-                        className="surface-card overflow-hidden rounded-sm"
-                      >
-                        <Image
-                          src={photo.src}
-                          alt={photo.alt}
-                          width={photo.width}
-                          height={photo.height}
+                    {supportingPhotos.map((photo) => {
+                      const actualIndex = watch.photos.findIndex((p) => p.src === photo.src);
+                      return (
+                        <ClickablePhoto
+                          key={photo.src}
+                          photo={photo}
+                          photos={watch.photos}
+                          index={actualIndex}
+                          className="surface-card block overflow-hidden rounded-sm"
+                          imageClassName={`${photo.className} h-full w-full object-cover`}
                           sizes="(min-width: 1024px) 20vw, (min-width: 640px) 50vw, 100vw"
-                          className={`${photo.className} h-full w-full object-cover`}
                         />
-                      </figure>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
               </article>

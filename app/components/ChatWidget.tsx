@@ -76,7 +76,7 @@ function createStarterMessages(preferences: VisitorPreferences): ChatMessage[] {
     {
       role: "assistant",
       content:
-        "Hello, I’m Cogsworth.\n\nMir originally built me to help curate and manage his own collection, then decided to share me with fellow enthusiasts visiting Glass City Timepieces.\n\nWhether you’re searching for your first mechanical watch, your next grail, or just browsing, I’m happy to help.\n\nBefore we dive in, I’m curious: what brings you to GCT today? And just as importantly, what’s on your wrist right now?\n\nDon’t be shy if it’s a Garmin or Apple Watch. Mir wears a Garmin whenever he’s running, cycling, or chasing his kids between tournaments.",
+        "Hello, I’m Cogsworth — a watch concierge built for collectors and enthusiasts.\n\nWhether you’re searching for your first mechanical watch, your next grail, or just browsing, I’m happy to help.\n\nWhat brings you here today? And what’s on your wrist right now?",
     },
   ];
 }
@@ -234,7 +234,9 @@ function isAskWatchEvent(event: Event): event is CustomEvent<AskWatchDetail> {
   return "detail" in event;
 }
 
-export default function ChatWidget() {
+type CogsworthMode = "inventory" | "expert";
+
+export default function ChatWidget({ mode = "inventory" }: { mode?: CogsworthMode }) {
   const [open, setOpen] = useState(false);
   const [visitorPreferences, setVisitorPreferences] =
     useState<VisitorPreferences>(() => parseStoredPreferences());
@@ -328,6 +330,7 @@ export default function ChatWidget() {
           messages: nextMessages,
           watchContext,
           visitorPreferences: nextPreferences,
+          mode,
         }),
       });
 

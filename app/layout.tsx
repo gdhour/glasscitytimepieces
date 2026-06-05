@@ -45,7 +45,7 @@ export default function RootLayout({
         <SiteNav />
         <div className="flex flex-1 flex-col">{children}</div>
         <Footer />
-        <ChatWidget />
+        <ChatWidget mode={process.env.NEXT_PUBLIC_COGSWORTH_MODE === "expert" ? "expert" : "inventory"} />
       </body>
     </html>
   );

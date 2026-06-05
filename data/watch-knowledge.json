@@ -1,0 +1,453 @@
+{
+  "_meta": {
+    "description": "Cogsworth watch knowledge base — curated reference data for expert mode. Covers key references, movements, and collector context across major brands.",
+    "version": "1.0.0",
+    "last_updated": "2026-06-04",
+    "entry_count": 0
+  },
+  "brands": {
+    "Rolex": {
+      "founded": 1905,
+      "origin": "London, UK (now Geneva, Switzerland)",
+      "positioning": "The benchmark sports and dress watch manufacturer. Unmatched resale value, global recognition, and consistent quality. Often the entry point for serious collectors.",
+      "collector_notes": "Rolex's strength is consistency and liquidity — any clean example holds value. The sport references (Submariner, GMT-Master II, Daytona) dominate the secondary market. Datejust and Day-Date are the dress tier. Waiting lists at ADs have eased slightly post-2022 but popular references remain constrained.",
+      "key_references": {
+        "126610LN": {
+          "model": "Submariner Date",
+          "introduced": 2020,
+          "case_size": "41mm",
+          "case_material": "Oystersteel",
+          "movement": "Cal. 3235",
+          "power_reserve": "70 hours",
+          "water_resistance": "300m",
+          "bezel": "Unidirectional rotating, black Cerachrom ceramic insert",
+          "dial": "Black",
+          "bracelet": "Oyster",
+          "collector_notes": "The current generation no-date replacement. Stepped up from 40mm in 2020. The go-to Submariner for most collectors — blacker, more refined than predecessors, excellent lume.",
+          "talking_points": [
+            "The 41mm case reads more modern without feeling oversized — sits well on most wrists.",
+            "Cerachrom bezel is scratch-resistant and UV-stable, a meaningful upgrade over aluminum.",
+            "Cal. 3235 chronometer-rated movement with 70-hour power reserve is one of the best automatic movements in production.",
+            "No-date dial is cleaner — preferred by purists. Date version (126610LV) adds the green Kermit bezel."
+          ]
+        },
+        "126710BLNR": {
+          "model": "GMT-Master II",
+          "nickname": "Batman",
+          "introduced": 2019,
+          "case_size": "41mm",
+          "case_material": "Oystersteel",
+          "movement": "Cal. 3285",
+          "power_reserve": "70 hours",
+          "water_resistance": "100m",
+          "bezel": "Bidirectional rotating, black/blue Cerachrom ceramic insert",
+          "dial": "Black",
+          "bracelet": "Jubilee",
+          "collector_notes": "The most coveted GMT on the steel Jubilee bracelet. The black/blue bezel is less polarizing than the Pepsi, making it more versatile. Strong resale.",
+          "talking_points": [
+            "Jubilee bracelet on steel is the correct pairing — more refined than Oyster for a travel watch.",
+            "The bidirectional bezel means you can track a third timezone — genuine utility, not just an aesthetic.",
+            "Batman vs Pepsi is a taste call: Batman reads dressier, Pepsi more sporty.",
+            "126710BLRO (Pepsi, red/blue) is on Oyster and arguably more iconic — comes down to wrist style."
+          ]
+        },
+        "126500LN": {
+          "model": "Cosmograph Daytona",
+          "introduced": 2023,
+          "case_size": "40mm",
+          "case_material": "Oystersteel",
+          "movement": "Cal. 4131",
+          "power_reserve": "72 hours",
+          "water_resistance": "100m",
+          "bezel": "Tachymetric, black Cerachrom ceramic",
+          "dial": "Black",
+          "bracelet": "Oyster",
+          "collector_notes": "The most coveted steel Rolex chronograph. Waiting lists at ADs are essentially indefinite. Secondary market typically runs 1.5-2x retail. The 2023 update brought the new Cal. 4131.",
+          "talking_points": [
+            "The Daytona's appeal is partly the scarcity — it's the watch you can't easily get, which amplifies desire.",
+            "Ceramic bezel on the 2023 update is a meaningful improvement over earlier aluminum versions.",
+            "Bracelet-integrated pushers are a design signature — looks cleaner than exposed chronograph pushers.",
+            "Paul Newman dial variants are the holy grail of vintage Rolex — the modern reference doesn't have that romanticism, but it's the most liquid steel chronograph available."
+          ]
+        },
+        "126234": {
+          "model": "Datejust 36",
+          "introduced": 2016,
+          "case_size": "36mm",
+          "case_material": "Oystersteel",
+          "movement": "Cal. 3235",
+          "power_reserve": "70 hours",
+          "water_resistance": "100m",
+          "bezel": "Smooth or fluted",
+          "dial": "Multiple options",
+          "bracelet": "Jubilee or Oyster",
+          "collector_notes": "The entry point for Rolex. The 36mm is the historically correct size — wore on every wrist for decades. Often undervalued relative to the sport references.",
+          "talking_points": [
+            "The Datejust is the watch that built Rolex's reputation — context matters.",
+            "36mm is the original size and fits most wrists better than the 41mm 126300.",
+            "Fluted bezel with Jubilee bracelet is the classic pairing — widely copied because it works.",
+            "Dial variety is extensive — slate, white, champagne, motif dials — worth spending time finding the right one."
+          ]
+        }
+      }
+    },
+    "Patek Philippe": {
+      "founded": 1839,
+      "origin": "Geneva, Switzerland",
+      "positioning": "The apex of Swiss watchmaking. A Patek is the aspirational endpoint for most serious collectors. Known for in-house movements, finishing, and complication mastery.",
+      "collector_notes": "Patek's secondary market is the most stable of any watch brand. Entry-level steel sports references (Nautilus, Aquanaut) still command significant premiums. Complicated pieces (perpetual calendars, minute repeaters) are where the brand truly differentiates.",
+      "key_references": {
+        "5711": {
+          "model": "Nautilus",
+          "status": "Discontinued 2021",
+          "case_size": "40mm",
+          "case_material": "Stainless steel",
+          "movement": "Cal. 26-330 S C",
+          "power_reserve": "45 hours",
+          "water_resistance": "120m",
+          "bezel": "Integrated, horizontal embossed",
+          "dial": "Blue (most desirable), olive green (final edition), white",
+          "bracelet": "Integrated steel",
+          "collector_notes": "Discontinued in 2021. Secondary market values 2-3x retail or more for clean examples. The blue dial 5711/1A is the most iconic steel sports watch of its generation.",
+          "talking_points": [
+            "Gérald Genta designed it in 1972 — the same designer behind the Royal Oak. The porthole case and integrated bracelet were radical.",
+            "Discontinuation in 2021 sent secondary market into orbit. Prices have softened slightly from peak but remain elevated.",
+            "The final olive green dial 5711/1A-014 is the most collectible modern Patek.",
+            "Its successor, the 5726A Annual Calendar, is a more complex watch but hasn't captured the same desire."
+          ]
+        },
+        "5167A": {
+          "model": "Aquanaut",
+          "introduced": 1997,
+          "case_size": "40mm",
+          "case_material": "Stainless steel",
+          "movement": "Cal. 324 S C",
+          "power_reserve": "45 hours",
+          "water_resistance": "120m",
+          "bezel": "Rounded octagonal",
+          "dial": "Khaki brown or black (embossed)",
+          "bracelet": "Tropical rubber strap",
+          "collector_notes": "The Aquanaut has stepped into some of the Nautilus demand. Younger, sportier, rubber strap. Secondary market is strong but less extreme than 5711.",
+          "talking_points": [
+            "The rubber strap is the signature detail — it breathes well and the tropical texture is distinctive.",
+            "Rounds slightly softer than the Nautilus, which some prefer. Less formal.",
+            "5167A in black is the foundation — but color strap versions (5168G, travel time 5164A) are increasingly popular.",
+            "Younger collectors often prefer the Aquanaut's energy to the Nautilus's heritage weight."
+          ]
+        }
+      }
+    },
+    "Audemars Piguet": {
+      "founded": 1875,
+      "origin": "Le Brassus, Switzerland",
+      "positioning": "Creator of the Royal Oak, the watch that defined the luxury sports category. Known for octagonal bezel, integrated bracelet, and tapisserie dial.",
+      "collector_notes": "AP is the third pillar of the holy trinity (Patek, Rolex, AP). The Royal Oak is their anchor piece. Code 11.59 has been divisive among collectors. The Offshore is bulkier and more polarizing.",
+      "key_references": {
+        "15500ST": {
+          "model": "Royal Oak",
+          "introduced": 2022,
+          "case_size": "41mm",
+          "case_material": "Stainless steel",
+          "movement": "Cal. 4302",
+          "power_reserve": "70 hours",
+          "water_resistance": "50m",
+          "bezel": "Octagonal, polished and brushed alternating",
+          "dial": "Blue or grey tapisserie",
+          "bracelet": "Integrated steel",
+          "collector_notes": "The current generation Royal Oak. Replaced the 15400ST. Added Gen 4 movement with 70hr power reserve. The 41mm suits most wrists well.",
+          "talking_points": [
+            "Gérald Genta designed the Royal Oak in 1972 — same designer as the Nautilus. Both are direct conversation.",
+            "The alternating polished and brushed finishes on the case are extraordinarily labor-intensive to produce.",
+            "Tapisserie dial is the signature — the pattern subtly changes across light angles.",
+            "15202ST (39mm Jumbo/Extra-Thin) is what purists prefer — slimmer, closer to the original 5402."
+          ]
+        }
+      }
+    },
+    "Grand Seiko": {
+      "founded": 1960,
+      "origin": "Japan",
+      "positioning": "The definitive argument that Japanese watchmaking rivals Switzerland. Known for extraordinary dial finishing, Zaratsu polishing, and distinctive aesthetic.",
+      "collector_notes": "Grand Seiko has crossed into serious collector territory in the last decade. The Spring Drive movement is technically unique — a mechanical movement regulated by a quartz oscillator. Dials inspired by Japanese seasons and landscapes are the visual signature.",
+      "key_references": {
+        "SBGE255": {
+          "model": "Sport Collection Hi-Beat GMT",
+          "case_size": "44.2mm",
+          "case_material": "Stainless steel",
+          "movement": "Cal. 9SA5 Hi-Beat 36000",
+          "power_reserve": "80 hours",
+          "water_resistance": "200m",
+          "dial": "Blue",
+          "bracelet": "Integrated steel",
+          "collector_notes": "The Hi-Beat GMT has become one of the most discussed GMT alternatives to Rolex. Technical movement, excellent finishing, strong value proposition.",
+          "talking_points": [
+            "Hi-Beat 36000 vph means smoother sweep and higher accuracy than most Swiss competitors.",
+            "The GMT complication is properly executed — independent hour hand for a second timezone.",
+            "Case finishing is extraordinary — Zaratsu polishing creates mirror surfaces that no machine can replicate.",
+            "At retail it's a compelling alternative to the Rolex Batman at a fraction of the secondary market premium."
+          ]
+        },
+        "SBGA211": {
+          "model": "Snowflake",
+          "case_size": "41mm",
+          "case_material": "Titanium",
+          "movement": "Cal. 9R65 Spring Drive",
+          "power_reserve": "72 hours",
+          "water_resistance": "100m",
+          "dial": "White textured (inspired by snow on tree branches)",
+          "bracelet": "Integrated titanium",
+          "collector_notes": "Arguably the most iconic Grand Seiko. The Snowflake dial is unmistakable and the Spring Drive movement is technically fascinating.",
+          "talking_points": [
+            "The Spring Drive is a horological unicorn — a mechanical movement regulated by a glide wheel instead of an escapement. Accuracy rivals quartz.",
+            "The dial texture is hand-finished to resemble snow weighing down tree branches — Shinshu forest in winter.",
+            "Titanium case makes it lighter than it looks — comfortable for extended wear.",
+            "The sweeping seconds hand on a Spring Drive is unlike any other watch — completely frictionless-looking."
+          ]
+        }
+      }
+    },
+    "Zenith": {
+      "founded": 1865,
+      "origin": "Le Locle, Switzerland",
+      "positioning": "Pioneer of the automatic chronograph. Creator of the El Primero movement, which has powered Rolex Daytona references for decades.",
+      "collector_notes": "Zenith's collector story is primarily the El Primero — the movement that survived a directive to destroy it when Swiss management wanted to go quartz. Charles Vermot hid the tools and dies in the attic. The Chronomaster is the flagship El Primero expression.",
+      "key_references": {
+        "03.3100.3600": {
+          "model": "Chronomaster Original",
+          "introduced": 2021,
+          "case_size": "38mm",
+          "case_material": "Stainless steel",
+          "movement": "Cal. El Primero 3600",
+          "power_reserve": "60 hours",
+          "water_resistance": "50m",
+          "dial": "Tricolor (silver, blue, gold subdials)",
+          "bracelet": "Integrated steel or leather strap",
+          "collector_notes": "The 38mm Chronomaster Original is widely regarded as one of the best value propositions in mechanical chronographs. Available at retail without a wait.",
+          "talking_points": [
+            "The El Primero is a genuine piece of watchmaking history — the first automatic integrated chronograph movement, introduced 1969.",
+            "36,000 vph frequency means the chronograph measures to 1/10th of a second.",
+            "The tricolor dial is a visual signature — three subdials each in a distinct tone.",
+            "At 38mm it wears smaller than most modern chronographs, which appeals to those tired of 42-44mm cases.",
+            "Arguably the most historically significant movement you can buy at this price point."
+          ]
+        }
+      }
+    },
+    "IWC": {
+      "founded": 1868,
+      "origin": "Schaffhausen, Switzerland",
+      "positioning": "Swiss engineering with a pragmatic, tool-watch sensibility. The Portugieser, Pilot's Watch, and Portugieser are the three pillars.",
+      "collector_notes": "IWC sits in a rational position in the market — strong movements, good finishing, broadly available. The Portugieser is their most collector-relevant piece.",
+      "key_references": {
+        "IW500705": {
+          "model": "Portugieser Automatic 40",
+          "introduced": 2022,
+          "case_size": "40mm",
+          "case_material": "Stainless steel",
+          "movement": "Cal. 82100",
+          "power_reserve": "72 hours",
+          "water_resistance": "30m",
+          "dial": "Silver with applied indices",
+          "bracelet": "Leather strap",
+          "collector_notes": "The 40mm Portugieser is IWC's most approachable piece for new collectors. Clean, legible, and well-sized.",
+          "talking_points": [
+            "The Portugieser's proportions are elegant — thin bezel, clean dial, applied indices.",
+            "The 40mm update corrected the previous oversized 42mm — more historically correct.",
+            "Not a watch that demands attention but rewards it.",
+            "Strong entry into Swiss watchmaking without the premium of Patek or AP."
+          ]
+        }
+      }
+    },
+    "A. Lange & Söhne": {
+      "founded": 1845,
+      "origin": "Glashütte, Germany",
+      "positioning": "The pinnacle of German watchmaking. Extraordinary movement finishing visible through exhibition casebacks. Technically and aesthetically distinct from Swiss competitors.",
+      "collector_notes": "Lange occupies a unique collector space — extremely high quality, lower production than the Swiss trinity, and a distinct aesthetic identity. The Lange 1 asymmetric dial is instantly recognizable.",
+      "key_references": {
+        "191.032": {
+          "model": "Lange 1",
+          "case_size": "38.5mm",
+          "case_material": "White gold",
+          "movement": "Cal. L121.1",
+          "power_reserve": "72 hours",
+          "water_resistance": "30m",
+          "dial": "Silver with asymmetric layout",
+          "bracelet": "Leather strap",
+          "collector_notes": "The Lange 1 asymmetric dial — large date, power reserve, outsize date — is one of the most distinctive in watchmaking. The movement finishing is extraordinary.",
+          "talking_points": [
+            "The asymmetric dial layout is a deliberate design choice — it looks unusual until you realize how readable it is.",
+            "The outsize date mechanism is proprietary — larger, more legible than any other date display in watchmaking.",
+            "Movement finishing involves hand-beveling every edge — visible through the caseback on the three-quarter plate.",
+            "Made in Glashütte, Germany — a different watchmaking tradition than Swiss, equally rigorous."
+          ]
+        }
+      }
+    },
+    "Tudor": {
+      "founded": 1926,
+      "origin": "Geneva, Switzerland",
+      "positioning": "Rolex's sister brand. Offers genuine Swiss quality at meaningfully lower price points. The Black Bay is their anchor piece.",
+      "collector_notes": "Tudor has earned serious collector respect in the last decade — no longer seen as a consolation Rolex. The Black Bay 58 is widely regarded as the best value in vintage-inspired dive watches.",
+      "key_references": {
+        "M79030N": {
+          "model": "Black Bay 58",
+          "introduced": 2018,
+          "case_size": "39mm",
+          "case_material": "Stainless steel",
+          "movement": "Cal. MT5402",
+          "power_reserve": "70 hours",
+          "water_resistance": "200m",
+          "bezel": "Unidirectional rotating, aluminum insert",
+          "dial": "Black",
+          "bracelet": "Leather or fabric strap (steel bracelet available)",
+          "collector_notes": "Possibly the best value proposition in dive watches at this price point. The 39mm case wears better than most modern divers.",
+          "talking_points": [
+            "The 39mm case is the sweet spot — large enough to be sporty, small enough to wear with a shirt.",
+            "The snowflake hands are a Tudor signature — functional and distinctive.",
+            "COSC-adjacent movement accuracy at a fraction of the price of competitors.",
+            "The fabric strap version has become a style signature in itself."
+          ]
+        }
+      }
+    },
+    "Omega": {
+      "founded": 1848,
+      "origin": "Biel/Bienne, Switzerland",
+      "positioning": "Historically significant brand — Moon landing, James Bond, Olympic timing. The Speedmaster and Seamaster are icons.",
+      "collector_notes": "Omega sits below Rolex in prestige but above most competitors in recognition. The Moonwatch story is genuine — NASA chose it through rigorous testing. Co-Axial escapement is a legitimate technical achievement.",
+      "key_references": {
+        "310.30.42.50.01.001": {
+          "model": "Speedmaster Professional Moonwatch",
+          "introduced": 2021,
+          "case_size": "42mm",
+          "case_material": "Stainless steel",
+          "movement": "Cal. 3861 Co-Axial Master Chronometer",
+          "power_reserve": "50 hours",
+          "water_resistance": "50m",
+          "bezel": "Tachymetric, black aluminum",
+          "dial": "Black",
+          "bracelet": "Bracelet or leather strap",
+          "collector_notes": "The 2021 update brought the Co-Axial movement while maintaining the manual-wind aesthetic. The most historically significant watch you can buy new.",
+          "talking_points": [
+            "Worn on every crewed NASA Moon landing mission. That's not marketing — it earned the designation through testing.",
+            "Manual wind is intentional — maintains the heritage character. The Co-Axial upgrade improves accuracy and longevity.",
+            "The hesalite crystal version is more authentic; sapphire is more practical.",
+            "The Speedmaster's cult following is genuine — a community of collectors who obsess over references, dial variants, and mission history."
+          ]
+        },
+        "210.30.42.20.01.001": {
+          "model": "Seamaster Diver 300M",
+          "introduced": 2018,
+          "case_size": "42mm",
+          "case_material": "Stainless steel",
+          "movement": "Cal. 8800 Co-Axial Master Chronometer",
+          "power_reserve": "55 hours",
+          "water_resistance": "300m",
+          "bezel": "Unidirectional rotating, ceramic insert",
+          "dial": "Blue wave",
+          "bracelet": "Steel or rubber",
+          "collector_notes": "The James Bond watch since 1995. The wave dial and ceramic bezel are the visual signatures.",
+          "talking_points": [
+            "The wave-textured dial is a divisive but distinctive detail — you either love the texture or prefer the Seamaster 300's cleaner face.",
+            "Master Chronometer certification means tested to -0/+5 seconds per day accuracy and anti-magnetic to 15,000 gauss.",
+            "Available in both steel bracelet and rubber — the rubber version is sportier and more comfortable for actual diving.",
+            "The Bond association is hard to separate from the watch, which is either a feature or noise depending on the buyer."
+          ]
+        }
+      }
+    }
+  },
+  "movements": {
+    "spring_drive": {
+      "manufacturer": "Grand Seiko / Seiko",
+      "type": "Mechanical with electronic regulation",
+      "description": "A mechanical movement regulated by a tri-synchro resonator — a glide wheel that uses electromagnetic braking rather than a traditional escapement. Achieves quartz-level accuracy (±1 second per day) while remaining fundamentally mechanical.",
+      "collector_significance": "Technically unique — no other movement works this way. The gliding seconds hand is visually distinctive and indicates Spring Drive on sight.",
+      "talking_points": [
+        "The Spring Drive is the only movement that is simultaneously mechanical and electronically regulated — it uses no battery.",
+        "The tri-synchro resonator generates electricity from the mainspring to power a quartz oscillator that brakes the glide wheel.",
+        "Accuracy of ±1 second per day is extraordinary for a mechanical movement.",
+        "The seconds hand sweeps with no visible steps — completely frictionless in appearance."
+      ]
+    },
+    "el_primero": {
+      "manufacturer": "Zenith",
+      "type": "Automatic integrated chronograph",
+      "year_introduced": 1969,
+      "description": "The first automatic integrated chronograph movement, introduced January 10, 1969 in a race with Heuer (now TAG Heuer) and Hamilton-Büren. Runs at 36,000 vph for 1/10th second chronograph precision.",
+      "collector_significance": "Survived the quartz crisis because Charles Vermot secretly preserved the tools and dies in Zenith's attic. Has powered Rolex Daytona references since 1988.",
+      "talking_points": [
+        "The El Primero was nearly destroyed during the quartz crisis when management ordered all mechanical movement tooling eliminated.",
+        "Charles Vermot disobeyed, wrapped the equipment in newspaper, and hid it behind a false wall in the attic.",
+        "When Rolex needed a movement for the Daytona in 1988, Zenith retrieved the tooling and supplied the caliber.",
+        "36,000 vph is high frequency for a chronograph — most competitors run at 28,800 vph."
+      ]
+    },
+    "co_axial": {
+      "manufacturer": "Omega",
+      "inventor": "George Daniels",
+      "type": "Escapement mechanism",
+      "year_introduced": 1999,
+      "description": "A new escapement invented by George Daniels that reduces friction between the escapement components. Less friction means less lubrication required, which means the movement maintains accuracy longer between services.",
+      "talking_points": [
+        "George Daniels spent 20 years trying to sell the Co-Axial escapement to Swiss manufacturers before Omega licensed it.",
+        "The key advantage is reduced friction — conventional escapements require lubrication that degrades over time.",
+        "Co-Axial movements theoretically require less frequent servicing than conventional lever escapements.",
+        "Master Chronometer certification adds METAS testing to -0/+5 seconds accuracy and anti-magnetic resistance."
+      ]
+    }
+  },
+  "complications": {
+    "tourbillon": {
+      "description": "A rotating cage that houses the escapement and balance wheel, designed to counteract the effects of gravity on movement accuracy. Invented by Abraham-Louis Breguet in 1801.",
+      "collector_notes": "In modern watchmaking, the accuracy benefit is largely symbolic — modern escapements and positional testing negate the practical advantage. The tourbillon is valued as a demonstration of craft and complexity.",
+      "notable_examples": ["Patek Philippe 5139", "A. Lange & Söhne Richard Lange Tourbillon", "Audemars Piguet Royal Oak Tourbillon"]
+    },
+    "minute_repeater": {
+      "description": "A complication that chimes the time on demand using small hammers striking gongs. Requires pressing a slide on the case to activate.",
+      "collector_notes": "Considered the most difficult complication to manufacture well. The quality of the chime (tone, clarity, sustain) separates a great minute repeater from a mediocre one. Patek and Lange are the benchmarks.",
+      "notable_examples": ["Patek Philippe 5078", "A. Lange & Söhne Zeitwerk Minute Repeater"]
+    },
+    "perpetual_calendar": {
+      "description": "A calendar mechanism that automatically accounts for months of different lengths and leap years without manual correction. Requires manual correction only once every 100 years (year 2100).",
+      "collector_notes": "The perpetual calendar is the most practical of the grand complications — it does something genuinely useful. Patek's 5270 is the reference point.",
+      "notable_examples": ["Patek Philippe 5270", "A. Lange & Söhne Langematik Perpetual", "IWC Portugieser Perpetual Calendar"]
+    },
+    "gmt": {
+      "description": "A complication that displays a second timezone, typically via a fourth hand pointing to a 24-hour bezel or scale.",
+      "collector_notes": "The GMT is the most practical sports complication for frequent travelers. The Rolex GMT-Master II and Grand Seiko Hi-Beat GMT are the most discussed references.",
+      "types": {
+        "true_gmt": "Independent hour hand — you can set the local hour hand while the GMT hand and minutes continue running. Rolex GMT-Master II does this.",
+        "jumping_hour_gmt": "Local hour jumps in one-hour increments. More useful for crossing timezones. Patek 5164 Aquanaut Travel Time uses this."
+      }
+    }
+  },
+  "collector_concepts": {
+    "box_and_papers": {
+      "description": "Original box, warranty card (papers), and any additional documentation that came with the watch when new.",
+      "value_impact": "Full set commands a significant premium on the secondary market — typically 10-30% above a watch without documentation. For vintage pieces, papers can double or triple value.",
+      "talking_points": [
+        "Papers establish provenance — they confirm where and when the watch was sold and provide the serial number.",
+        "Box and papers matter more for Rolex and Patek than for some other brands, where condition is the primary driver.",
+        "Losing the papers isn't catastrophic for wearability, but it limits future resale."
+      ]
+    },
+    "service_history": {
+      "description": "Documentation of any servicing the watch has received, including movement service, case refinishing, and part replacement.",
+      "talking_points": [
+        "A properly serviced watch is more reliable than an unserviced one, but documentation matters.",
+        "Factory service is preferable for high-value pieces — it maintains resale legitimacy.",
+        "Case polishing during service is contentious — collectors generally prefer original surfaces even if worn."
+      ]
+    },
+    "zaratsu_polishing": {
+      "description": "A Japanese hand-polishing technique using a rotating metal barrel to create distortion-free mirror surfaces. Used extensively by Grand Seiko and Micro Artist Studio.",
+      "talking_points": [
+        "Zaratsu creates a flat, reflective surface that no machine can replicate — it requires a skilled craftsperson.",
+        "The technique is named after a European polishing equipment manufacturer but was mastered in Japan.",
+        "Grand Seiko cases display Zaratsu work on the lugs and case flanks — visible in the sharp transition between polished and brushed surfaces."
+      ]
+    }
+  }
+}

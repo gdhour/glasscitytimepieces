@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ClickablePhoto } from "../components/PhotoLightbox";
 import { legacyInventoryWatches } from "../collectionWatches";
 
 export default function LegacyInventoryPage() {
@@ -26,13 +26,12 @@ export default function LegacyInventoryPage() {
               key={`${watch.brand}-${watch.model}`}
               className="surface-card grid overflow-hidden rounded-sm lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]"
             >
-              <Image
-                src={watch.image.src}
-                alt={watch.image.alt}
-                width={watch.image.width}
-                height={watch.image.height}
+              <ClickablePhoto
+                photo={watch.image}
+                photos={[watch.image]}
+                index={0}
+                imageClassName={`${watch.image.className} h-full w-full object-cover`}
                 sizes="(min-width: 1024px) 54vw, 100vw"
-                className={`${watch.image.className} h-full w-full object-cover`}
               />
               <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
                 <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--bronze)]">

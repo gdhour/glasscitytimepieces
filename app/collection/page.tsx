@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ClickablePhoto } from "../components/PhotoLightbox";
 import { collectionWatches } from "../collectionWatches";
 
 export default function CollectionPage() {
@@ -59,34 +59,31 @@ export default function CollectionPage() {
                 </div>
 
                 <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
-                  <figure className="surface-card self-start overflow-hidden rounded-sm">
-                    <Image
-                      src={heroPhoto.src}
-                      alt={heroPhoto.alt}
-                      width={heroPhoto.width}
-                      height={heroPhoto.height}
-                      sizes="(min-width: 1024px) 54vw, 100vw"
-                      className={`${heroPhoto.className} w-full object-cover`}
-                      priority={watchIndex === 0}
-                    />
-                  </figure>
+                  <ClickablePhoto
+                    photo={heroPhoto}
+                    photos={watch.photos}
+                    index={watch.heroPhoto}
+                    className="surface-card self-start block overflow-hidden rounded-sm"
+                    imageClassName={`${heroPhoto.className} w-full object-cover`}
+                    sizes="(min-width: 1024px) 54vw, 100vw"
+                    priority={watchIndex === 0}
+                  />
 
                   <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
-                    {supportingPhotos.map((photo) => (
-                      <figure
-                        key={photo.src}
-                        className="surface-card overflow-hidden rounded-sm"
-                      >
-                        <Image
-                          src={photo.src}
-                          alt={photo.alt}
-                          width={photo.width}
-                          height={photo.height}
+                    {supportingPhotos.map((photo) => {
+                      const actualIndex = watch.photos.findIndex((p) => p.src === photo.src);
+                      return (
+                        <ClickablePhoto
+                          key={photo.src}
+                          photo={photo}
+                          photos={watch.photos}
+                          index={actualIndex}
+                          className="surface-card block overflow-hidden rounded-sm"
+                          imageClassName={`${photo.className} w-full object-cover`}
                           sizes="(min-width: 1024px) 36vw, (min-width: 640px) 50vw, 100vw"
-                          className={`${photo.className} w-full object-cover`}
                         />
-                      </figure>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
 
