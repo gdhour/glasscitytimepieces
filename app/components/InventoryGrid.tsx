@@ -10,7 +10,6 @@ import {
   type InventoryStatus,
   type InventoryWatch,
 } from "../collectionWatches";
-import AskAboutWatchButton from "./AskAboutWatchButton";
 import InventoryStatusBadge from "./InventoryStatusBadge";
 
 type InventoryGridProps = {
@@ -56,26 +55,43 @@ export default function InventoryGrid({ watches }: InventoryGridProps) {
       {filteredWatches.length > 0 ? (
         <div className="space-y-20">
           {filteredWatches.map((watch, watchIndex) => {
-            const heroPhoto = watch.photos[watch.heroPhoto];
-            const supportingPhotos = watch.photos.filter(
-              (_, photoIndex) => photoIndex !== watch.heroPhoto,
-            );
+            const hasPhotos = watch.photos && watch.photos.length > 0;
+            const heroPhoto = hasPhotos ? watch.photos![watch.heroPhoto ?? 0] : null;
+            const supportingPhotos = hasPhotos
+              ? watch.photos!.filter((_, i) => i !== (watch.heroPhoto ?? 0))
+              : [];
             const statusContent = inventoryStatusContent[watch.inventoryStatus];
 
             return (
               <article key={`${watch.brand}-${watch.reference}`}>
-                <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
-                  <Link href={`/watch/${watch.slug}`} className="surface-card group block overflow-hidden rounded-sm">
-                    <Image
-                      src={heroPhoto.src}
-                      alt={heroPhoto.alt}
-                      width={heroPhoto.width}
-                      height={heroPhoto.height}
-                      sizes="(min-width: 1024px) 54vw, 100vw"
-                      className="aspect-[4/5] h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] sm:aspect-[5/4] lg:aspect-[4/5]"
-                      priority={watchIndex === 0}
-                    />
-                  </Link>
+                <div className={`grid gap-8 ${hasPhotos ? "lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]" : ""}`}>
+                  {hasPhotos && heroPhoto && (
+                    watch.slug ? (
+                      <Link href={`/watch/${watch.slug}`} className="surface-card group block overflow-hidden rounded-sm">
+                        <Image
+                          src={heroPhoto.src}
+                          alt={heroPhoto.alt}
+                          width={heroPhoto.width}
+                          height={heroPhoto.height}
+                          sizes="(min-width: 1024px) 54vw, 100vw"
+                          className="aspect-[4/5] h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] sm:aspect-[5/4] lg:aspect-[4/5]"
+                          priority={watchIndex === 0}
+                        />
+                      </Link>
+                    ) : (
+                      <figure className="surface-card overflow-hidden rounded-sm">
+                        <Image
+                          src={heroPhoto.src}
+                          alt={heroPhoto.alt}
+                          width={heroPhoto.width}
+                          height={heroPhoto.height}
+                          sizes="(min-width: 1024px) 54vw, 100vw"
+                          className="aspect-[4/5] h-full w-full object-cover sm:aspect-[5/4] lg:aspect-[4/5]"
+                          priority={watchIndex === 0}
+                        />
+                      </figure>
+                    )
+                  )}
 
                   <div className="flex flex-col justify-center">
                     <InventoryStatusBadge status={watch.inventoryStatus} />
@@ -120,31 +136,28 @@ export default function InventoryGrid({ watches }: InventoryGridProps) {
                       ))}
                     </ul>
 
-                    <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                      <AskAboutWatchButton
-                        watchName={`${watch.brand} ${watch.model}`}
-                        reference={watch.reference}
-                        className="btn-bronze flex-1 rounded-sm px-5 py-3 text-sm font-medium"
-                      />
-                      <Link
-                        href={`/watch/${watch.slug}`}
-                        className="flex-1 rounded-sm border border-[var(--border-strong)] px-5 py-3 text-center text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--purple)]/25"
-                      >
-                        View details
-                      </Link>
-                    </div>
+                    {watch.slug && (
+                      <div className="mt-6">
+                        <Link
+                          href={`/watch/${watch.slug}`}
+                          className="rounded-sm border border-[var(--border-strong)] px-5 py-3 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--purple)]/25"
+                        >
+                          View details
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 {watch.inventoryStatus !== "pick" && supportingPhotos.length > 0 && (
                   <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
                     {supportingPhotos.map((photo) => {
-                      const actualIndex = watch.photos.findIndex((p) => p.src === photo.src);
+                      const actualIndex = watch.photos!.findIndex((p) => p.src === photo.src);
                       return (
                         <ClickablePhoto
                           key={photo.src}
                           photo={photo}
-                          photos={watch.photos}
+                          photos={watch.photos!}
                           index={actualIndex}
                           className="surface-card block overflow-hidden rounded-sm"
                           imageClassName={`${photo.className} h-full w-full object-cover`}

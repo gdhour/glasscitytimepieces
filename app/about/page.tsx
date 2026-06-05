@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
 import BrandLogo from "../components/BrandLogo";
 import OpenCogsworthButton from "../components/OpenCogsworthButton";
@@ -40,16 +41,17 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-[360px_minmax(0,1fr)] lg:gap-20 xl:grid-cols-[420px_minmax(0,1fr)]">
 
-            {/* Portrait placeholder — swap src when photo is ready */}
+            {/* Portrait photo */}
             <div className="flex flex-col gap-6">
               <div className="surface-card relative aspect-[3/4] overflow-hidden rounded-sm bg-[var(--surface-elevated)]">
-                {/* Replace /about/mir.jpg with your actual photo */}
-                <div className="flex h-full items-center justify-center">
-                  <div className="text-center">
-                    <BrandLogo size="lg" linked={false} />
-                    <p className="mt-6 text-sm text-[var(--muted)]">Photo coming soon</p>
-                  </div>
-                </div>
+                <Image
+                  src="/collection/IMG_5014.jpeg"
+                  alt="Mir Ali — Glass City Timepieces"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 420px"
+                  priority
+                />
               </div>
               <div className="grid gap-px overflow-hidden rounded-sm border border-[var(--border)] bg-[var(--border)]">
                 {[

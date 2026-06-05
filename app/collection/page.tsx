@@ -34,8 +34,8 @@ export default function CollectionPage() {
       <section className="bg-[var(--background)] py-16 sm:py-24">
         <div className="mx-auto max-w-7xl space-y-20 px-5 sm:space-y-24 sm:px-8">
           {collectionWatches.map((watch, watchIndex) => {
-            const heroPhoto = watch.photos[watch.heroPhoto];
-            const supportingPhotos = watch.photos.filter(
+            const heroPhoto = watch.photos?.[watch.heroPhoto ?? 0];
+            const supportingPhotos = watch.photos?.filter(
               (_, photoIndex) => photoIndex !== watch.heroPhoto,
             );
 
@@ -71,7 +71,7 @@ export default function CollectionPage() {
 
                   <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
                     {supportingPhotos.map((photo) => {
-                      const actualIndex = watch.photos.findIndex((p) => p.src === photo.src);
+                      const actualIndex = watch.photos?.findIndex((p) => p.src === photo.src);
                       return (
                         <ClickablePhoto
                           key={photo.src}

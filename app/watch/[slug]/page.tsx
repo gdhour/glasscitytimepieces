@@ -28,8 +28,8 @@ export default async function WatchDetailPage({ params }: Props) {
   const watch = inventoryWatches.find((w) => w.slug === slug);
   if (!watch) notFound();
 
-  const heroPhoto = watch.photos[watch.heroPhoto];
-  const supportingPhotos = watch.photos.filter((_, i) => i !== watch.heroPhoto);
+  const heroPhoto = watch.photos?.[watch.heroPhoto ?? 0];
+  const supportingPhotos = watch.photos?.filter((_, i) => i !== watch.heroPhoto);
   const statusContent = inventoryStatusContent[watch.inventoryStatus];
 
   return (
@@ -53,25 +53,27 @@ export default async function WatchDetailPage({ params }: Props) {
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:gap-16">
             {/* Photos */}
             <div>
+              {heroPhoto && (
               <ClickablePhoto
                 photo={heroPhoto}
-                photos={watch.photos}
-                index={watch.heroPhoto}
+                photos={watch.photos ?? []}
+                index={watch.heroPhoto ?? 0}
                 className="surface-card block overflow-hidden rounded-sm"
                 imageClassName="aspect-[4/5] w-full object-cover sm:aspect-[5/4] lg:aspect-[4/5]"
                 sizes="(min-width: 1024px) 54vw, 100vw"
                 priority
               />
+              )}
 
-              {supportingPhotos.length > 0 && (
+              {(supportingPhotos?.length ?? 0) > 0 && (
                 <div className="mt-3 grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4">
-                  {supportingPhotos.map((photo, i) => {
-                    const actualIndex = watch.photos.findIndex((p) => p.src === photo.src);
+                  {supportingPhotos?.map((photo, i) => {
+                    const actualIndex = watch.photos?.findIndex((p) => p.src === photo.src) ?? i;
                     return (
                       <ClickablePhoto
                         key={photo.src}
                         photo={photo}
-                        photos={watch.photos}
+                        photos={watch.photos ?? []}
                         index={actualIndex}
                         className="surface-card block overflow-hidden rounded-sm"
                         imageClassName="aspect-square w-full object-cover"

@@ -17,14 +17,14 @@ const rotatingWatches = [
     model: watch.model,
     category: inventoryStatusContent[watch.inventoryStatus].badge,
     href: `/watch/${watch.slug}`,
-    photo: watch.photos[watch.heroPhoto],
+    photo: watch.photos?.[watch.heroPhoto ?? 0],
   })),
   ...collectionWatches.map((watch) => ({
     brand: watch.brand,
     model: watch.model,
     category: "Personal collection",
     href: "/personal-collection",
-    photo: watch.photos[watch.heroPhoto],
+    photo: watch.photos?.[watch.heroPhoto ?? 0],
   })),
   ...legacyInventoryWatches.map((watch) => ({
     brand: watch.brand,
@@ -35,7 +35,10 @@ const rotatingWatches = [
   })),
 ] as const;
 
-const rotatingGallery = [...rotatingWatches, ...rotatingWatches] as const;
+const rotatingGallery = [...rotatingWatches, ...rotatingWatches].filter(
+  (w): w is typeof w & { photo: NonNullable<typeof w.photo> } =>
+    w.photo !== undefined,
+);
 
 export default function Home() {
   return (
@@ -158,8 +161,8 @@ export default function Home() {
 
           <div className="mt-10 space-y-8">
             {currentInventoryWatches.map((watch, watchIndex) => {
-              const heroPhoto = watch.photos[watch.heroPhoto];
-              const supportingPhotos = watch.photos
+              const heroPhoto = watch.photos?.[watch.heroPhoto ?? 0];
+              const supportingPhotos = (watch.photos ?? [])
                 .filter((_, photoIndex) => photoIndex !== watch.heroPhoto)
                 .slice(0, 4);
 
@@ -170,7 +173,7 @@ export default function Home() {
                 >
                   <div>
                     <Link href={`/watch/${watch.slug}`} className="group block">
-                      <Image
+                      {heroPhoto && <Image
                         src={heroPhoto.src}
                         alt={heroPhoto.alt}
                         width={heroPhoto.width}
@@ -178,7 +181,7 @@ export default function Home() {
                         sizes="(min-width: 1024px) 58vw, 100vw"
                         className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] sm:aspect-[16/11] lg:aspect-[4/5]"
                         priority={watchIndex === 0}
-                      />
+                      />}
                     </Link>
                     <div className="grid grid-cols-2 gap-px border-t border-[var(--border)] bg-[var(--border)] sm:grid-cols-4">
                       {supportingPhotos.map((photo) => (
