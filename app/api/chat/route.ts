@@ -1,4 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
+import { Resend } from "resend";
 import inventory from "../../../data/inventory.json";
 import policies from "../../../data/policies.json";
 import watchKnowledge from "../../../data/watch-knowledge.json";
@@ -10,13 +11,12 @@ type ChatMessage = {
   content: string;
 };
 
-type CogsworthMode = "inventory" | "expert";
+type AvidorMode = "inventory" | "expert";
 
 type ChatRequest = {
   messages?: ChatMessage[];
   watchContext?: string;
   visitorPreferences?: VisitorPreferences;
-  mode?: CogsworthMode;
 };
 
 type VisitorPreferences = {
@@ -85,22 +85,79 @@ function hasContactSignal(messages: ChatMessage[]) {
   return /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(text);
 }
 
-function logLead(messages: ChatMessage[], watchContext?: string) {
+function extractEmailFromMessages(messages: ChatMessage[]): string | null {
+  const text = messages.map((m) => m.content).join("\n");
+  const match = text.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+  return match ? match[0] : null;
+}
+
+async function notifyLead(messages: ChatMessage[], watchContext?: string) {
   if (!hasLeadSignal(messages) || !hasContactSignal(messages)) {
     return;
   }
 
-  console.info("Glass City Timepieces concierge lead", {
-    leadEmailTarget: process.env.GCT_LEAD_EMAIL ?? policies.business.email,
-    watchContext,
-    capturedAt: new Date().toISOString(),
-    transcript: messages,
+  const toEmail = process.env.GCT_LEAD_EMAIL ?? policies.business.email;
+  const visitorEmail = extractEmailFromMessages(messages);
+  const capturedAt = new Date().toLocaleString("en-US", {
+    timeZone: "America/New_York",
+    dateStyle: "medium",
+    timeStyle: "short",
   });
+
+  // Always log to console as a fallback
+  console.info("Glass City Timepieces concierge lead", {
+    toEmail,
+    visitorEmail,
+    watchContext,
+    capturedAt,
+  });
+
+  // Send email notification if Resend is configured
+  if (!process.env.RESEND_API_KEY) {
+    return;
+  }
+
+  const transcript = messages
+    .map((m) => `${m.role === "user" ? "Visitor" : "Avidor"}: ${m.content}`)
+    .join("\n\n");
+
+  const contextLine = watchContext ? `<p><strong>Watch context:</strong> ${watchContext}</p>` : "";
+  const replyToLine = visitorEmail
+    ? `<p><strong>Reply to:</strong> <a href="mailto:${visitorEmail}">${visitorEmail}</a></p>`
+    : "";
+
+  try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    await resend.emails.send({
+      from: "Avidor <avidor@glasscitytimepieces.com>",
+      to: toEmail,
+      replyTo: visitorEmail ?? undefined,
+      subject: `New Avidor lead — ${capturedAt}`,
+      html: `
+        <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; color: #1a1a1a;">
+          <h2 style="font-weight: normal; border-bottom: 1px solid #e0d8cc; padding-bottom: 12px;">
+            New concierge lead
+          </h2>
+          <p><strong>Time:</strong> ${capturedAt} ET</p>
+          ${replyToLine}
+          ${contextLine}
+          <h3 style="font-weight: normal; margin-top: 24px; color: #8b6914;">Conversation</h3>
+          <pre style="background: #f8f6f2; padding: 16px; border-radius: 4px; white-space: pre-wrap; font-family: Georgia, serif; font-size: 13px; line-height: 1.6;">${transcript}</pre>
+          <p style="margin-top: 24px; font-size: 12px; color: #888;">
+            Sent by Avidor · Glass City Timepieces
+          </p>
+        </div>
+      `,
+    });
+  } catch (emailError) {
+    // Non-fatal — log the error but don't break the chat response
+    console.error("Lead email failed:", emailError);
+  }
 }
 
-function buildSystemPrompt(visitorPreferences?: VisitorPreferences, mode: CogsworthMode = "inventory") {
+function buildSystemPrompt(visitorPreferences?: VisitorPreferences, mode: AvidorMode = "inventory") {
   const preferenceContext = visitorPreferences
-    ? JSON.stringify(visitorPreferences, null, 2)
+    ? JSON.stringify(visitorPreferences)
     : "No remembered preferences provided.";
 
   const voiceBlock = `
@@ -109,7 +166,7 @@ Voice:
 - ${policies.concierge_voice.positioning}
 - Respond in 2 to 3 sentences. Never more. Stop the moment you've made your point. One question per response, never more. No bullet lists unless explicitly asked.
 - Sound like a thoughtful private collector, not a pushy dealer.
-- You may identify yourself as Cogsworth when helpful.`.trim();
+- You may identify yourself as Avidor when helpful.`.trim();
 
   const preferenceBlock = `
 Lightweight visitor preference memory:
@@ -131,47 +188,48 @@ General rules:
 
   if (mode === "expert") {
     return `
-You are Cogsworth, an AI watch concierge and the world's foremost horological expert.
+You are Avidor, an AI watch concierge and the world's foremost horological expert.
 
 ${voiceBlock}
 
 You have encyclopedic knowledge of watches from the past 126 years — every major manufacturer, reference number, movement caliber, dial variant, production year, complication, and collector market nuance. You can speak with authority on Patek Philippe, Rolex, AP, independent makers, vintage pieces, modern references, limited editions, and everything in between.
 
 Curated watch knowledge base (brands, references, movements, complications, collector concepts):
-${JSON.stringify(watchKnowledge, null, 2)}
+${JSON.stringify(watchKnowledge)}
 
 This retailer's current inventory (discuss these first when relevant):
-${JSON.stringify(inventory, null, 2)}
+${JSON.stringify(inventory)}
 
 Approved policies:
-${JSON.stringify(policies, null, 2)}
+${JSON.stringify(policies)}
 
 ${preferenceBlock}
 
 ${sharedRules}
 
 Expert mode rules:
-- You have access to a web search tool. Use it only when the question requires current information: recent releases, live pricing, availability, news from the last year, or references you are uncertain about. Do not search for general knowledge you already have.
+- You have access to a web search tool. Use it proactively when the question involves: current pricing or grey market values, recent releases or announcements, live availability, specific reference variants you want to verify, Reddit community sentiment on a watch, or any review or editorial coverage. Prefer searching over guessing on current market data.
+- When searching, prioritize these trusted sources: hodinkee.com, ablogtowatch.com, fratellowatches.com, watchtime.com, revolution.watch, wornandwound.com — and Reddit communities r/Watches, r/WatchHorology, r/Tudor, r/OmegaWatches, r/GrandSeiko, r/Seiko, r/Cartier, r/panerai, r/WatchExchange. Cite the source when you use it.
 - You may discuss any watch ever made — not limited to the inventory above.
 - When a watch in the inventory is relevant, mention it naturally, but never force it.
 - Share opinions, make recommendations, explain history, debate merits — like a knowledgeable collector friend.
 - Be honest about your uncertainty on very obscure references; say so rather than fabricate specs.
 - Never suggest the visitor visit a physical store, authorized dealer, or retailer. All paths to purchase run through this concierge.
-- If a visitor asks about buying or acquiring any watch — whether in inventory or not — position it as accessible: we have direct access to all current references through our partner network and collector contacts. Then ask for: name, email, phone optional, watch of interest, and message. Then say exactly: "I'll have Mir follow up directly."
+- If a visitor asks about buying or acquiring any watch — whether in inventory or not — position it as accessible: we have direct access to all current references through our partner network and collector contacts. Then ask for: name, email, phone optional, watch of interest, and message. Once they provide their contact information, say exactly: "Thank you — by sharing your details you're confirming you're doing so voluntarily and consent to Mir storing them to follow up with you. I'll have him reach out directly. If you'd like to move faster, you're welcome to schedule a private consultation here: https://calendar.app.google/CbYQvnCDFULo9PNx7"
 `.trim();
   }
 
   // Default: inventory mode
   return `
-You are Cogsworth, the customer-facing AI concierge for Glass City Timepieces.
+You are Avidor, the customer-facing AI concierge for Glass City Timepieces.
 
 ${voiceBlock}
 
 Approved inventory data:
-${JSON.stringify(inventory, null, 2)}
+${JSON.stringify(inventory)}
 
 Approved policies:
-${JSON.stringify(policies, null, 2)}
+${JSON.stringify(policies)}
 
 ${preferenceBlock}
 
@@ -186,7 +244,7 @@ Inventory mode rules:
 - Explain tradeoffs honestly.
 - Never finalize pricing, negotiate, promise availability, or make warranty/authenticity claims beyond the approved policy.
 - Never suggest the visitor visit a physical store, authorized dealer, or retailer. All paths to purchase run through this concierge.
-- If a visitor asks about buying or acquiring any watch — whether in inventory or not — position it as accessible: we have direct access to all current references through our partner network and collector contacts. Then ask for: name, email, phone optional, watch of interest, and message. Then say exactly: "I'll have Mir follow up directly."
+- If a visitor asks about buying or acquiring any watch — whether in inventory or not — position it as accessible: we have direct access to all current references through our partner network and collector contacts. Then ask for: name, email, phone optional, watch of interest, and message. Once they provide their contact information, say exactly: "Thank you — by sharing your details you're confirming you're doing so voluntarily and consent to Mir storing them to follow up with you. I'll have him reach out directly. If you'd like to move faster, you're welcome to schedule a private consultation here: https://calendar.app.google/CbYQvnCDFULo9PNx7"
 - If uncertain, say Mir will confirm directly.
 `.trim();
 }
@@ -220,8 +278,11 @@ export async function POST(request: Request) {
   }
 
   const watchContext = body.watchContext?.trim().slice(0, 240);
-  const mode: CogsworthMode = body.mode === "expert" ? "expert" : "inventory";
-  logLead(messages, watchContext);
+  // Mode is set server-side only — client cannot escalate to expert model
+  const mode: AvidorMode =
+    process.env.COGSWORTH_MODE === "expert" ? "expert" : "inventory";
+  // Fire-and-forget — don't await so it doesn't block the response
+  void notifyLead(messages, watchContext);
 
   const anthropicMessages: Anthropic.MessageParam[] = [
     ...(watchContext
@@ -242,68 +303,122 @@ export async function POST(request: Request) {
     })),
   ];
 
+  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+  const encoder = new TextEncoder();
+  const FALLBACK = "I'm not certain from the approved details here. I'll have Mir follow up directly.";
+  const ERROR_REPLY = "The concierge could not answer right now. I'll have Mir follow up directly.";
+
+  // Expert mode gets web search — inventory mode stays grounded in approved data only
+  const tools: Anthropic.Messages.ToolUnion[] = mode === "expert"
+    ? [{ type: "web_search_20260209", name: "web_search" }]
+    : [];
+
+  const loopMessages = [...anthropicMessages];
+  const systemPrompt = buildSystemPrompt(body.visitorPreferences, mode);
+  const MAX_ITERATIONS = 5;
+
+  function getModel() {
+    return mode === "expert"
+      ? (process.env.ANTHROPIC_MODEL_EXPERT ?? DEFAULT_MODEL_EXPERT)
+      : (process.env.ANTHROPIC_MODEL ?? DEFAULT_MODEL_INVENTORY);
+  }
+
+  // Helper: stream a text string to the client (used when we already have the text)
+  function textAsStream(text: string): Response {
+    return new Response(
+      new ReadableStream({
+        start(controller) {
+          controller.enqueue(encoder.encode(text));
+          controller.close();
+        },
+      }),
+      { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-cache" } },
+    );
+  }
+
+  // Helper: run a streaming API call and pipe it to the client
+  function streamApiResponse(messages: Anthropic.MessageParam[]): Response {
+    const runner = client.messages.stream({
+      model: getModel(),
+      max_tokens: 1024,
+      system: systemPrompt,
+      messages,
+      ...(tools.length > 0 ? { tools } : {}),
+    });
+
+    const readable = new ReadableStream({
+      async start(controller) {
+        let hasText = false;
+        try {
+          for await (const event of runner) {
+            if (
+              event.type === "content_block_delta" &&
+              event.delta.type === "text_delta"
+            ) {
+              hasText = true;
+              controller.enqueue(encoder.encode(event.delta.text));
+            }
+          }
+          if (!hasText) {
+            controller.enqueue(encoder.encode(FALLBACK));
+          }
+        } catch {
+          controller.enqueue(encoder.encode(ERROR_REPLY));
+        } finally {
+          controller.close();
+        }
+      },
+    });
+
+    return new Response(readable, {
+      headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-cache" },
+    });
+  }
+
+  // Inventory mode: stream directly, no tool loop needed
+  if (tools.length === 0) {
+    return streamApiResponse(loopMessages);
+  }
+
+  // Expert mode: run sync loop to resolve any web search tool calls, then stream the final answer
   try {
-    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
-    // Expert mode gets web search — inventory mode stays grounded in approved data only
-    const tools: Anthropic.Messages.ToolUnion[] = mode === "expert"
-      ? [{ type: "web_search_20260209", name: "web_search" }]
-      : [];
-
-    const loopMessages = [...anthropicMessages];
-    let response: Anthropic.Message;
     let iterations = 0;
-    const MAX_ITERATIONS = 5;
+    let syncResponse: Anthropic.Message | undefined;
 
-    // Agentic loop — handles web search tool calls until Claude reaches end_turn
     do {
-      const model = mode === "expert"
-        ? (process.env.ANTHROPIC_MODEL_EXPERT ?? DEFAULT_MODEL_EXPERT)
-        : (process.env.ANTHROPIC_MODEL ?? DEFAULT_MODEL_INVENTORY);
-
-      response = await client.messages.create({
-        model,
+      syncResponse = await client.messages.create({
+        model: getModel(),
         max_tokens: 1024,
-        system: buildSystemPrompt(body.visitorPreferences, mode),
+        system: systemPrompt,
         messages: loopMessages,
-        ...(tools.length > 0 ? { tools } : {}),
+        tools,
       });
 
-      // If Claude used a tool, append its response and continue
-      if (response.stop_reason === "tool_use" || response.stop_reason === "pause_turn") {
-        loopMessages.push({ role: "assistant", content: response.content });
-        // For server-side tools (web_search), tool results come back automatically on next call
-        // We just need to re-send with the updated messages
+      if (syncResponse.stop_reason === "tool_use" || syncResponse.stop_reason === "pause_turn") {
+        loopMessages.push({ role: "assistant", content: syncResponse.content });
       }
 
       iterations++;
     } while (
-      (response.stop_reason === "tool_use" || response.stop_reason === "pause_turn") &&
+      (syncResponse.stop_reason === "tool_use" || syncResponse.stop_reason === "pause_turn") &&
       iterations < MAX_ITERATIONS
     );
 
-    const textBlock = response.content.find((block) => block.type === "text");
-    const reply = textBlock?.type === "text" ? textBlock.text : null;
+    // If no tool calls occurred, stream directly from the response we already have
+    if (iterations === 1 && syncResponse.stop_reason === "end_turn") {
+      const textBlock = syncResponse.content.find((b) => b.type === "text");
+      const text = textBlock?.type === "text" ? textBlock.text : FALLBACK;
+      return textAsStream(text);
+    }
 
-    return Response.json({
-      reply:
-        reply ?? "I'm not certain from the approved details here. I'll have Mir follow up directly.",
-    });
+    // Tool calls occurred — loopMessages now includes results; stream the final answer
+    return streamApiResponse(loopMessages);
   } catch (error) {
     if (error instanceof Anthropic.APIError) {
       console.error("Anthropic API error:", error.status, error.message, error.error);
-      return Response.json(
-        {
-          error: "The concierge could not answer right now. I'll have Mir follow up directly.",
-        },
-        { status: error.status ?? 500 },
-      );
+      return Response.json({ error: ERROR_REPLY }, { status: error.status ?? 500 });
     }
     console.error("Unknown error:", error);
-
-    return Response.json(
-      { error: "The concierge could not answer right now. I'll have Mir follow up directly." },
-      { status: 500 },
-    );
+    return Response.json({ error: ERROR_REPLY }, { status: 500 });
   }
 }

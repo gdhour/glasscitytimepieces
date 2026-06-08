@@ -29,8 +29,8 @@ type StoredChatSession = {
   watchContext?: string;
 };
 
-const preferenceStorageKey = "gct:cogsworth-preferences";
-const sessionStorageKey = "gct:cogsworth-session";
+const preferenceStorageKey = "gct:avidor-preferences";
+const sessionStorageKey = "gct:avidor-session";
 
 const emptyPreferences: VisitorPreferences = {
   watchesLiked: [],
@@ -76,7 +76,7 @@ function createStarterMessages(preferences: VisitorPreferences): ChatMessage[] {
     {
       role: "assistant",
       content:
-        "Hello, I’m Cogsworth — a watch concierge built for collectors and enthusiasts.\n\nWhether you’re searching for your first mechanical watch, your next grail, or just browsing, I’m happy to help.\n\nWhat brings you here today? And what’s on your wrist right now?",
+        "Hello, I’m Avidor — a watch concierge built for collectors and enthusiasts.\n\nWhether you’re searching for your first mechanical watch, your next grail, or just browsing, I’m happy to help.\n\nWhat brings you here today? And what’s on your wrist right now?",
     },
   ];
 }
@@ -234,9 +234,9 @@ function isAskWatchEvent(event: Event): event is CustomEvent<AskWatchDetail> {
   return "detail" in event;
 }
 
-type CogsworthMode = "inventory" | "expert";
+type AvidorMode = "inventory" | "expert";
 
-export default function ChatWidget({ mode = "inventory" }: { mode?: CogsworthMode }) {
+export default function ChatWidget({ mode = "inventory" }: { mode?: AvidorMode }) {
   const [open, setOpen] = useState(false);
   const [visitorPreferences, setVisitorPreferences] =
     useState<VisitorPreferences>(() => parseStoredPreferences());
@@ -300,7 +300,7 @@ export default function ChatWidget({ mode = "inventory" }: { mode?: CogsworthMod
   }, [messages, watchContext]);
 
   const buttonLabel = useMemo(
-    () => (open ? "Close Cogsworth" : "Ask Cogsworth"),
+    () => (open ? "Close Avidor" : "Ask Avidor"),
     [open],
   );
 
@@ -330,33 +330,66 @@ export default function ChatWidget({ mode = "inventory" }: { mode?: CogsworthMod
           messages: nextMessages,
           watchContext,
           visitorPreferences: nextPreferences,
-          mode,
         }),
       });
 
-      const data = (await response.json()) as {
-        reply?: string;
-        error?: string;
-      };
-
       if (!response.ok) {
-        throw new Error(data.error ?? "Cogsworth is unavailable right now.");
+        const data = (await response.json()) as { error?: string };
+        throw new Error(data.error ?? "Avidor is unavailable right now.");
       }
 
-      setMessages((current) => [
-        ...current,
-        {
-          role: "assistant",
-          content:
-            data.reply ??
-            "I’m not certain from the approved details. I’ll have Mir follow up directly.",
-        },
-      ]);
+      if (!response.body) {
+        throw new Error("Avidor is unavailable right now.");
+      }
+
+      // Stream the response — add an empty assistant message and fill it as chunks arrive
+      setLoading(false);
+      setMessages((current) => [...current, { role: "assistant", content: "" }]);
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          const chunk = decoder.decode(value, { stream: true });
+          setMessages((current) => {
+            const msgs = [...current];
+            const last = msgs[msgs.length - 1];
+            if (last?.role === "assistant") {
+              return [
+                ...msgs.slice(0, -1),
+                { role: "assistant" as const, content: last.content + chunk },
+              ];
+            }
+            return msgs;
+          });
+        }
+      } finally {
+        reader.releaseLock();
+      }
+
+      // If the stream ended with an empty message, show a fallback
+      setMessages((current) => {
+        const last = current[current.length - 1];
+        if (last?.role === "assistant" && !last.content.trim()) {
+          return [
+            ...current.slice(0, -1),
+            {
+              role: "assistant" as const,
+              content:
+                "I’m not certain from the approved details. I’ll have Mir follow up directly.",
+            },
+          ];
+        }
+        return current;
+      });
     } catch (sendError) {
       setError(
         sendError instanceof Error
           ? sendError.message
-          : "Cogsworth is unavailable right now.",
+          : "Avidor is unavailable right now.",
       );
     } finally {
       setLoading(false);
@@ -367,12 +400,20 @@ export default function ChatWidget({ mode = "inventory" }: { mode?: CogsworthMod
     <div className="fixed bottom-5 right-5 z-[70] flex max-w-[calc(100vw-2.5rem)] flex-col items-end gap-3">
       {open ? (
         <section
-          aria-label="Cogsworth, Glass City Timepieces AI concierge"
+          aria-label="Avidor, Glass City Timepieces AI concierge"
           className="w-[min(24rem,calc(100vw-2.5rem))] overflow-hidden rounded-sm border border-[var(--border-strong)] bg-[rgba(10,7,16,0.96)] shadow-2xl shadow-black/60 backdrop-blur-xl"
         >
-          <div className="border-b border-[var(--border)] p-4">
+          <div className="relative border-b border-[var(--border)] p-4">
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Close Avidor"
+              className="absolute right-4 top-4 text-lg leading-none text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+            >
+              ✕
+            </button>
             <p className="text-[10px] font-medium uppercase tracking-[0.24em] text-[var(--bronze)]">
-              Cogsworth
+              Avidor
             </p>
             <h2 className="mt-1 font-[family-name:var(--font-cormorant)] text-xl font-light text-[var(--foreground)]">
               AI concierge
@@ -411,7 +452,7 @@ export default function ChatWidget({ mode = "inventory" }: { mode?: CogsworthMod
 
           <form onSubmit={sendMessage} className="border-t border-[var(--border)] p-3">
             <label className="sr-only" htmlFor="concierge-message">
-              Message Cogsworth
+              Message Avidor
             </label>
             <textarea
               id="concierge-message"

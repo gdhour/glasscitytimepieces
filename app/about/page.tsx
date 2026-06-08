@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
 import BrandLogo from "../components/BrandLogo";
-import OpenCogsworthButton from "../components/OpenCogsworthButton";
+import OpenAvidorButton from "../components/OpenAvidorButton";
 
 export const metadata: Metadata = {
   title: "About Mir — Glass City Timepieces",
@@ -95,13 +95,16 @@ export default function AboutPage() {
                   I am a native Ohioan and have been in Toledo for over thirty years. Most people don't know the city the way I do: the Toledo Museum of Art is genuinely world class, the jazz tradition is deep and real, and the art scene is more alive than most cities twice its size. My passions have always run wide — the arts, fast and beautiful cars, global travel, running marathons, family life. The watches arrived later, but they fit: a mechanical watch is one of the few objects that sits at the intersection of engineering, design, history, and craft simultaneously. My love of the arts is reflected in the pieces I choose.
                 </p>
                 <p>
-                  My collection started the way most do: one piece that caught me off guard, a reference I couldn't explain away, and a growing awareness that the mechanical watch is one of the last objects where human hands still make the difference. I started buying seriously, then selling pieces I'd outgrown, then sourcing for other collectors. Glass City Timepieces is what that practice became.
+                  My obsession with watches started earlier than most — with a book. John Christopher's <em>The White Mountains</em> features a mechanical watch as one of its central objects: a relic from a world before the Tripods, passed between characters as a symbol of what had been lost and what might still be recovered. I read it young, and something about a small precise machine that kept its own time — quietly, without permission — stayed with me. It took decades before I understood why. Glass City Timepieces is what that thread became.
+                </p>
+                <p>
+                  I started buying seriously, then selling pieces I'd outgrown, then sourcing for other collectors. Every step reinforced the same instinct: the right watch is worth seeking out, and most people never find it because nobody guides them toward it honestly.
                 </p>
                 <p>
                   Everything here has been personally considered. I don't list a watch I wouldn't stand behind in a room of serious collectors. The inventory is small by design — I'd rather have five pieces I believe in than fifty that are just available.
                 </p>
                 <p>
-                  I built Cogsworth, this site's AI concierge, to extend the same standard of advice to anyone who visits — whether you're buying your first mechanical watch or your fortieth. It draws on the same knowledge base I use when I'm evaluating a piece for my own collection.
+                  I built Avidor, this site's AI concierge, to extend the same standard of advice to anyone who visits — whether you're buying your first mechanical watch or your fortieth. It draws on the same knowledge base I use when I'm evaluating a piece for my own collection.
                 </p>
                 <p>
                   Consultations happen by Google Meet. No obligation, no rush. If you have a question about something on the site or something you're hunting for elsewhere, reach out.
@@ -160,19 +163,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Cogsworth callout */}
+      {/* Avidor callout */}
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div>
               <p className="text-[11px] font-medium uppercase tracking-[0.35em] text-[var(--bronze)]">
-                Cogsworth
+                Avidor
               </p>
               <h2 className="mt-3 font-[family-name:var(--font-cormorant)] text-3xl font-light tracking-tight text-[var(--foreground)] sm:text-4xl">
                 An AI concierge built for collectors.
               </h2>
               <p className="mt-5 text-sm leading-relaxed text-[var(--steel)]">
-                Cogsworth started as a tool I built for myself — a way to manage collection notes, track references, and answer the questions that come up constantly when you're evaluating a watch. I opened it to visitors because the same questions come up for everyone: sizing, condition, value, alternatives.
+                Avidor started as a tool I built for myself — a way to manage collection notes, track references, and answer the questions that come up constantly when you're evaluating a watch. I opened it to visitors because the same questions come up for everyone: sizing, condition, value, alternatives.
               </p>
               <p className="mt-4 text-sm leading-relaxed text-[var(--steel)]">
                 Ask it anything. It knows the inventory in detail and has broad horological knowledge for anything outside it. When a conversation moves toward a transaction, it brings me in directly.
@@ -183,8 +186,8 @@ export default function AboutPage() {
                 <p className="font-[family-name:var(--font-cormorant)] text-2xl font-light leading-snug text-[var(--foreground)]">
                   &ldquo;Whether you&apos;re searching for your first mechanical watch, your next grail, or just browsing — I&apos;m here.&rdquo;
                 </p>
-                <p className="mt-4 text-xs text-[var(--muted)]">— Cogsworth, Glass City Timepieces AI concierge</p>
-                <OpenCogsworthButton />
+                <p className="mt-4 text-xs text-[var(--muted)]">— Avidor, Glass City Timepieces AI concierge</p>
+                <OpenAvidorButton />
               </div>
             </div>
           </div>

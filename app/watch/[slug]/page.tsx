@@ -136,7 +136,7 @@ export default async function WatchDetailPage({ params }: Props) {
                 ))}
               </ul>
 
-              {/* Ask Cogsworth */}
+              {/* Ask Avidor */}
               <div className="mt-6">
                 <AskAboutWatchButton
                   watchName={`${watch.brand} ${watch.model}`}
