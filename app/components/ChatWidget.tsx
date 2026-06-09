@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { useVoiceInput } from "@/lib/useVoiceInput";
 
 type ChatMessage = {
   role: "user" | "assistant";
@@ -256,6 +257,10 @@ export default function ChatWidget({ mode = "inventory" }: { mode?: AvidorMode }
   const [error, setError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
+  const { voiceState, toggle: toggleVoice } = useVoiceInput((transcript) => {
+    setInput(transcript);
+  });
+
   useEffect(() => {
     const handleAskWatch = (event: Event) => {
       if (!isAskWatchEvent(event)) {
@@ -454,14 +459,46 @@ export default function ChatWidget({ mode = "inventory" }: { mode?: AvidorMode }
             <label className="sr-only" htmlFor="concierge-message">
               Message Avidor
             </label>
-            <textarea
-              id="concierge-message"
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-              rows={3}
-              placeholder="Ask about sizing, condition, full set, shipping, or fit..."
-              className="min-h-20 w-full resize-none rounded-sm border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)] outline-none transition-colors placeholder:text-[var(--muted)] focus:border-[var(--bronze)]"
-            />
+            <div className="relative">
+              <textarea
+                id="concierge-message"
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
+                rows={3}
+                placeholder={voiceState === "listening" ? "Listening…" : "Ask about sizing, condition, full set, shipping, or fit..."}
+                className={`min-h-20 w-full resize-none rounded-sm border bg-[var(--background)] px-3 py-2 pr-9 text-sm text-[var(--foreground)] outline-none transition-colors placeholder:text-[var(--muted)] ${
+                  voiceState === "listening"
+                    ? "border-red-500 placeholder-red-400"
+                    : "border-[var(--border)] focus:border-[var(--bronze)]"
+                }`}
+              />
+              {voiceState !== "unsupported" && (
+                <button
+                  type="button"
+                  onClick={toggleVoice}
+                  aria-label={voiceState === "listening" ? "Stop listening" : "Speak your question"}
+                  className={`absolute right-2 top-2 rounded p-1 transition-colors ${
+                    voiceState === "listening"
+                      ? "text-red-400 hover:text-red-300"
+                      : "text-[var(--muted)] hover:text-[var(--foreground)]"
+                  }`}
+                >
+                  {voiceState === "listening" ? (
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
+                      <circle cx="8" cy="8" r="4" className="animate-pulse" />
+                      <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                    </svg>
+                  ) : (
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="5" y="1" width="6" height="9" rx="3" />
+                      <path d="M2 7.5A6 6 0 0 0 14 7.5" />
+                      <line x1="8" y1="13.5" x2="8" y2="15.5" />
+                      <line x1="5.5" y1="15.5" x2="10.5" y2="15.5" />
+                    </svg>
+                  )}
+                </button>
+              )}
+            </div>
             <div className="mt-3 flex items-center justify-between gap-3">
               <button
                 type="button"
