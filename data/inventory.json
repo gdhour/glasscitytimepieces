@@ -90,6 +90,42 @@
         "/collection/rado-captain-cook-high-tech-ceramic-skeleton-5.jpg",
         "/collection/rado-captain-cook-high-tech-ceramic-skeleton-6.jpg"
       ]
+    },
+    {
+      "id": "bell-ross-br-03-94-blacktrack-br0394-btr-ce-sca",
+      "brand": "Bell & Ross",
+      "model": "BR 03-94 Blacktrack",
+      "reference": "BR0394-BTR-CE/SCA",
+      "inventoryStatus": "current",
+      "displayStatus": "Available Now",
+      "availabilityNote": "In hand, inspected, and ready to ship. From Mir's personal collection.",
+      "sourceType": "GCT owned inventory",
+      "isOwnedByGCT": true,
+      "canShipImmediately": true,
+      "price": "$3,200",
+      "case_size": "42mm",
+      "case_material": "Matte black ceramic",
+      "movement": "BR-CAL.301 automatic chronograph",
+      "bracelet": "Black calf leather strap over red rubber with ceramic-coated buckle",
+      "water_resistance": "100m",
+      "limited_edition": "No. 131 of 500 pieces",
+      "set_contents": "Watch, original Bell & Ross box, and Jomashop paperwork",
+      "condition": "Excellent — personal piece, worn sparingly, presents essentially as new",
+      "description_angle": "Limited collaboration with Sacha Lakic's Blacktrack custom motorcycle studio. Smoked grey-on-black chronograph dial with red café racer accents and the Blacktrack bike engraved on the caseback. A numbered piece (131/500) that rarely comes up for sale, offered at $3,200 — well under launch pricing.",
+      "talking_points": [
+        "Limited to 500 pieces worldwide and individually numbered — this example is 131/500, engraved on the caseback alongside the Blacktrack motorcycle.",
+        "Designed with Sacha Lakic, the designer behind Blacktrack's custom café racers, which is where the red-edged strap and motorsport dial accents come from.",
+        "The bi-material strap is black calf leather over red rubber, so the red only flashes at the edges in motion — subtle until it isn't.",
+        "Comes from Mir's personal collection with box and Jomashop paperwork, priced at $3,200."
+      ],
+      "images": [
+        "/collection/bell-ross-br0394-blacktrack-1.jpg",
+        "/collection/bell-ross-br0394-blacktrack-2.jpg",
+        "/collection/bell-ross-br0394-blacktrack-3.jpg",
+        "/collection/bell-ross-br0394-blacktrack-4.jpg",
+        "/collection/bell-ross-br0394-blacktrack-5.jpg",
+        "/collection/bell-ross-br0394-blacktrack-6.jpg"
+      ]
     }
   ],
   "collector_network": [],
