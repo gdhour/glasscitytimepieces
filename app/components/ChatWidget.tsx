@@ -77,7 +77,7 @@ function createStarterMessages(preferences: VisitorPreferences): ChatMessage[] {
     {
       role: "assistant",
       content:
-        "Hello, I’m Avidor — a watch concierge built for collectors and enthusiasts.\n\nWhether you’re searching for your first mechanical watch, your next grail, or just browsing, I’m happy to help.\n\nWhat brings you here today? And what’s on your wrist right now?",
+        "Hello, I’m Avidor — I’m here to help you find the right watch. What brings you in today?",
     },
   ];
 }
