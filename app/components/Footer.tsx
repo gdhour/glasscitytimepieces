@@ -9,8 +9,8 @@ export default function Footer() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
             <BrandLogo size="sm" linked={false} />
             <p className="max-w-sm text-sm leading-relaxed text-[var(--muted)]">
-              Uncommon timepieces, curated in Toledo — consultations via Google
-              Meet.
+              Watches that tell stories and reflect your passions — curated in
+              Toledo, consultations via Google Meet.
             </p>
           </div>
           <nav
@@ -41,6 +41,19 @@ export default function Footer() {
             >
               Concierge Services
             </Link>
+            <a
+              href="https://www.instagram.com/glasscitytimepieces/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-[var(--bronze-soft)]"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4.2" />
+                <circle cx="17.6" cy="6.4" r="0.6" fill="currentColor" stroke="none" />
+              </svg>
+              Instagram
+            </a>
           </nav>
         </div>
         <p className="mt-10 text-xs tracking-wide text-[var(--muted)]">

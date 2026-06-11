@@ -61,9 +61,10 @@ export default function Home() {
               Uncommon pieces, chosen with intention.
             </h1>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-[var(--steel)] sm:text-lg">
-              Glass City Timepieces brings current availability, personal
-              collection notes, legacy archive pieces, and concierge guidance
-              into one focused point of view.
+              Watches that tell stories and reflect the passions you live —
+              racing, diving, flying, traveling, stargazing. Current
+              availability, personal collection notes, and concierge guidance,
+              all in one focused point of view.
             </p>
           </div>
 

@@ -90,6 +90,14 @@ export default function AboutPage() {
                 </h2>
               </div>
 
+              <blockquote className="border-l-2 border-[var(--bronze)] pl-5 font-[family-name:var(--font-cormorant)] text-lg font-light leading-relaxed text-[var(--foreground)] sm:text-xl">
+                Every great timepiece has a story — and so does this one. I
+                founded Glass City Timepieces for those who wear their passions
+                on their wrist. Whether you live for the race, the dive, the
+                flight, or the stars, there&apos;s a watch made for the life
+                you live.
+              </blockquote>
+
               <div className="space-y-5 text-sm leading-relaxed text-[var(--steel)]">
                 <p>
                   I am a native Ohioan and have been in Toledo for over thirty years. Most people don't know the city the way I do: the Toledo Museum of Art is genuinely world class, the jazz tradition is deep and real, and the art scene is more alive than most cities twice its size. My passions have always run wide — the arts, fast and beautiful cars, global travel, running marathons, family life. The watches arrived later, but they fit: a mechanical watch is one of the few objects that sits at the intersection of engineering, design, history, and craft simultaneously. My love of the arts is reflected in the pieces I choose.
