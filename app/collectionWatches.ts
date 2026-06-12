@@ -865,6 +865,58 @@ export const legacyInventoryWatches = [
 
 export const collectionWatches = [
   {
+    brand: "Hublot",
+    model: "Classic Fusion Aerofusion Moonphase",
+    reference: "517.CX.0170.LR",
+    description:
+      "A 45mm black ceramic Classic Fusion with a fully skeletonized dial that puts the movement architecture on display — twin date apertures at twelve, and a moonphase with pointer date at six that reads like an instrument cluster. The blackened case and black alligator-over-rubber strap keep the whole package monochrome, so the openworked dial and the blue of the moon disc do all the talking. For the stargazers.",
+    heroPhoto: 0,
+    photos: [
+      {
+        src: "/collection/hublot-aerofusion-moonphase-1.jpg",
+        alt: "Hublot Classic Fusion Aerofusion Moonphase 517.CX.0170.LR on its presentation cushion",
+        width: 1600,
+        height: 1200,
+        className: "aspect-[4/3]",
+      },
+      {
+        src: "/collection/hublot-aerofusion-moonphase-2.jpg",
+        alt: "Hublot Aerofusion Moonphase skeleton dial close-up showing the moonphase and pointer date",
+        width: 1200,
+        height: 1600,
+        className: "aspect-[3/4]",
+      },
+      {
+        src: "/collection/hublot-aerofusion-moonphase-3.jpg",
+        alt: "Hublot Aerofusion Moonphase angled view showing the ceramic case and alligator strap",
+        width: 1600,
+        height: 1200,
+        className: "aspect-[4/3]",
+      },
+      {
+        src: "/collection/hublot-aerofusion-moonphase-4.jpg",
+        alt: "Hublot Aerofusion Moonphase low profile view of the case and skeleton dial",
+        width: 1600,
+        height: 1200,
+        className: "aspect-[4/3]",
+      },
+      {
+        src: "/collection/hublot-aerofusion-moonphase-5.jpg",
+        alt: "Hublot Aerofusion Moonphase caseback with sapphire display and visible rotor",
+        width: 1600,
+        height: 1200,
+        className: "aspect-[4/3]",
+      },
+      {
+        src: "/collection/hublot-aerofusion-moonphase-6.jpg",
+        alt: "Hublot Aerofusion Moonphase in the box on its cushion",
+        width: 1200,
+        height: 1600,
+        className: "aspect-[3/4]",
+      },
+    ],
+  },
+  {
     brand: "M.A.D.Editions",
     model: "M.A.D. 1",
     reference: "M.A.D. 1",

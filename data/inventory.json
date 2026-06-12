@@ -132,6 +132,22 @@
   "mirs_picks": [],
   "personal_collection": [
     {
+      "brand": "Hublot",
+      "model": "Classic Fusion Aerofusion Moonphase",
+      "reference": "517.CX.0170.LR",
+      "status": "personal_collection",
+      "isSaleInventory": false,
+      "description_angle": "45mm black ceramic Classic Fusion with a fully skeletonized dial — twin date apertures at twelve, moonphase with pointer date at six, black alligator-over-rubber strap. Monochrome case lets the openworked movement and blue moon disc carry the look. One of Mir's stargazer pieces.",
+      "images": [
+        "/collection/hublot-aerofusion-moonphase-1.jpg",
+        "/collection/hublot-aerofusion-moonphase-2.jpg",
+        "/collection/hublot-aerofusion-moonphase-3.jpg",
+        "/collection/hublot-aerofusion-moonphase-4.jpg",
+        "/collection/hublot-aerofusion-moonphase-5.jpg",
+        "/collection/hublot-aerofusion-moonphase-6.jpg"
+      ]
+    },
+    {
       "brand": "Omega",
       "model": "Constellation Megaquartz Day-Date",
       "reference": "To be confirmed",

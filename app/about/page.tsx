@@ -45,7 +45,7 @@ export default function AboutPage() {
             <div className="flex flex-col gap-6">
               <div className="surface-card relative aspect-[3/4] overflow-hidden rounded-sm bg-[var(--surface-elevated)]">
                 <Image
-                  src="/collection/IMG_5014.jpeg"
+                  src="/collection/mir-ali-portrait.jpg"
                   alt="Mir Ali — Glass City Timepieces"
                   fill
                   className="object-cover"
