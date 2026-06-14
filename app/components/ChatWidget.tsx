@@ -231,19 +231,39 @@ function extractPreferenceUpdates(
   return next;
 }
 
-// Avidor appends [[show:path]] markers to surface listing photos. Accept
-// site-absolute paths (/collection/…) and full URLs; pull them out of the
-// visible text and hide any malformed or half-streamed marker.
+// Avidor surfaces listing photos via [[show:path]] markers, but models
+// sometimes reach for raw <img> tags instead. Pull image paths out of
+// both forms, then strip any remaining HTML so markup never renders as
+// escaped text. Accepts site-absolute paths (/collection/…) and URLs.
 function splitImages(content: string): { text: string; images: string[] } {
   const images: string[] = [];
+  const push = (url: string) => {
+    if (!url) return;
+    if (!(url.startsWith("/") || /^https?:\/\//i.test(url))) return;
+    if (images.length < 3 && !images.includes(url)) images.push(url);
+  };
+
   const text = content
+    // Preferred form: [[show:path]] markers
     .replace(/\[\[show:(\/[^\]\s]+|https?:\/\/[^\]\s]+)\]\]/g, (_, url: string) => {
-      if (images.length < 3 && !images.includes(url)) images.push(url);
+      push(url);
       return "";
     })
+    // Fallback: <img src="path"> the model emitted on its own
+    .replace(/<img\b[^>]*?\bsrc=["']([^"']+)["'][^>]*>/gi, (_, url: string) => {
+      push(url);
+      return "";
+    })
+    // Strip any other HTML tags so they don't show as raw text
+    .replace(/<\/?[a-z][^>]*>/gi, "")
+    // Drop malformed or half-streamed markers / tags
     .replace(/\[\[show:[^\]]*\]\]/g, "")
     .replace(/\[\[show:[^\]]*$/, "")
+    .replace(/<[^>]*$/, "")
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
     .trim();
+
   return { text, images };
 }
 
