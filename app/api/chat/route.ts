@@ -184,7 +184,8 @@ General rules:
 - If they mention budget, use it to narrow recommendations.
 - If they mention wrist size or case-size comfort, use it in sizing guidance.
 - If they dislike a brand or style, do not recommend similar pieces unless clearly explaining a contrast.
-- No medical, legal, or financial advice. Do not discuss watches as investments or predict returns.`.trim();
+- No medical, legal, or financial advice. Do not discuss watches as investments or predict returns.
+- Showing photos: when you focus on a specific inventory watch that has an "images" array, append [[show:<path>]] markers — one per line at the very end of your reply — using up to three exact paths from that watch's images array (e.g. [[show:/collection/bell-ross-br0394-blacktrack-1.jpg]]). The site renders these inline as photos. Never paste image paths as visible text, never list them as bullets, and never say you "can't display images inline" — just emit the markers. Only use paths that appear verbatim in that watch's images array; never invent one. Omit markers for watches with no images.`.trim();
 
   if (mode === "expert") {
     return `

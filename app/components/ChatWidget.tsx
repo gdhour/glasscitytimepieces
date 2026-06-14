@@ -231,6 +231,22 @@ function extractPreferenceUpdates(
   return next;
 }
 
+// Avidor appends [[show:path]] markers to surface listing photos. Accept
+// site-absolute paths (/collection/…) and full URLs; pull them out of the
+// visible text and hide any malformed or half-streamed marker.
+function splitImages(content: string): { text: string; images: string[] } {
+  const images: string[] = [];
+  const text = content
+    .replace(/\[\[show:(\/[^\]\s]+|https?:\/\/[^\]\s]+)\]\]/g, (_, url: string) => {
+      if (images.length < 3 && !images.includes(url)) images.push(url);
+      return "";
+    })
+    .replace(/\[\[show:[^\]]*\]\]/g, "")
+    .replace(/\[\[show:[^\]]*$/, "")
+    .trim();
+  return { text, images };
+}
+
 function isAskWatchEvent(event: Event): event is CustomEvent<AskWatchDetail> {
   return "detail" in event;
 }
@@ -429,18 +445,37 @@ export default function ChatWidget({ mode = "inventory" }: { mode?: AvidorMode }
           </div>
 
           <div className="max-h-[22rem] space-y-3 overflow-y-auto p-4">
-            {messages.map((message, index) => (
-              <div
-                key={`${message.role}-${index}`}
-                className={`rounded-sm px-3 py-2 text-sm leading-relaxed ${
-                  message.role === "assistant"
-                    ? "bg-[var(--surface-elevated)] text-[var(--steel-bright)]"
-                    : "ml-8 bg-[var(--purple)]/45 text-[var(--foreground)]"
-                }`}
-              >
-                {message.content}
-              </div>
-            ))}
+            {messages.map((message, index) => {
+              const { text, images } =
+                message.role === "assistant"
+                  ? splitImages(message.content)
+                  : { text: message.content, images: [] as string[] };
+              return (
+                <div
+                  key={`${message.role}-${index}`}
+                  className={`rounded-sm px-3 py-2 text-sm leading-relaxed ${
+                    message.role === "assistant"
+                      ? "bg-[var(--surface-elevated)] text-[var(--steel-bright)]"
+                      : "ml-8 bg-[var(--purple)]/45 text-[var(--foreground)]"
+                  }`}
+                >
+                  {text}
+                  {images.length > 0 && (
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {images.map((src) => (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          key={src}
+                          src={src}
+                          alt="Listing photo"
+                          className="h-24 w-24 rounded-sm border border-[var(--border)] object-cover"
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
             {loading ? (
               <div className="rounded-sm bg-[var(--surface-elevated)] px-3 py-2 text-sm text-[var(--muted)]">
                 Thinking through the details…
