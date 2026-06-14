@@ -5,11 +5,11 @@ import Link from "next/link";
 import BrandLogo from "./BrandLogo";
 
 const links = [
-  { href: "/about", label: "About" },
   { href: "/search", label: "Search" },
   { href: "/personal-collection", label: "Personal Collection" },
   { href: "/current-inventory", label: "Current Inventory" },
   { href: "/legacy-inventory", label: "Legacy Inventory" },
+  { href: "/about", label: "About" },
   { href: "/#concierge", label: "Concierge Services" },
 ] as const;
 
@@ -40,13 +40,6 @@ export default function SiteNav() {
         </ul>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/#visit"
-            onClick={closeMenu}
-            className="hidden rounded-sm border border-[var(--border-strong)] px-4 py-2 text-[12px] font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--purple)]/25 sm:inline-block"
-          >
-            Private consultation
-          </Link>
           <div className="relative lg:hidden">
             <button
               type="button"

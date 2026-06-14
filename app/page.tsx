@@ -313,6 +313,14 @@ export default function Home() {
                   </a>
                 ))}
               </div>
+              <a
+                href="https://calendar.app.google/CbYQvnCDFULo9PNx7"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-bronze mt-8 inline-flex rounded-sm px-6 py-3 text-sm font-medium"
+              >
+                Schedule a private consultation
+              </a>
             </div>
             <ul className="space-y-6">
               {[
@@ -375,58 +383,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="visit" className="scroll-mt-24 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="overflow-hidden rounded-sm border border-[var(--border)] bg-gradient-to-br from-[var(--surface-elevated)] to-[var(--surface)]">
-            <div className="grid lg:grid-cols-2">
-              <div className="p-8 sm:p-12 lg:p-14">
-                <p className="text-[11px] font-medium uppercase tracking-[0.35em] text-[var(--bronze)]">
-                  Virtual consultation
-                </p>
-                <h2 className="mt-3 font-[family-name:var(--font-cormorant)] text-3xl font-light text-[var(--foreground)] sm:text-4xl">
-                  Review the collection from anywhere.
-                </h2>
-                <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
-                  Consultations happen by appointment over Google Meet. I will
-                  walk you through what is available, answer questions in depth,
-                  and send detail photos afterward if helpful.
-                </p>
-                <div className="mt-6 space-y-3 text-sm text-[var(--steel)]">
-                  <p className="text-[var(--foreground)]">Glass City Timepieces</p>
-                  <p>Based in Toledo, Ohio · serving collectors nationwide</p>
-                  <p>
-                    <a href="mailto:info@glasscitytimepieces.com" className="text-[var(--bronze)] hover:text-[var(--bronze-soft)]">
-                      info@glasscitytimepieces.com
-                    </a>
-                  </p>
-                  <p>
-                    <a href="tel:+14199759754" className="text-[var(--bronze)] hover:text-[var(--bronze-soft)]">
-                      419-975-9754
-                    </a>
-                  </p>
-                </div>
-                <a
-                  href="https://calendar.app.google/CbYQvnCDFULo9PNx7"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-bronze mt-8 inline-flex rounded-sm px-6 py-3 text-sm font-medium"
-                >
-                  Schedule via Google Meet
-                </a>
-              </div>
-              <div className="guilloche relative min-h-[280px] bg-[linear-gradient(135deg,var(--purple-deep)_0%,var(--background)_50%,var(--purple)_100%)] p-8 sm:p-12">
-                <blockquote className="relative font-[family-name:var(--font-cormorant)] text-2xl font-light leading-snug text-[var(--foreground)] sm:text-3xl">
-                  &ldquo;Uncommon references, each chosen for a reason. Take the
-                  time you need; there is no rush on the call.&rdquo;
-                </blockquote>
-                <p className="relative mt-6 text-sm text-[var(--muted)]">
-                  — Glass City Timepieces
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
