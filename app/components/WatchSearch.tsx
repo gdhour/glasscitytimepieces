@@ -13,11 +13,27 @@ const SUGGESTIONS = [
   "A first serious mechanical watch",
 ];
 
+// The concierge emits root-relative paths for both images (/collection/…)
+// and links (/watch/SLUG), so we allow same-origin relative paths and
+// http(s) URLs but strip script-executing schemes (javascript:, data:,
+// vbscript:, …) that would otherwise render as a clickable XSS vector.
+function safeUrl(u: string): string {
+  const v = u.trim();
+  if (v.startsWith("/") && !v.startsWith("//")) return v;
+  return /^https?:\/\//i.test(v) ? v : "";
+}
+
 function parseProducts(content: string): { text: string; products: Product[] } {
   const products: Product[] = [];
   let text = content.replace(/\[\[product:([^\]]*)\]\]/g, (_, body: string) => {
     const [name, price, image, url] = body.split("|").map((s) => s.trim());
-    if (name) products.push({ name, price: price ?? "", image: image ?? "", url: url ?? "" });
+    if (name)
+      products.push({
+        name,
+        price: price ?? "",
+        image: safeUrl(image ?? ""),
+        url: safeUrl(url ?? ""),
+      });
     return "";
   });
   text = text.replace(/\[\[product:[^\]]*$/, "").trim();
