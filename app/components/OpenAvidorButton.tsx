@@ -6,9 +6,9 @@ export default function OpenAvidorButton() {
       type="button"
       onClick={() =>
         window.dispatchEvent(
-          new CustomEvent("gct:ask-watch", {
+          new CustomEvent("revantex:open", {
             detail: {
-              prompt: "Tell me about Glass City Timepieces and what makes it different.",
+              message: "Tell me about Glass City Timepieces and what makes it different.",
             },
           }),
         )

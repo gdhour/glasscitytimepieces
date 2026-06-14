@@ -18,10 +18,9 @@ export default function AskAboutWatchButton({
       type="button"
       onClick={() => {
         window.dispatchEvent(
-          new CustomEvent("gct:ask-watch", {
+          new CustomEvent("revantex:open", {
             detail: {
-              watchContext,
-              prompt: `I’m interested in the ${watchContext}. Can you walk me through sizing, condition, set contents, and the main pros and cons?`,
+              message: `I’m interested in the ${watchContext}. Can you walk me through sizing, condition, set contents, and the main pros and cons?`,
             },
           }),
         );

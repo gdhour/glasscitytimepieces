@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
-import ChatWidget from "./components/ChatWidget";
+import Script from "next/script";
 import Footer from "./components/Footer";
 import SiteNav from "./components/SiteNav";
 import "./globals.css";
@@ -45,7 +45,14 @@ export default function RootLayout({
         <SiteNav />
         <div className="flex flex-1 flex-col">{children}</div>
         <Footer />
-        <ChatWidget />
+        {/* Avidor is now powered by Revantex (GCT is customer zero).
+            The native ChatWidget + /api/chat remain in the repo for
+            instant rollback — re-add <ChatWidget /> here to revert. */}
+        <Script
+          src="https://revantex.com/embed.js"
+          data-tenant="b9fe5fc9-925f-4eab-8b11-d95112e1f012"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
