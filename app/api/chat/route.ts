@@ -27,6 +27,7 @@ type SourceWatch = {
   category?: string;
   description: string;
   details?: readonly string[];
+  talkingPoints?: readonly string[];
   photos?: readonly { src: string }[];
   image?: { src: string };
 };
@@ -48,6 +49,7 @@ function projectWatch(w: SourceWatch) {
     category: w.category ?? null,
     description: w.description,
     details: w.details ?? null,
+    talkingPoints: w.talkingPoints ?? null,
     images,
   };
 }

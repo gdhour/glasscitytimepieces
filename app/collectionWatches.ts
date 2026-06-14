@@ -47,6 +47,9 @@ export type InventoryWatch = {
   canShipImmediately?: boolean;
   description: string;
   details: readonly string[];
+  // Conversational selling angles (incl. honest tradeoffs) for the
+  // concierge — not rendered on the listing page, which uses `details`.
+  talkingPoints?: readonly string[];
   heroPhoto?: number;
   photos?: readonly {
     src: string;
@@ -80,6 +83,12 @@ export const inventoryWatches: InventoryWatch[] = [
       "Black calf leather strap over red rubber, ceramic-coated buckle",
       "100m water resistance",
       "Complete with original box and Jomashop paperwork",
+    ],
+    talkingPoints: [
+      "Limited to 500 pieces worldwide and individually numbered — this example is 131/500, engraved on the caseback alongside the Blacktrack motorcycle.",
+      "Designed with Sacha Lakic, the designer behind Blacktrack's custom café racers, which is where the red-edged strap and motorsport dial accents come from.",
+      "The bi-material strap is black calf leather over red rubber, so the red only flashes at the edges in motion — subtle until it isn't.",
+      "Comes from Mir's personal collection with box and Jomashop paperwork, priced at $3,200.",
     ],
     heroPhoto: 0,
     photos: [
@@ -388,6 +397,12 @@ export const inventoryWatches: InventoryWatch[] = [
       "300m water resistance",
       "Full set with box and papers",
       "Brand new, unworn — card dated April 2026",
+    ],
+    talkingPoints: [
+      "The matte black ceramic construction gives the watch a lightweight, modern, stealthy feel.",
+      "Rose gold-tone accents add warmth and contrast without making the watch feel overly flashy.",
+      "The skeleton dial and exhibition caseback make the movement a major visual part of the experience.",
+      "At 43mm with strong contrast, it has real wrist presence and may feel large for buyers who prefer compact watches.",
     ],
     heroPhoto: 0,
     photos: [
