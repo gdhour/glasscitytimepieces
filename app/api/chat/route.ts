@@ -1,10 +1,65 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { Resend } from "resend";
-import inventory from "../../../data/inventory.json";
+import {
+  inventoryWatches,
+  collectionWatches as personalCollectionWatches,
+  legacyInventoryWatches,
+} from "../../collectionWatches";
 import policies from "../../../data/policies.json";
 import watchKnowledge from "../../../data/watch-knowledge.json";
 
 export const runtime = "nodejs";
+
+// Avidor's inventory knowledge is derived from the SAME source the
+// website renders (app/collectionWatches.ts), so the concierge can never
+// tell a visitor "we don't have that" about a watch shown on the site.
+// Photos are flattened to an `images` array of paths for [[show:]] markers.
+type SourceWatch = {
+  brand: string;
+  model: string;
+  reference: string;
+  inventoryStatus?: string;
+  price?: string;
+  availabilityNote?: string;
+  sourceType?: string;
+  isOwnedByGCT?: boolean;
+  canShipImmediately?: boolean;
+  category?: string;
+  description: string;
+  details?: readonly string[];
+  photos?: readonly { src: string }[];
+  image?: { src: string };
+};
+
+function projectWatch(w: SourceWatch) {
+  const images = Array.isArray(w.photos)
+    ? w.photos.map((p) => p.src)
+    : w.image
+      ? [w.image.src]
+      : [];
+  return {
+    brand: w.brand,
+    model: w.model,
+    reference: w.reference,
+    price: w.price ?? null,
+    availabilityNote: w.availabilityNote ?? null,
+    isOwnedByGCT: w.isOwnedByGCT ?? null,
+    canShipImmediately: w.canShipImmediately ?? null,
+    category: w.category ?? null,
+    description: w.description,
+    details: w.details ?? null,
+    images,
+  };
+}
+
+const sourceInventory = inventoryWatches as readonly SourceWatch[];
+const inventory = {
+  current_inventory: sourceInventory.filter((w) => w.inventoryStatus === "current").map(projectWatch),
+  collector_network: sourceInventory.filter((w) => w.inventoryStatus === "network").map(projectWatch),
+  mirs_picks: sourceInventory.filter((w) => w.inventoryStatus === "pick").map(projectWatch),
+  personal_collection: (personalCollectionWatches as readonly SourceWatch[]).map(projectWatch),
+  legacy_inventory: (legacyInventoryWatches as readonly SourceWatch[]).map(projectWatch),
+};
 
 type ChatMessage = {
   role: "user" | "assistant";
