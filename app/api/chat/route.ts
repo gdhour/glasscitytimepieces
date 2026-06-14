@@ -15,6 +15,7 @@ export const runtime = "nodejs";
 // tell a visitor "we don't have that" about a watch shown on the site.
 // Photos are flattened to an `images` array of paths for [[show:]] markers.
 type SourceWatch = {
+  slug?: string;
   brand: string;
   model: string;
   reference: string;
@@ -39,6 +40,7 @@ function projectWatch(w: SourceWatch) {
       ? [w.image.src]
       : [];
   return {
+    slug: w.slug ?? null,
     brand: w.brand,
     model: w.model,
     reference: w.reference,
@@ -74,6 +76,8 @@ type ChatRequest = {
   messages?: ChatMessage[];
   watchContext?: string;
   visitorPreferences?: VisitorPreferences;
+  // true = the full-page /search experience (returns watch cards)
+  search?: boolean;
 };
 
 type VisitorPreferences = {
@@ -212,7 +216,7 @@ async function notifyLead(messages: ChatMessage[], watchContext?: string) {
   }
 }
 
-function buildSystemPrompt(visitorPreferences?: VisitorPreferences, mode: AvidorMode = "inventory") {
+function buildSystemPrompt(visitorPreferences?: VisitorPreferences, mode: AvidorMode = "inventory", search = false) {
   const preferenceContext = visitorPreferences
     ? JSON.stringify(visitorPreferences)
     : "No remembered preferences provided.";
@@ -243,6 +247,27 @@ General rules:
 - If they dislike a brand or style, do not recommend similar pieces unless clearly explaining a contrast.
 - No medical, legal, or financial advice. Do not discuss watches as investments or predict returns.
 - Showing photos: when you focus on a specific inventory watch that has an "images" array, append [[show:<path>]] markers — one per line at the very end of your reply — using up to three exact paths from that watch's images array (e.g. [[show:/collection/bell-ross-br0394-blacktrack-1.jpg]]). The site renders these inline as photos. The [[show:path]] marker is the ONLY way to display an image: never write HTML <img> tags, never use markdown image syntax, never paste image paths as visible text or bullets, and never say you "can't display images inline." Only use paths that appear verbatim in that watch's images array; never invent one. Omit markers for watches with no images.`.trim();
+
+  // Full-page search experience: a brief framing line, then watch cards the
+  // /search page renders and deep-links to each piece's detail page.
+  if (search) {
+    return `
+You are Avidor, powering a full-page conversational search over the Glass City Timepieces collection.
+
+Approved inventory data:
+${JSON.stringify(inventory)}
+
+How to respond:
+- Open with ONE short, warm sentence framing the results (no more). No preamble, no prose bullet lists.
+- Then list up to 6 of the best-matching watches, each on its OWN line, in this exact format:
+  [[product:BRAND MODEL|PRICE|IMAGE_PATH|/watch/SLUG]]
+  BRAND MODEL = the watch's brand and model. PRICE = its price exactly as written (use "" if none). IMAGE_PATH = one exact path from that watch's images array (use "" if none). /watch/SLUG = "/watch/" followed by the watch's slug. Never invent a path, price, or slug.
+- Pick watches that genuinely fit the request — three strong matches beat six weak ones. If nothing fits, say so plainly and ask one clarifying question instead of listing.
+- Inventory honesty is strict: Current Inventory is owned by GCT and can ship now; Collector Network is not owned by GCT and availability must be confirmed; Mir's Picks are curated market opportunities, not in stock. Reflect this in your framing sentence; never imply Network or Picks are in hand.
+- For general horological questions, answer briefly from your own knowledge, then offer to show fitting pieces.
+- After the cards you may add ONE short follow-up question. Never mention or describe the [[product:...]] format itself.
+`.trim();
+  }
 
   if (mode === "expert") {
     return `
@@ -338,9 +363,11 @@ export async function POST(request: Request) {
   }
 
   const watchContext = body.watchContext?.trim().slice(0, 240);
-  // Mode is set server-side only — client cannot escalate to expert model
+  const search = body.search === true;
+  // Mode is set server-side only — client cannot escalate to expert model.
+  // The search surface always runs grounded in inventory (no web-search loop).
   const mode: AvidorMode =
-    process.env.COGSWORTH_MODE === "expert" ? "expert" : "inventory";
+    !search && process.env.COGSWORTH_MODE === "expert" ? "expert" : "inventory";
   // Fire-and-forget — don't await so it doesn't block the response
   void notifyLead(messages, watchContext);
 
@@ -374,7 +401,7 @@ export async function POST(request: Request) {
     : [];
 
   const loopMessages = [...anthropicMessages];
-  const systemPrompt = buildSystemPrompt(body.visitorPreferences, mode);
+  const systemPrompt = buildSystemPrompt(body.visitorPreferences, mode, search);
   const MAX_ITERATIONS = 5;
 
   function getModel() {
