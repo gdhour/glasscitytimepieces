@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bespectacled",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "/Users/mali/bespectacled", "--", "-p", "3010"],
+      "port": 3010
+    }
+  ]
+}
