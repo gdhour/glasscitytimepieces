@@ -65,6 +65,27 @@ const inventory = {
   legacy_inventory: (legacyInventoryWatches as readonly SourceWatch[]).map(projectWatch),
 };
 
+// Compact catalog for Search-in-place. The model ranks over this and returns
+// slugs; the storefront renders the real inventory items, so this only needs
+// enough to judge fit and honor the Current/Network/Pick honesty rules.
+const rankCatalog = sourceInventory
+  .filter((w) => w.slug)
+  .map((w) => ({
+    slug: w.slug,
+    brand: w.brand,
+    model: w.model,
+    reference: w.reference,
+    price: w.price ?? null,
+    inventoryStatus: w.inventoryStatus ?? null,
+    description: w.description,
+    details: w.details ?? null,
+    talkingPoints: w.talkingPoints ?? null,
+  }));
+const validSlugs = new Set(rankCatalog.map((w) => w.slug as string));
+const currentInventorySlugs = sourceInventory
+  .filter((w) => w.slug && w.inventoryStatus === "current")
+  .map((w) => w.slug as string);
+
 type ChatMessage = {
   role: "user" | "assistant";
   content: string;
@@ -78,6 +99,10 @@ type ChatRequest = {
   visitorPreferences?: VisitorPreferences;
   // true = the full-page /search experience (returns watch cards)
   search?: boolean;
+  // true = Search-in-place: rank the storefront inventory for a plain-language
+  // query and return [{slug, reason}]. The page renders the real items.
+  rank?: boolean;
+  query?: string;
 };
 
 type VisitorPreferences = {
@@ -334,6 +359,98 @@ Inventory mode rules:
 `.trim();
 }
 
+// ----- Search-in-place: grounded inventory ranking -----
+
+function buildRankPrompt(): string {
+  return `
+You are Avidor, powering conversational, in-place search over the Glass City Timepieces inventory page. The shopper has replaced category filters with a plain-language description of what they want. Rank the best-fitting pieces from the catalog below and return STRICT JSON only.
+
+Catalog (rank ONLY from these — never invent a slug, price, or piece):
+${JSON.stringify(rankCatalog)}
+
+Return EXACTLY this JSON shape and nothing else — no markdown, no code fences, no prose outside the JSON:
+{"intro":"one short, warm sentence framing the results — or a single friendly clarifying question if nothing fits","results":[{"slug":"exact slug from the catalog","reason":"<=12 words on why it fits"}]}
+
+Rules:
+- Order results best match first. Three strong matches beat eight weak ones; include only genuine fits.
+- If nothing in the catalog fits the request, return "results": [] and make "intro" one friendly clarifying question.
+- Honesty by inventoryStatus: "current" is owned by GCT, in hand, and ships now; "network" is available through the collector network with availability confirmed before purchase; "pick" is a curated market opportunity, not in stock. Never imply network or pick pieces are in hand; let this shape ordering and reasons.
+- Each "reason" is concise and specific, 12 words or fewer, no trailing period.
+- Output JSON only.
+`.trim();
+}
+
+type RawRank = { intro: string; results: { slug: string; reason: string }[] };
+
+function parseRankJson(text: string): RawRank | null {
+  const match = text.match(/\{[\s\S]*\}/);
+  if (!match) return null;
+  try {
+    const obj = JSON.parse(match[0]) as Record<string, unknown>;
+    const intro = typeof obj.intro === "string" ? obj.intro : "";
+    const results = Array.isArray(obj.results)
+      ? obj.results
+          .filter(
+            (r): r is { slug: string; reason?: unknown } =>
+              Boolean(r) && typeof (r as { slug?: unknown }).slug === "string",
+          )
+          .map((r) => ({
+            slug: (r as { slug: string }).slug,
+            reason: typeof r.reason === "string" ? r.reason : "",
+          }))
+      : [];
+    return { intro, results };
+  } catch {
+    return null;
+  }
+}
+
+// On any failure we surface the in-hand pieces unranked so the page never
+// breaks — the storefront still shows real, available inventory.
+function currentInventoryFallback(): Response {
+  return Response.json({
+    intro: "",
+    results: currentInventorySlugs.map((slug) => ({ slug, reason: "" })),
+    degraded: true,
+  });
+}
+
+async function rankInventory(rawQuery: string): Promise<Response> {
+  const query = rawQuery.trim().slice(0, MAX_MESSAGE_LENGTH);
+  if (!query) {
+    return Response.json({ intro: "", results: [] });
+  }
+
+  try {
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    const response = await client.messages.create({
+      model: process.env.ANTHROPIC_MODEL ?? DEFAULT_MODEL_INVENTORY,
+      max_tokens: 1024,
+      system: buildRankPrompt(),
+      messages: [{ role: "user", content: query }],
+    });
+
+    const textBlock = response.content.find((b) => b.type === "text");
+    const parsed = parseRankJson(textBlock?.type === "text" ? textBlock.text : "");
+    if (!parsed) return currentInventoryFallback();
+
+    // Ground the output: only real slugs, no duplicates, capped at 8.
+    const seen = new Set<string>();
+    const results: { slug: string; reason: string }[] = [];
+    for (const r of parsed.results) {
+      if (!validSlugs.has(r.slug) || seen.has(r.slug)) continue;
+      seen.add(r.slug);
+      results.push({ slug: r.slug, reason: r.reason.trim().slice(0, 160) });
+      if (results.length >= 8) break;
+    }
+
+    return Response.json({ intro: parsed.intro.trim().slice(0, 240), results });
+  } catch (error) {
+    console.error("Inventory ranking failed:", error);
+    return currentInventoryFallback();
+  }
+}
+
 export async function POST(request: Request) {
   if (!process.env.ANTHROPIC_API_KEY) {
     return Response.json(
@@ -351,6 +468,11 @@ export async function POST(request: Request) {
     body = (await request.json()) as ChatRequest;
   } catch {
     return Response.json({ error: "Invalid JSON body." }, { status: 400 });
+  }
+
+  // Search-in-place ranking: no chat history, returns {intro, results:[{slug,reason}]}.
+  if (body.rank === true) {
+    return rankInventory(body.query ?? "");
   }
 
   const messages = (body.messages ?? [])
