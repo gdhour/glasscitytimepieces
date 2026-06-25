@@ -571,7 +571,13 @@ export async function POST(request: Request) {
           if (!hasText) {
             controller.enqueue(encoder.encode(FALLBACK));
           }
-        } catch {
+        } catch (err) {
+          // Log so a failing stream (e.g. an invalid API key → 401) is
+          // diagnosable instead of silently surfacing the fallback text.
+          console.error(
+            "Chat stream error:",
+            err instanceof Anthropic.APIError ? `${err.status} ${err.message}` : err,
+          );
           controller.enqueue(encoder.encode(ERROR_REPLY));
         } finally {
           controller.close();
