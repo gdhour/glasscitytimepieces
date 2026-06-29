@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
+import { useVoiceInput } from "@/lib/useVoiceInput";
 
 type Message = { role: "user" | "assistant"; content: string };
 type Product = { name: string; price: string; image: string; url: string };
@@ -88,6 +89,11 @@ export default function WatchSearch() {
     }
   }
 
+  const { voiceState, toggle } = useVoiceInput((transcript) => {
+    setInput(transcript);
+    runSearch(transcript);
+  });
+
   const started = messages.length > 0;
 
   return (
@@ -118,10 +124,36 @@ export default function WatchSearch() {
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Search the collection…"
+            placeholder={voiceState === "listening" ? "Listening…" : "Search the collection…"}
             className="flex-1 bg-transparent px-3 py-2 text-base text-[var(--foreground)] placeholder-[var(--muted)] focus:outline-none"
             autoFocus
           />
+          {voiceState !== "unsupported" && (
+            <button
+              type="button"
+              onClick={toggle}
+              aria-label={voiceState === "listening" ? "Stop listening" : "Speak your search"}
+              className={`rounded p-2 transition-colors ${
+                voiceState === "listening"
+                  ? "text-red-400 hover:text-red-300"
+                  : "text-[var(--muted)] hover:text-[var(--foreground)]"
+              }`}
+            >
+              {voiceState === "listening" ? (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <circle cx="8" cy="8" r="4" className="animate-pulse" />
+                  <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+              ) : (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="5" y="1" width="6" height="9" rx="3" />
+                  <path d="M2 7.5A6 6 0 0 0 14 7.5" />
+                  <line x1="8" y1="13.5" x2="8" y2="15.5" />
+                  <line x1="5.5" y1="15.5" x2="10.5" y2="15.5" />
+                </svg>
+              )}
+            </button>
+          )}
           <button
             type="submit"
             disabled={loading || !input.trim()}
