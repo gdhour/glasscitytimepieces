@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "glasscity",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "-p", "3027"],
+      "port": 3027
+    },
+    {
+      "name": "revantex",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "/Users/mali/revantex", "--", "-p", "3026"],
+      "port": 3026
+    },
+    {
+      "name": "revantex-deck",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4599", "--directory", "/Users/mali/revantex-pitch"],
+      "port": 4599
+    }
+  ]
+}
