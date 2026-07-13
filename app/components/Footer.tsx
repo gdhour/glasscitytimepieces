@@ -19,25 +19,25 @@ export default function Footer() {
           >
             <Link
               href="/personal-collection"
-              className="transition-colors hover:text-[var(--bronze-soft)]"
+              className="inline-flex min-h-[48px] items-center transition-colors hover:text-[var(--bronze-soft)]"
             >
               Personal Collection
             </Link>
             <Link
               href="/current-inventory"
-              className="transition-colors hover:text-[var(--bronze-soft)]"
+              className="inline-flex min-h-[48px] items-center transition-colors hover:text-[var(--bronze-soft)]"
             >
               Current Inventory
             </Link>
             <Link
               href="/legacy-inventory"
-              className="transition-colors hover:text-[var(--bronze-soft)]"
+              className="inline-flex min-h-[48px] items-center transition-colors hover:text-[var(--bronze-soft)]"
             >
               Legacy Inventory
             </Link>
             <Link
               href="/#concierge"
-              className="transition-colors hover:text-[var(--bronze-soft)]"
+              className="inline-flex min-h-[48px] items-center transition-colors hover:text-[var(--bronze-soft)]"
             >
               Concierge Services
             </Link>
@@ -45,7 +45,7 @@ export default function Footer() {
               href="https://www.instagram.com/glasscitytimepieces/"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-[var(--bronze-soft)]"
+              className="inline-flex min-h-[48px] items-center gap-1.5 transition-colors hover:text-[var(--bronze-soft)]"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <rect x="2" y="2" width="20" height="20" rx="5" />
