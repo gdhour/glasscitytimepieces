@@ -18,11 +18,11 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://revantex.com https://us-assets.i.posthog.com",
+      "script-src 'self' 'unsafe-inline' https://revantex.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com data:",
       "img-src 'self' data: blob: https:",
-      "connect-src 'self' https://api.anthropic.com https://revantex.com https://us.i.posthog.com https://us-assets.i.posthog.com",
+      "connect-src 'self' https://api.anthropic.com https://revantex.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
@@ -39,6 +39,25 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // First-party reverse proxy for PostHog (ad blockers block us.i.posthog.com
+  // directly; same-origin /ingest traffic survives). Keep the static rule above
+  // the catch-all — Next rewrites match in order. This also let the PostHog
+  // hosts come OUT of the CSP (analytics is same-origin now).
+  async rewrites() {
+    return [
+      {
+        source: "/ingest/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/ingest/:path*",
+        destination: "https://us.i.posthog.com/:path*",
+      },
+    ];
+  },
+  // PostHog capture endpoints use trailing slashes (/e/, /s/); without this,
+  // Next 308-redirects them and the proxied POST bodies are dropped.
+  skipTrailingSlashRedirect: true,
 };
 
 export default nextConfig;

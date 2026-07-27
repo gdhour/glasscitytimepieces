@@ -21,7 +21,10 @@ function ensureInit() {
   if (!key) return;
   initialized = true;
   posthog.init(key, {
-    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com",
+    // Same-origin reverse proxy (next.config rewrites) so ad blockers don't
+    // drop events; ui_host keeps toolbar/dashboard links pointing at PostHog.
+    api_host: "/ingest",
+    ui_host: "https://us.posthog.com",
     capture_pageview: false,
     capture_pageleave: true,
     person_profiles: "identified_only",
