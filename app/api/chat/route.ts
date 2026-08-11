@@ -25,6 +25,7 @@ type SourceWatch = {
   sourceType?: string;
   isOwnedByGCT?: boolean;
   canShipImmediately?: boolean;
+  sold?: boolean;
   category?: string;
   description: string;
   details?: readonly string[];
@@ -58,7 +59,7 @@ function projectWatch(w: SourceWatch) {
 
 const sourceInventory = inventoryWatches as readonly SourceWatch[];
 const inventory = {
-  current_inventory: sourceInventory.filter((w) => w.inventoryStatus === "current").map(projectWatch),
+  current_inventory: sourceInventory.filter((w) => w.inventoryStatus === "current" && !w.sold).map(projectWatch),
   collector_network: sourceInventory.filter((w) => w.inventoryStatus === "network").map(projectWatch),
   mirs_picks: sourceInventory.filter((w) => w.inventoryStatus === "pick").map(projectWatch),
   personal_collection: (personalCollectionWatches as readonly SourceWatch[]).map(projectWatch),
@@ -69,7 +70,7 @@ const inventory = {
 // slugs; the storefront renders the real inventory items, so this only needs
 // enough to judge fit and honor the Current/Network/Pick honesty rules.
 const rankCatalog = sourceInventory
-  .filter((w) => w.slug)
+  .filter((w) => w.slug && !w.sold)
   .map((w) => ({
     slug: w.slug,
     brand: w.brand,
@@ -83,7 +84,7 @@ const rankCatalog = sourceInventory
   }));
 const validSlugs = new Set(rankCatalog.map((w) => w.slug as string));
 const currentInventorySlugs = sourceInventory
-  .filter((w) => w.slug && w.inventoryStatus === "current")
+  .filter((w) => w.slug && w.inventoryStatus === "current" && !w.sold)
   .map((w) => w.slug as string);
 
 type ChatMessage = {

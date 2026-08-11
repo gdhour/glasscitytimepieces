@@ -87,7 +87,13 @@ export default async function WatchDetailPage({ params }: Props) {
 
             {/* Details */}
             <div className="flex flex-col">
-              <InventoryStatusBadge status={watch.inventoryStatus} />
+              {watch.sold ? (
+                <span className="inline-flex w-fit items-center rounded-sm border border-[var(--bronze)] bg-[var(--bronze)]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--bronze-soft)]">
+                  Sold
+                </span>
+              ) : (
+                <InventoryStatusBadge status={watch.inventoryStatus} />
+              )}
 
               <p className="mt-5 text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--bronze)]">
                 {watch.brand}
@@ -101,7 +107,12 @@ export default async function WatchDetailPage({ params }: Props) {
 
               {watch.price && (
                 <p className="mt-5 font-[family-name:var(--font-cormorant)] text-4xl font-light text-[var(--foreground)]">
-                  {watch.price}
+                  <span className={watch.sold ? "text-[var(--muted)] line-through" : ""}>{watch.price}</span>
+                  {watch.sold && (
+                    <span className="ml-3 align-middle text-base font-medium uppercase tracking-[0.2em] text-[var(--bronze)]">
+                      Sold
+                    </span>
+                  )}
                 </p>
               )}
 
@@ -111,16 +122,29 @@ export default async function WatchDetailPage({ params }: Props) {
 
               {/* Availability */}
               <div className="mt-6 rounded-sm border border-[var(--border-strong)] bg-[var(--surface-elevated)] p-4">
-                <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--bronze)]">
-                  {statusContent.label}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-[var(--steel-bright)]">
-                  {watch.availabilityNote ?? statusContent.disclosure}
-                </p>
-                {watch.estimatedProcurementTime && (
-                  <p className="mt-2 text-xs text-[var(--muted)]">
-                    Estimated procurement: {watch.estimatedProcurementTime}
-                  </p>
+                {watch.sold ? (
+                  <>
+                    <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--bronze)]">
+                      Sold
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--steel-bright)]">
+                      This piece has found its owner. Ask about sourcing the same reference or a similar alternative.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--bronze)]">
+                      {statusContent.label}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--steel-bright)]">
+                      {watch.availabilityNote ?? statusContent.disclosure}
+                    </p>
+                    {watch.estimatedProcurementTime && (
+                      <p className="mt-2 text-xs text-[var(--muted)]">
+                        Estimated procurement: {watch.estimatedProcurementTime}
+                      </p>
+                    )}
+                  </>
                 )}
               </div>
 

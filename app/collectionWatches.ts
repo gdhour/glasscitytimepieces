@@ -45,6 +45,9 @@ export type InventoryWatch = {
   sourceType?: string;
   isOwnedByGCT?: boolean;
   canShipImmediately?: boolean;
+  // Marks a piece that has sold: stays listed as social proof, badged
+  // SOLD, but is excluded from search/concierge as available inventory.
+  sold?: boolean;
   description: string;
   details: readonly string[];
   // Conversational selling angles (incl. honest tradeoffs) for the
@@ -379,6 +382,7 @@ export const inventoryWatches: InventoryWatch[] = [
     sourceType: "GCT owned inventory",
     isOwnedByGCT: true,
     canShipImmediately: true,
+    sold: true,
     description:
       "Rikka — standing flowers — marks the start of summer in the traditional Japanese calendar of twenty-four seasons. Grand Seiko built a dial around that moment: a deep, textured green that shifts character as light moves across it, referencing the dense plant growth of early summer without explaining itself too literally. The case is 40mm Ever-Brilliant Steel finished by hand through Zaratsu polishing — the mirror-flat surfaces that define what Grand Seiko means by craft. Inside, the Calibre 9S85 runs Hi-Beat at 36,000 vibrations per hour, rated at +5/-3 seconds per day. Brand new, unworn, full set with card dated May 2026.",
     details: [
@@ -510,6 +514,7 @@ export const inventoryWatches: InventoryWatch[] = [
     sourceType: "GCT owned inventory",
     isOwnedByGCT: true,
     canShipImmediately: true,
+    sold: true,
     description:
       "The Rado Captain Cook High-Tech Ceramic Skeleton blends modern materials with aggressive industrial design. Matte black ceramic keeps the watch lightweight and stealthy, while warm rose gold-tone accents add contrast and depth. The open-worked dial and exhibition caseback show the automatic movement from both sides, giving the piece a technical character that feels equal parts motorsport instrumentation and contemporary architecture. This example is brand new and unworn — never on a wrist — with a card dated April 2026.",
     details: [

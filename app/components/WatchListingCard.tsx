@@ -59,7 +59,13 @@ export default function WatchListingCard({
         )}
 
         <div className="flex flex-col justify-center">
-          <InventoryStatusBadge status={watch.inventoryStatus} />
+          {watch.sold ? (
+            <span className="inline-flex w-fit items-center rounded-sm border border-[var(--bronze)] bg-[var(--bronze)]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--bronze-soft)]">
+              Sold
+            </span>
+          ) : (
+            <InventoryStatusBadge status={watch.inventoryStatus} />
+          )}
           {reason && (
             <p className="mt-4 flex items-start gap-2 text-sm leading-relaxed text-[var(--steel-bright)]">
               <span aria-hidden className="mt-px text-[var(--bronze)]">→</span>
@@ -80,24 +86,42 @@ export default function WatchListingCard({
           </p>
           {watch.price ? (
             <p className="mt-4 font-[family-name:var(--font-cormorant)] text-3xl font-light text-[var(--foreground)]">
-              {watch.price}
+              <span className={watch.sold ? "text-[var(--muted)] line-through" : ""}>{watch.price}</span>
+              {watch.sold ? (
+                <span className="ml-3 align-middle text-sm font-medium uppercase tracking-[0.2em] text-[var(--bronze)]">
+                  Sold
+                </span>
+              ) : null}
             </p>
           ) : null}
           <p className="mt-5 text-sm leading-relaxed text-[var(--muted)]">
             {watch.description}
           </p>
           <div className="mt-6 rounded-sm border border-[var(--border-strong)] bg-[var(--surface-elevated)] p-4">
-            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--bronze)]">
-              {statusContent.label}
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-[var(--steel-bright)]">
-              {watch.availabilityNote ?? statusContent.disclosure}
-            </p>
-            {watch.estimatedProcurementTime ? (
-              <p className="mt-3 text-xs text-[var(--muted)]">
-                Estimated procurement: {watch.estimatedProcurementTime}
-              </p>
-            ) : null}
+            {watch.sold ? (
+              <>
+                <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--bronze)]">
+                  Sold
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--steel-bright)]">
+                  This piece has found its owner. Ask about sourcing the same reference or a similar alternative.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--bronze)]">
+                  {statusContent.label}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--steel-bright)]">
+                  {watch.availabilityNote ?? statusContent.disclosure}
+                </p>
+                {watch.estimatedProcurementTime ? (
+                  <p className="mt-3 text-xs text-[var(--muted)]">
+                    Estimated procurement: {watch.estimatedProcurementTime}
+                  </p>
+                ) : null}
+              </>
+            )}
           </div>
           <ul className="mt-8 grid gap-px overflow-hidden rounded-sm border border-[var(--border)] bg-[var(--border)] sm:grid-cols-2">
             {watch.details.map((detail) => (
