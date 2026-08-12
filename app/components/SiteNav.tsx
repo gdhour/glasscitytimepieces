@@ -46,7 +46,7 @@ export default function SiteNav() {
               aria-controls="mobile-menu"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((open) => !open)}
-              className="rounded-sm border border-[var(--border)] bg-[var(--surface-elevated)] px-3 py-2 text-[13px] font-medium text-[var(--steel)] transition-colors hover:text-[var(--foreground)]"
+              className="inline-flex min-h-[48px] items-center rounded-sm border border-[var(--border)] bg-[var(--surface-elevated)] px-4 text-[13px] font-medium text-[var(--steel)] transition-colors hover:text-[var(--foreground)]"
             >
               {menuOpen ? "Close" : "Menu"}
             </button>
@@ -60,7 +60,7 @@ export default function SiteNav() {
                     <Link
                       href={href}
                       onClick={closeMenu}
-                      className="block px-4 py-2.5 text-sm text-[var(--steel)] hover:bg-[var(--purple)]/30 hover:text-[var(--foreground)]"
+                      className="flex min-h-[48px] items-center px-4 text-sm text-[var(--steel)] hover:bg-[var(--purple)]/30 hover:text-[var(--foreground)]"
                     >
                       {label}
                     </Link>

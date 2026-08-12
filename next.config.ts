@@ -39,6 +39,25 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // First-party reverse proxy for PostHog (ad blockers block us.i.posthog.com
+  // directly; same-origin /ingest traffic survives). Keep the static rule above
+  // the catch-all — Next rewrites match in order. This also let the PostHog
+  // hosts come OUT of the CSP (analytics is same-origin now).
+  async rewrites() {
+    return [
+      {
+        source: "/ingest/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/ingest/:path*",
+        destination: "https://us.i.posthog.com/:path*",
+      },
+    ];
+  },
+  // PostHog capture endpoints use trailing slashes (/e/, /s/); without this,
+  // Next 308-redirects them and the proxied POST bodies are dropped.
+  skipTrailingSlashRedirect: true,
 };
 
 export default nextConfig;

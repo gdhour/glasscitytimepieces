@@ -21,14 +21,17 @@ export default function LegacyInventoryPage() {
 
       <section className="bg-[var(--background)] py-16 sm:py-24">
         <div className="mx-auto max-w-7xl space-y-8 px-5 sm:px-8">
-          {legacyInventoryWatches.map((watch) => (
+          {legacyInventoryWatches.map((watch) => {
+            const gallery = "photos" in watch ? watch.photos : [watch.image];
+            const supporting = gallery.slice(1);
+            return (
+            <div key={`${watch.brand}-${watch.model}`} className="space-y-4">
             <article
-              key={`${watch.brand}-${watch.model}`}
               className="surface-card grid overflow-hidden rounded-sm lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]"
             >
               <ClickablePhoto
                 photo={watch.image}
-                photos={[watch.image]}
+                photos={gallery}
                 index={0}
                 imageClassName={`${watch.image.className} h-full w-full object-cover`}
                 sizes="(min-width: 1024px) 54vw, 100vw"
@@ -66,7 +69,24 @@ export default function LegacyInventoryPage() {
                 </dl>
               </div>
             </article>
-          ))}
+            {supporting.length > 0 && (
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {supporting.map((photo, i) => (
+                  <ClickablePhoto
+                    key={photo.src}
+                    photo={photo}
+                    photos={gallery}
+                    index={i + 1}
+                    className="surface-card block overflow-hidden rounded-sm"
+                    imageClassName="aspect-[4/5] h-full w-full object-cover"
+                    sizes="(min-width: 640px) 22vw, 45vw"
+                  />
+                ))}
+              </div>
+            )}
+            </div>
+            );
+          })}
         </div>
       </section>
     </main>

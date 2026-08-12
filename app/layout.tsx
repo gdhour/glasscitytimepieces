@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import Footer from "./components/Footer";
 import SiteNav from "./components/SiteNav";
+import PostHogTracker from "./PostHogTracker";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -42,6 +43,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col bg-[var(--background)] text-[var(--foreground)]">
+        <PostHogTracker />
         <SiteNav />
         <div className="flex flex-1 flex-col">{children}</div>
         <Footer />

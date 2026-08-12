@@ -45,6 +45,9 @@ export type InventoryWatch = {
   sourceType?: string;
   isOwnedByGCT?: boolean;
   canShipImmediately?: boolean;
+  // Marks a piece that has sold: stays listed as social proof, badged
+  // SOLD, but is excluded from search/concierge as available inventory.
+  sold?: boolean;
   description: string;
   details: readonly string[];
   // Conversational selling angles (incl. honest tradeoffs) for the
@@ -379,6 +382,7 @@ export const inventoryWatches: InventoryWatch[] = [
     sourceType: "GCT owned inventory",
     isOwnedByGCT: true,
     canShipImmediately: true,
+    sold: true,
     description:
       "Rikka — standing flowers — marks the start of summer in the traditional Japanese calendar of twenty-four seasons. Grand Seiko built a dial around that moment: a deep, textured green that shifts character as light moves across it, referencing the dense plant growth of early summer without explaining itself too literally. The case is 40mm Ever-Brilliant Steel finished by hand through Zaratsu polishing — the mirror-flat surfaces that define what Grand Seiko means by craft. Inside, the Calibre 9S85 runs Hi-Beat at 36,000 vibrations per hour, rated at +5/-3 seconds per day. Brand new, unworn, full set with card dated May 2026.",
     details: [
@@ -510,6 +514,7 @@ export const inventoryWatches: InventoryWatch[] = [
     sourceType: "GCT owned inventory",
     isOwnedByGCT: true,
     canShipImmediately: true,
+    sold: true,
     description:
       "The Rado Captain Cook High-Tech Ceramic Skeleton blends modern materials with aggressive industrial design. Matte black ceramic keeps the watch lightweight and stealthy, while warm rose gold-tone accents add contrast and depth. The open-worked dial and exhibition caseback show the automatic movement from both sides, giving the piece a technical character that feels equal parts motorsport instrumentation and contemporary architecture. This example is brand new and unworn — never on a wrist — with a card dated April 2026.",
     details: [
@@ -955,6 +960,51 @@ export const currentInventoryWatches = inventoryWatches.filter(
 );
 
 export const legacyInventoryWatches = [
+  {
+    brand: "Omega",
+    model: "Speedmaster Moonwatch Professional",
+    reference: "310.30.42.50.04.001 · Sourced & delivered",
+    category: "Sourced on request",
+    description:
+      "White-dial Moonwatch Professional Co-Axial Master Chronometer chronograph on the steel bracelet — sourced on request for a client and delivered complete with box and cards. A recent example of the concierge sourcing service: name the reference, and we find it.",
+    image: {
+      src: "/collection/omega-speedmaster-moonwatch-1.jpg",
+      alt: "Omega Speedmaster Moonwatch Professional white dial chronograph, sourced on request and delivered",
+      width: 1022,
+      height: 1500,
+      className: "aspect-[2/3]",
+    },
+    photos: [
+      {
+        src: "/collection/omega-speedmaster-moonwatch-1.jpg",
+        alt: "Omega Speedmaster Moonwatch Professional white dial, front view",
+        width: 1022,
+        height: 1500,
+        className: "aspect-[2/3]",
+      },
+      {
+        src: "/collection/omega-speedmaster-moonwatch-2.jpg",
+        alt: "Omega Speedmaster Moonwatch Professional three-quarter view on the steel bracelet",
+        width: 831,
+        height: 1500,
+        className: "aspect-[5/9]",
+      },
+      {
+        src: "/collection/omega-speedmaster-moonwatch-3.jpg",
+        alt: "Omega Speedmaster Moonwatch Professional clasp with the Omega logo",
+        width: 989,
+        height: 1500,
+        className: "aspect-[2/3]",
+      },
+      {
+        src: "/collection/omega-speedmaster-moonwatch-4.jpg",
+        alt: "Omega Speedmaster Moonwatch Professional white dial on a display stand",
+        width: 702,
+        height: 1500,
+        className: "aspect-[7/15]",
+      },
+    ],
+  },
   {
     brand: "Christopher Ward",
     model: "C65 Dune Aeolian GMT Blue Dial",

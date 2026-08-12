@@ -283,6 +283,11 @@ export default function Home() {
                 reference, a first serious purchase, or a discreet exit from
                 something that no longer fits the rotation.
               </p>
+              <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
+                Recently sourced on request and delivered: an Omega Speedmaster
+                Moonwatch Professional Chronograph, white dial, ref.
+                310.30.42.50.04.001.
+              </p>
               <div className="mt-8 grid gap-px overflow-hidden rounded-sm border border-[var(--border)] bg-[var(--border)] sm:grid-cols-3">
                 {[
                   { label: "Call", value: "419-975-9754", href: "tel:+14199759754" },

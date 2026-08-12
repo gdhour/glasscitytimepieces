@@ -1,4 +1,4 @@
-import InventoryGrid from "../components/InventoryGrid";
+import SearchInPlace from "../components/SearchInPlace";
 import { inventoryWatches } from "../collectionWatches";
 
 export default function CurrentInventoryPage() {
@@ -22,7 +22,7 @@ export default function CurrentInventoryPage() {
 
       <section className="bg-[var(--background)] py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <InventoryGrid watches={inventoryWatches} />
+          <SearchInPlace watches={inventoryWatches} />
         </div>
       </section>
     </main>

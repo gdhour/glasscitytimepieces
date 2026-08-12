@@ -11,16 +11,18 @@ export default function AskAboutWatchButton({
   reference,
   className,
 }: AskAboutWatchButtonProps) {
-  const watchContext = reference ? `${watchName} reference ${reference}` : watchName;
-
   return (
     <button
       type="button"
       onClick={() => {
         window.dispatchEvent(
           new CustomEvent("revantex:open", {
+            // `product` drives a contextual greeting ("…what can I tell you
+            // about the {watchName}?"); the short message pre-fills the input.
             detail: {
-              message: `I’m interested in the ${watchContext}. Can you walk me through sizing, condition, set contents, and the main pros and cons?`,
+              product: watchName,
+              reference,
+              message: "Sizing, condition, and what's included?",
             },
           }),
         );
