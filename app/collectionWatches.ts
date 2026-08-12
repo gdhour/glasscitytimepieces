@@ -961,6 +961,21 @@ export const currentInventoryWatches = inventoryWatches.filter(
 
 export const legacyInventoryWatches = [
   {
+    brand: "Omega",
+    model: "Speedmaster Moonwatch Professional",
+    reference: "310.30.42.50.04.001 · Sourced & delivered",
+    category: "Sourced on request",
+    description:
+      "White-dial Moonwatch Professional Co-Axial Master Chronometer chronograph on the steel bracelet — sourced on request for a client and delivered complete with box and cards. A recent example of the concierge sourcing service: name the reference, and we find it.",
+    image: {
+      src: "/collection/omega-speedmaster-moonwatch-1.jpg",
+      alt: "Omega Speedmaster Moonwatch Professional white dial chronograph, sourced on request and delivered",
+      width: 1022,
+      height: 1500,
+      className: "aspect-[2/3]",
+    },
+  },
+  {
     brand: "Christopher Ward",
     model: "C65 Dune Aeolian GMT Blue Dial",
     reference: "Legacy piece",
