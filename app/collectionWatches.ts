@@ -974,6 +974,36 @@ export const legacyInventoryWatches = [
       height: 1500,
       className: "aspect-[2/3]",
     },
+    photos: [
+      {
+        src: "/collection/omega-speedmaster-moonwatch-1.jpg",
+        alt: "Omega Speedmaster Moonwatch Professional white dial, front view",
+        width: 1022,
+        height: 1500,
+        className: "aspect-[2/3]",
+      },
+      {
+        src: "/collection/omega-speedmaster-moonwatch-2.jpg",
+        alt: "Omega Speedmaster Moonwatch Professional three-quarter view on the steel bracelet",
+        width: 831,
+        height: 1500,
+        className: "aspect-[5/9]",
+      },
+      {
+        src: "/collection/omega-speedmaster-moonwatch-3.jpg",
+        alt: "Omega Speedmaster Moonwatch Professional clasp with the Omega logo",
+        width: 989,
+        height: 1500,
+        className: "aspect-[2/3]",
+      },
+      {
+        src: "/collection/omega-speedmaster-moonwatch-4.jpg",
+        alt: "Omega Speedmaster Moonwatch Professional white dial on a display stand",
+        width: 702,
+        height: 1500,
+        className: "aspect-[7/15]",
+      },
+    ],
   },
   {
     brand: "Christopher Ward",
